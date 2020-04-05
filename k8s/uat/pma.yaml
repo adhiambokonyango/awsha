@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: uat
+  name: pma
+  labels:
+    name: pma
+    app: pma
+spec:
+  selector:
+    matchLabels:
+      app: pma
+  template:
+    metadata:
+      name: pma
+      labels:
+        name: pma
+        app: pma
+    spec:
+      containers:
+        - name: pma
+          imagePullPolicy: Always
+          image: phpmyadmin/phpmyadmin
+          ports:
+            - containerPort: 80
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: kopa
+            - name: MYSQL_USER
+              value: silas
+            - name: MYSQL_PASSWORD
+              value: "8032"
+            - name: PMA_HOST
+              value: mysql-db
