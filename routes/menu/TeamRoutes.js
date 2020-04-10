@@ -121,7 +121,7 @@ router.post('/update_team',urlencodedParser,function(request,response){
   var	jsonObject_ = {
 
 
-    TeamId:request.body.TeamId,
+
     TeamName:request.body.TeamName,
     CompanyId:request.body.CompanyId
 
@@ -160,7 +160,7 @@ router.post('/update_individual_team',urlencodedParser,function(request,response
   var	jsonObject_ = {
 
 
-    TeamId:request.body.TeamId,
+
     TeamName:request.body.TeamName,
     CompanyId:request.body.CompanyId
 

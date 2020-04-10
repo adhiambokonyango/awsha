@@ -30,7 +30,7 @@ router.post('/add_team_members', urlencodedParser,function(request,response){
   var	jsonObject_ = {
 
 
-    TeamMemberId:request.body.TeamMemberId,
+
     TeamMemberName:request.body.TeamMemberName,
     TeamMemberEmail:request.body.TeamMemberEmail,
     TeamMemberPassword:request.body.TeamMemberPassword,
@@ -124,7 +124,7 @@ router.post('/update_team_members',urlencodedParser,function(request,response){
   var	jsonObject_ = {
 
 
-    TeamMemberId:request.body.TeamMemberId,
+
     TeamMemberName:request.body.TeamMemberName,
     TeamMemberEmail:request.body.TeamMemberEmail,
     TeamMemberPassword:request.body.TeamMemberPassword,
@@ -166,7 +166,7 @@ router.post('/update_individual_team_members',urlencodedParser,function(request,
   var	jsonObject_ = {
 
 
-    TeamMemberId:request.body.TeamMemberId,
+
     TeamMemberName:request.body.TeamMemberName,
     TeamMemberEmail:request.body.TeamMemberEmail,
     TeamMemberPassword:request.body.TeamMemberPassword,

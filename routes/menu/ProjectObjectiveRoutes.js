@@ -30,7 +30,7 @@ router.post('/add_project_objectives', urlencodedParser,function(request,respons
   var	jsonObject_ = {
 
 
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
+
     ProjectId:request.body.ProjectId,
     TeamMemberId:request.body.TeamMemberId,
     ProjectObjective:request.body.ProjectObjective
@@ -122,12 +122,12 @@ router.post('/update_project_objectives',urlencodedParser,function(request,respo
   var	jsonObject_ = {
 
 
+
+
     ProjectId:request.body.ProjectId,
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
     TeamMemberId:request.body.TeamMemberId,
-    TeamId:request.body.TeamId,
-    CompanyId:request.body.CompanyId
+    ProjectObjective:request.body.ProjectObjective
+
 
 
   };
@@ -165,11 +165,10 @@ router.post('/update_individual_project_objectives',urlencodedParser,function(re
 
 
     ProjectId:request.body.ProjectId,
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
     TeamMemberId:request.body.TeamMemberId,
-    TeamId:request.body.TeamId,
-    CompanyId:request.body.CompanyId
+    ProjectObjective:request.body.ProjectObjective
+
+
 
 
   };
