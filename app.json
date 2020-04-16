@@ -1,7 +1,7 @@
 {
-  "name": "waondo_node",
+  "name": "awsha",
   "description": "Waondo secondary's fee management system running node javascript",
-  "repository": "https://github.com/SoftmedTanzania/mcare.git",
+  "repository": "https://github.com/adhiambokonyango/awsha.git",
   "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
   "keywords": ["node", "express", "heroku"],
   "image": "heroku/nodejs"

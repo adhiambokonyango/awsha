@@ -2,8 +2,8 @@ var mysql = require("mysql");
 
 const con = mysql.createPool({
   host: "localhost",
-  user: "silas",
-  password: "8032",
+  user: "mary",
+  password: "31547207",
   database: "taskSchedular",
   insecureAuth: true
 });

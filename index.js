@@ -20,8 +20,8 @@ var port = 80;
 app.use(cors());
 dbcredentials = {
   host: "localhost",
-  user: "silas",
-  password: "8032",
+  user: "mary",
+  password: "31547207",
   database: "taskSchedular",
   insecureAuth: true
 };
@@ -76,6 +76,8 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
 app.use(require("./routes/menu/ProjectsRoutes.js"));
 app.use(require("./routes/menu/TeamMembersRoutes.js"));
 app.use(require("./routes/menu/TeamRoutes.js"));
+app.use(require("./routes/menu/CompanyRoutes.js"));
+app.use(require("./routes/system_admin/SystemAdminRoutes"));
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Common Utilities*/
 
