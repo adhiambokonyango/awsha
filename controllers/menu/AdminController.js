@@ -1,17 +1,9 @@
-/*SON/2018-11-06 00:29 - DEVELOPMENT
-
-This class is the company_owners's controller class.
-It receives calls from the "UsersRoutes" class and
-passes the calls down to the "SystemAdminModel" class
-
-*/
-
 const ModelMaster = require("../../models/ModelMaster.js");
-const SystemAdminModel = require("../../models/system_admin/SystemAdminModel.js");
+const AdminModel = require("../../models/menu/AdminModel");
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 
-module.exports = class SystemAdminController {
+module.exports = class AdminController {
   constructor() {}
 
   /*my_hash_function(password, salt){
@@ -28,7 +20,7 @@ module.exports = class SystemAdminController {
   static insert_users(jsonObject_) {
     return new Promise(function(resolve, reject) {
       //var userAlreadyRegisteredResult;
-      var TableName = "system_admin";
+      var TableName = "admin";
       var ColumnName = "AdminEmail";
       var value_ = jsonObject_.AdminEmail;
       var myModelMasterPromise = ModelMaster.selectSpecific(
@@ -46,14 +38,14 @@ module.exports = class SystemAdminController {
               salt
             ); /** Hashing algorithm sha512 */
 
-            hash.update(jsonObject_.AdminPassword);
+            hash.update(jsonObject_.EncryptedPassword);
             var encrypted_Password = hash.digest("hex");
 
-            delete jsonObject_["AdminPassword"];
+            delete jsonObject_["EncryptedPassword"];
             jsonObject_["EncryptedPassword"] = encrypted_Password;
             jsonObject_["Salt"] = salt;
 
-            var myUsersObjectPromise = SystemAdminModel.insert_users(
+            var myUsersObjectPromise = AdminModel.insert(
               jsonObject_
             );
 
@@ -79,7 +71,7 @@ module.exports = class SystemAdminController {
 
   static user_login(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var TableName = "system_admin";
+      var TableName = "admin";
       var SearchColumn = "AdminEmail";
       var SearchValue = jsonObject_.AttemptedEmail;
 
@@ -136,9 +128,9 @@ module.exports = class SystemAdminController {
     });
   }
 
-  static get_all_users() {
+  static get_all_admin() {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = SystemAdminModel.get_all_users();
+      var myUsersObjectPromise = AdminModel.get_all_records();
 
       myUsersObjectPromise.then(
         function(result) {
@@ -153,7 +145,7 @@ module.exports = class SystemAdminController {
 
   static get_specific_users(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = SystemAdminModel.get_specific_users(
+      var myUsersObjectPromise = AdminModel.get_specific_records(
         ColumnName,
         value_
       );
@@ -171,7 +163,7 @@ module.exports = class SystemAdminController {
 
   static batch_users_update(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = SystemAdminModel.batch_users_update(
+      var myUsersObjectPromise = AdminModel.batch_update(
         jsonObject_
       );
 
@@ -188,7 +180,7 @@ module.exports = class SystemAdminController {
 
   static individual_users_update(ColumnName, value_, jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = SystemAdminModel.individual_users_update(
+      var myUsersObjectPromise = AdminModel.individual_record_update(
         ColumnName,
         value_,
         jsonObject_
@@ -207,7 +199,7 @@ module.exports = class SystemAdminController {
 
   static delete_users_record(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = SystemAdminModel.delete_users_record(
+      var myUsersObjectPromise = AdminModel.delete_user_specic_record(
         ColumnName,
         value_
       );
@@ -223,28 +215,4 @@ module.exports = class SystemAdminController {
     });
   }
 
-  static get_staff_members_with_a_specific_quality(
-    TableTwo,
-    JoiningKey,
-    SearchColumn,
-    SearchValue
-  ) {
-    return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = SystemAdminModel.get_staff_members_with_a_specific_quality(
-        TableTwo,
-        JoiningKey,
-        SearchColumn,
-        SearchValue
-      );
-
-      myUsersObjectPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
 };

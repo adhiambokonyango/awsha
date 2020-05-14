@@ -1,25 +1,23 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-
-This class is the "company_owners" table's model
+This class is the "term" table's model
 class.It receives any CRUD operation
 requests and hands the over to class
 ModelMaster.It creates an instance of class
 ModelMaster then passes parameters to its
 functions.
-
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "system_admin";
+const TableName = "admin";
 
-module.exports = class SystemAdminModel {
+module.exports = class AdminModel {
   constructor() {}
 
-  static insert_users(jsonObject_) {
+  static insert(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.insert(TableName, jsonObject_);
+      var myPromise = ModelMaster.insert(TableName, jsonObject_);
 
-      myModelMasterPromise.then(
+      myPromise.then(
         function(result) {
           resolve(result);
         },
@@ -30,10 +28,10 @@ module.exports = class SystemAdminModel {
     });
   }
 
-  static get_all_users() {
+  static get_all_records() {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.selectAll(TableName);
-      myModelMasterPromise.then(
+      var myPromise = ModelMaster.selectAll(TableName);
+      myPromise.then(
         function(result) {
           resolve(result);
         },
@@ -44,14 +42,10 @@ module.exports = class SystemAdminModel {
     });
   }
 
-  static get_specific_users(ColumnName, value_) {
+  static get_specific_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.selectSpecific(
-        TableName,
-        ColumnName,
-        value_
-      );
-      myModelMasterPromise.then(
+      var myPromise = ModelMaster.selectSpecific(TableName, ColumnName, value_);
+      myPromise.then(
         function(result) {
           resolve(result);
         },
@@ -62,13 +56,10 @@ module.exports = class SystemAdminModel {
     });
   }
 
-  static batch_users_update(jsonObject_) {
+  static batch_update(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.batch_update(
-        TableName,
-        jsonObject_
-      );
-      myModelMasterPromise.then(
+      var myPromise = ModelMaster.batch_update(TableName, jsonObject_);
+      myPromise.then(
         function(result) {
           resolve(result);
         },
@@ -79,15 +70,15 @@ module.exports = class SystemAdminModel {
     });
   }
 
-  static individual_users_update(ColumnName, value_, jsonObject_) {
+  static individual_record_update(ColumnName, value_, jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.individual_update(
+      var myPromise = ModelMaster.individual_update(
         TableName,
         jsonObject_,
         ColumnName,
         value_
       );
-      myModelMasterPromise.then(
+      myPromise.then(
         function(result) {
           resolve(result);
         },
@@ -98,14 +89,39 @@ module.exports = class SystemAdminModel {
     });
   }
 
-  static delete_users_record(ColumnName, value_) {
+  static delete_user_specic_record(
+    ColumnName,
+    value_,
+    UserIdColumnName,
+    UserId
+  ) {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.delete(
+      var myPromise = ModelMaster.delete(
+        TableName,
+        ColumnName,
+        value_,
+        UserIdColumnName,
+        UserId
+      );
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
+
+  static get_number_of_records(ColumnName, value_) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.get_number_of_records(
         TableName,
         ColumnName,
         value_
       );
-      myModelMasterPromise.then(
+      myPromise.then(
         function(result) {
           resolve(result);
         },
@@ -116,21 +132,21 @@ module.exports = class SystemAdminModel {
     });
   }
 
-  static get_staff_members_with_a_specific_quality(
-    TableTwo,
-    JoiningKey,
-    SearchColumn,
-    SearchValue
+  static user_specific_select_query(
+    ColumnName,
+    value_,
+    UserIdColumnName,
+    UserId
   ) {
     return new Promise(function(resolve, reject) {
-      var myModelMasterPromise = ModelMaster.two_table_inner_join(
+      var myPromise = ModelMaster.user_specific_select_query(
         TableName,
-        TableTwo,
-        JoiningKey,
-        SearchColumn,
-        SearchValue
+        ColumnName,
+        value_,
+        UserIdColumnName,
+        UserId
       );
-      myModelMasterPromise.then(
+      myPromise.then(
         function(result) {
           resolve(result);
         },

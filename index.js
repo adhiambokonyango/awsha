@@ -22,7 +22,7 @@ dbcredentials = {
   host: "localhost",
   user: "mary",
   password: "31547207",
-  database: "taskSchedular",
+  database: "task_schedular",
   insecureAuth: true
 };
 
@@ -77,7 +77,10 @@ app.use(require("./routes/menu/ProjectsRoutes.js"));
 app.use(require("./routes/menu/TeamMembersRoutes.js"));
 app.use(require("./routes/menu/TeamRoutes.js"));
 app.use(require("./routes/menu/CompanyRoutes.js"));
-app.use(require("./routes/system_admin/SystemAdminRoutes"));
+app.use(require("./routes/menu/AdminRoutes.js"));
+app.use(require("./routes/menu/GenderRoutes.js"));
+
+
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Common Utilities*/
 
