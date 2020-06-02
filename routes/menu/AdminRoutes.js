@@ -19,6 +19,9 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+
+
+
 router.post("/admin_registration", urlencodedParser, function(
   request,
   response
@@ -32,7 +35,7 @@ router.post("/admin_registration", urlencodedParser, function(
     AdminSurname: request.body.AdminSurname,
     AdminPhoneNumber: request.body.AdminPhoneNumber,
     AdminEmail: request.body.AdminEmail,
-    Gender: request.body.Gender,
+    GenderId: request.body.GenderId,
     AdminNationalId: request.body.AdminNationalId,
     EncryptedPassword	: request.body.EncryptedPassword	,
     RegisteredDate: date
@@ -84,6 +87,7 @@ router.post("/admin_login", urlencodedParser, function(
       response.send("An error occurred");
     }
   );
+
 });
 
 router.post("/get_all_admin", urlencodedParser, function(
@@ -117,7 +121,7 @@ router.post("/update_admin", urlencodedParser, function(
     AdminSurname: request.body.AdminSurname,
     AdminPhoneNumber: request.body.AdminPhoneNumber,
     AdminEmail: request.body.AdminEmail,
-    Gender: request.body.Gender,
+    GenderId: request.body.GenderId,
     AdminNationalId: request.body.AdminNationalId,
     EncryptedPassword	: request.body.EncryptedPassword	,
     RegisteredDate: date
@@ -180,7 +184,7 @@ router.post("/update_individual_admin", urlencodedParser, function(
     AdminSurname: request.body.AdminSurname,
     AdminPhoneNumber: request.body.AdminPhoneNumber,
     AdminEmail: request.body.AdminEmail,
-    Gender: request.body.Gender,
+    GenderId: request.body.GenderId,
     AdminNationalId: request.body.AdminNationalId,
     EncryptedPassword	: request.body.EncryptedPassword,
     RegisteredDate: date

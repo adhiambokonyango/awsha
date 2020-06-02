@@ -20,21 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/menu/AdminController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/menu/GenderController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/menu/AdminModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/menu/GenderModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/menu/AdminRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/menu/GenderRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dbConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/dbConnect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/system_admin/SystemAdminController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/system_admin/SystemAdminModel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/CompanyRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/CompanyRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/system_admin/AdminLogin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/system_admin/AdminRegistration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/system_admin/SystemAdminRoutes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/AdminRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/AdminRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/TeamMembersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/TeamMembersRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/TeamRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/TeamRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +95,16 @@
       <workItem from="1589172175370" duration="3868000" />
       <workItem from="1589277624850" duration="427000" />
       <workItem from="1589352117078" duration="14768000" />
+      <workItem from="1589447731588" duration="4345000" />
+      <workItem from="1589531315925" duration="14000" />
+      <workItem from="1589540858152" duration="9000" />
+      <workItem from="1589774770804" duration="661000" />
+      <workItem from="1589793373744" duration="5864000" />
+      <workItem from="1589887118904" duration="98000" />
+      <workItem from="1590135509419" duration="1019000" />
+      <workItem from="1590320179320" duration="20000" />
+      <workItem from="1590670782520" duration="51000" />
+      <workItem from="1591074449178" duration="2605000" />
     </task>
     <servers />
   </component>
@@ -120,6 +121,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="180" y="41" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589383353847">
@@ -134,12 +136,12 @@
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="944" height="506" key="DebuggerActiveHint/65.24.1301.744@65.24.1301.744" timestamp="1589385289291" />
-    <state x="397" y="138" width="530" height="598" key="FileChooserDialogImpl" timestamp="1589175304921">
+    <state x="397" y="138" width="530" height="598" key="FileChooserDialogImpl" timestamp="1589863276773">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state x="349" y="138" key="FileChooserDialogImpl/0.24.1366.744@0.24.1366.744" timestamp="1586244288624" />
     <state x="349" y="146" width="530" height="598" key="FileChooserDialogImpl/0.34.1366.734@0.34.1366.734" timestamp="1586974370460" />
-    <state x="397" y="138" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1589175304921" />
+    <state x="397" y="138" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1589863276773" />
     <state width="1278" height="207" key="GridCell.Tab.0.bottom" timestamp="1589400430334">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
@@ -219,31 +221,26 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/menu/AdminRoutes.js</url>
           <line>40</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/controllers/menu/AdminController.js</url>
           <line>25</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/controllers/menu/AdminController.js</url>
           <line>47</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
           <line>40</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
           <line>47</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

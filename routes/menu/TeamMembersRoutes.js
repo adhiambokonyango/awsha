@@ -23,35 +23,95 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_team_members', urlencodedParser,function(request,response){
+// router.post('/add_team_members', urlencodedParser,function(request,response){
+//
+//
+//
+//   var	jsonObject_ = {
+//
+//
+//
+//     TeamMemberName:request.body.TeamMemberName,
+//     TeamMemberEmail:request.body.TeamMemberEmail,
+//     TeamMemberPassword:request.body.TeamMemberPassword,
+//     TeamId:request.body.TeamId,
+//     CompanyId:request.body.CompanyId
+//
+//
+//   };
+//
+//
+//   var myPromise = TeamMembersController.insert(jsonObject_);
+//
+//
+//   myPromise.then(function(result) {
+//
+//     var response_object={results:result}
+//     response.send(response_object);
+//   }, function(err) {
+//     console.log(err);
+//     response.send("An error occurred");
+//   })
+//
+// });
 
 
+router.post("/team_members_registration", urlencodedParser, function(
+  request,
+  response
+) {
 
-  var	jsonObject_ = {
-
-
-
+  var date = new Date();
+  date.setHours(date.getHours() + 3);
+  var jsonObject_ = {
     TeamMemberName:request.body.TeamMemberName,
     TeamMemberEmail:request.body.TeamMemberEmail,
-    TeamMemberPassword:request.body.TeamMemberPassword,
     TeamId:request.body.TeamId,
-    CompanyId:request.body.CompanyId
-
-
+    CompanyId:request.body.CompanyId,
+    GenderId: request.body.GenderId,
+    TeamMemberNationalId: request.body.TeamMemberNationalId,
+    EncryptedPassword	: request.body.EncryptedPassword	,
+    RegisteredDate: date
   };
 
+  var myTeamMembersControllerObjectPromise = TeamMembersController.insert(
+    jsonObject_
+  );
 
-  var myPromise = TeamMembersController.insert(jsonObject_);
+  myTeamMembersControllerObjectPromise.then(
+    function(result) {
+      var response_object = { results: result };
+      response.send(response_object);
+    },
+    function(err) {
+      console.log(err);
+      response.send("An error occurred");
+    }
+  );
+});
 
+router.post("/team_members_login", urlencodedParser, function(
+  request,
+  response
+) {
+  var jsonObject_ = {
+    AttemptedEmail: request.body.AttemptedEmail,
+    AttemptedPassword: request.body.AttemptedPassword
+  };
 
-  myPromise.then(function(result) {
+  var myTeamMembersControllerObjectPromise = TeamMembersController.user_login(
+    jsonObject_
+  );
 
-    var response_object={results:result}
-    response.send(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
+  myTeamMembersControllerObjectPromise.then(
+    function(result) {
+      response.send(result);
+    },
+    function(err) {
+      console.log(err);
+      response.send("An error occurred");
+    }
+  );
 
 });
 
@@ -127,9 +187,12 @@ router.post('/update_team_members',urlencodedParser,function(request,response){
 
     TeamMemberName:request.body.TeamMemberName,
     TeamMemberEmail:request.body.TeamMemberEmail,
-    TeamMemberPassword:request.body.TeamMemberPassword,
     TeamId:request.body.TeamId,
-    CompanyId:request.body.CompanyId
+    CompanyId:request.body.CompanyId,
+    GenderId: request.body.GenderId,
+    TeamMemberNationalId: request.body.TeamMemberNationalId,
+    EncryptedPassword	: request.body.EncryptedPassword	,
+    RegisteredDate: date
 
 
   };
@@ -169,9 +232,12 @@ router.post('/update_individual_team_members',urlencodedParser,function(request,
 
     TeamMemberName:request.body.TeamMemberName,
     TeamMemberEmail:request.body.TeamMemberEmail,
-    TeamMemberPassword:request.body.TeamMemberPassword,
     TeamId:request.body.TeamId,
-    CompanyId:request.body.CompanyId
+    CompanyId:request.body.CompanyId,
+    GenderId: request.body.GenderId,
+    TeamMemberNationalId: request.body.TeamMemberNationalId,
+    EncryptedPassword	: request.body.EncryptedPassword	,
+    RegisteredDate: date
 
 
   };
