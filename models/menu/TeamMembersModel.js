@@ -156,4 +156,19 @@ module.exports = class TeamMembersModel {
       );
     });
   }
+
+  static getAllTeamMembersByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllTeamMembersByFullDescription();
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
+
 };
