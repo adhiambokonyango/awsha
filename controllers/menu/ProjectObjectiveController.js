@@ -1,6 +1,6 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
 This class is the term_iterations's controller class.
-It receives calls from the "ProjectObjectiveRoutes" class and
+It receives calls from the "ProjectsRoutes" class and
 passes the calls down to the "ProjectObjectiveModel" class
 */
 
