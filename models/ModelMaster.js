@@ -1259,6 +1259,21 @@ with no WHERE clause(No condition)
     });
   }
 
+  static sumAllObjectivePercentages() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT ProjectId, SUM(ObjectivePercentage) FROM objective_percentage GROUP BY ProjectId;",
+        function(err, result, fields) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+
 
 
 };

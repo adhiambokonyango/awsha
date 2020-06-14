@@ -79,6 +79,7 @@ app.use(require("./routes/menu/TeamRoutes.js"));
 app.use(require("./routes/menu/CompanyRoutes.js"));
 app.use(require("./routes/menu/AdminRoutes.js"));
 app.use(require("./routes/menu/GenderRoutes.js"));
+app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
 
 
 
