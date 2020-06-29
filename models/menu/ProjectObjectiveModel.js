@@ -8,7 +8,7 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "project_objectives";
+const TableName = "project_objective";
 
 module.exports = class ProjectObjectiveModel {
   constructor() {}

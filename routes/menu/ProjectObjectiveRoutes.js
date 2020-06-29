@@ -31,9 +31,8 @@ router.post('/add_project_objectives', urlencodedParser,function(request,respons
 
 
     ProjectId:request.body.ProjectId,
-    TeamMemberId:request.body.TeamMemberId,
-    ProjectObjective:request.body.ProjectObjective,
-    ObjectivePercentageId:request.body.ObjectivePercentageId,
+    ObjectiveId:request.body.ObjectiveId,
+
 
   };
 
@@ -141,9 +140,7 @@ router.post('/update_project_objectives',urlencodedParser,function(request,respo
 
 
     ProjectId:request.body.ProjectId,
-    TeamMemberId:request.body.TeamMemberId,
-    ProjectObjective:request.body.ProjectObjective,
-    ObjectivePercentageId:request.body.ObjectivePercentageId,
+    ObjectiveId:request.body.ObjectiveId,
 
 
 
@@ -183,9 +180,7 @@ router.post('/update_individual_project_objectives',urlencodedParser,function(re
 
 
     ProjectId:request.body.ProjectId,
-    TeamMemberId:request.body.TeamMemberId,
-    ProjectObjective:request.body.ProjectObjective,
-    ObjectivePercentageId:request.body.ObjectivePercentageId,
+    ObjectiveId:request.body.ObjectiveId,
 
 
 
