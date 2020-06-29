@@ -2,7 +2,7 @@
 This class is the Company table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"AssignedPercentageController" class
+"ObjectivePercentageController" class
 */
 
 
@@ -11,7 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const AssignedPercentageController = require('../../controllers/menu/AssignedPercentageController.js');
+const ObjectivePercentageController = require('../../controllers/menu/ObjectivePercentageController.js');
 
 
 
@@ -23,7 +23,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_assigned_percentage', urlencodedParser,function(request,response){
+router.post('/add_objective_percentage', urlencodedParser,function(request,response){
 
 
 
@@ -39,7 +39,7 @@ router.post('/add_assigned_percentage', urlencodedParser,function(request,respon
   };
 
 
-  var myPromise = AssignedPercentageController.insert(jsonObject_);
+  var myPromise = ObjectivePercentageController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -58,9 +58,9 @@ router.post('/add_assigned_percentage', urlencodedParser,function(request,respon
 
 
 
-router.post('/get_all_assigned_percentage',urlencodedParser,function(request,response){
+router.post('/get_all_objective_percentage',urlencodedParser,function(request,response){
 
-  var myPromise = AssignedPercentageController.get_all_records();
+  var myPromise = ObjectivePercentageController.get_all_records();
 
 
   myPromise.then(function(result) {
@@ -82,7 +82,7 @@ router.post('/get_all_assigned_percentage',urlencodedParser,function(request,res
 
 
 
-router.post('/get_specific_assigned_percentage',urlencodedParser,function(request,response){
+router.post('/get_specific_objective_percentage',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -90,7 +90,7 @@ router.post('/get_specific_assigned_percentage',urlencodedParser,function(reques
 
 
 
-  var myPromise = AssignedPercentageController.get_specific_records(mKey,mValue);
+  var myPromise = ObjectivePercentageController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -116,7 +116,7 @@ router.post('/get_specific_assigned_percentage',urlencodedParser,function(reques
 
 
 
-router.post('/update_assigned_percentage',urlencodedParser,function(request,response){
+router.post('/update_objective_percentage',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
@@ -133,7 +133,7 @@ router.post('/update_assigned_percentage',urlencodedParser,function(request,resp
 
 
 
-  var myPromise = AssignedPercentageController.batch_update(jsonObject_);
+  var myPromise = ObjectivePercentageController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -154,7 +154,7 @@ router.post('/update_assigned_percentage',urlencodedParser,function(request,resp
 
 
 
-router.post('/update_individual_assigned_percentage',urlencodedParser,function(request,response){
+router.post('/update_individual_objective_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -173,7 +173,7 @@ router.post('/update_individual_assigned_percentage',urlencodedParser,function(r
   };
 
 
-  var myPromise = AssignedPercentageController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = ObjectivePercentageController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -192,7 +192,7 @@ router.post('/update_individual_assigned_percentage',urlencodedParser,function(r
 
 
 
-router.post('/delete_individual_assigned_percentage',urlencodedParser,function(request,response){
+router.post('/delete_individual_objective_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -203,7 +203,7 @@ router.post('/delete_individual_assigned_percentage',urlencodedParser,function(r
   var UserId=request.body.UserId;
 
 
-  var myPromise = AssignedPercentageController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivePercentageController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -222,7 +222,7 @@ router.post('/delete_individual_assigned_percentage',urlencodedParser,function(r
 
 
 
-router.post('/get_number_of_assigned_percentage_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_objective_percentage_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -230,7 +230,7 @@ router.post('/get_number_of_assigned_percentage_records',urlencodedParser,functi
 
 
 
-  var myPromise = AssignedPercentageController.get_number_of_records(column_name,value_);
+  var myPromise = ObjectivePercentageController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -250,7 +250,7 @@ router.post('/get_number_of_assigned_percentage_records',urlencodedParser,functi
 
 
 
-router.post('/assigned_percentage_user_specific_query',urlencodedParser,function(request,response){
+router.post('/objective_percentage_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -262,7 +262,7 @@ router.post('/assigned_percentage_user_specific_query',urlencodedParser,function
 
 
 
-  var myPromise = AssignedPercentageController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivePercentageController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {

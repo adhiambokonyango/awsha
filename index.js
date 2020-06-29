@@ -81,6 +81,7 @@ app.use(require("./routes/menu/UsersRoutes.js"));
 app.use(require("./routes/menu/GenderRoutes.js"));
 app.use(require("./routes/menu/PercentageRoutes.js"));
 app.use(require("./routes/menu/ObjectivesRoutes.js"));
+app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
 
 //user management
 app.use(require("./routes/users_management/AccessPrivilegesRoutes.js"));
