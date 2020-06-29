@@ -8,9 +8,9 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "objective_percentage";
+const TableName = "percentage";
 
-module.exports = class ObjectivePercentageModel {
+module.exports = class PercentageModel {
   constructor() {}
 
   static insert(jsonObject_) {
