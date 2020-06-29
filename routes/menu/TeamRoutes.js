@@ -32,8 +32,7 @@ router.post('/add_team', urlencodedParser,function(request,response){
 
     
     TeamName:request.body.TeamName,
-    CompanyId:request.body.CompanyId,
-    CompanyName:request.body.CompanyName
+
 
 
   };
@@ -124,9 +123,6 @@ router.post('/update_team',urlencodedParser,function(request,response){
 
 
     TeamName:request.body.TeamName,
-    CompanyId:request.body.CompanyId,
-    CompanyName:request.body.CompanyName
-
 
   };
 
@@ -164,8 +160,6 @@ router.post('/update_individual_team',urlencodedParser,function(request,response
 
 
     TeamName:request.body.TeamName,
-    CompanyId:request.body.CompanyId,
-    CompanyName:request.body.CompanyName
 
 
   };

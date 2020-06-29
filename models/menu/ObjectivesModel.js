@@ -8,9 +8,9 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "project_objectives";
+const TableName = "objectives";
 
-module.exports = class ProjectObjectiveModel {
+module.exports = class ObjectivesModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -157,9 +157,9 @@ module.exports = class ProjectObjectiveModel {
     });
   }
 
-  static getAllProjectsByFullDescription() {
+  static sumAllObjectivePercentages() {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAllProjectsByFullDescription();
+      var myPromise = ModelMaster.sumAllObjectivePercentages();
       myPromise.then(
         function(result) {
           resolve(result);
@@ -170,6 +170,5 @@ module.exports = class ProjectObjectiveModel {
       );
     });
   }
-
 
 };

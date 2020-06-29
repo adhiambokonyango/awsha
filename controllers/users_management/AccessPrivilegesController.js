@@ -1,21 +1,17 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the "term" table's model
-class.It receives any CRUD operation
-requests and hands the over to class
-ModelMaster.It creates an instance of class
-ModelMaster then passes parameters to its
-functions.
+This class is the AccessPrivileges's controller class.
+It receives calls from the "AccessPrivilegesRoutes" class and
+passes the calls down to the "AccessPrivilegesModel" class
 */
 
-const ModelMaster = require("../ModelMaster.js");
-const TableName = "project_objectives";
+const AccessPrivilegesModel = require("../../models/users_management/AccessPrivilegesModel.js");
 
-module.exports = class ProjectObjectiveModel {
+module.exports = class AccessPrivilegesController {
   constructor() {}
 
   static insert(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.insert(TableName, jsonObject_);
+      var myPromise = AccessPrivilegesModel.insert(jsonObject_);
 
       myPromise.then(
         function(result) {
@@ -30,7 +26,8 @@ module.exports = class ProjectObjectiveModel {
 
   static get_all_records() {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.selectAll(TableName);
+      var myPromise = AccessPrivilegesModel.get_all_records();
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -44,7 +41,11 @@ module.exports = class ProjectObjectiveModel {
 
   static get_specific_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.selectSpecific(TableName, ColumnName, value_);
+      var myPromise = AccessPrivilegesModel.get_specific_records(
+        ColumnName,
+        value_
+      );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -58,7 +59,8 @@ module.exports = class ProjectObjectiveModel {
 
   static batch_update(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.batch_update(TableName, jsonObject_);
+      var myPromise = AccessPrivilegesModel.batch_update(jsonObject_);
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -72,12 +74,12 @@ module.exports = class ProjectObjectiveModel {
 
   static individual_record_update(ColumnName, value_, jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.individual_update(
-        TableName,
-        jsonObject_,
+      var myPromise = AccessPrivilegesModel.individual_record_update(
         ColumnName,
-        value_
+        value_,
+        jsonObject_
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -96,13 +98,13 @@ module.exports = class ProjectObjectiveModel {
     UserId
   ) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.delete(
-        TableName,
+      var myPromise = AccessPrivilegesModel.delete_user_specic_record(
         ColumnName,
         value_,
         UserIdColumnName,
         UserId
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -116,11 +118,11 @@ module.exports = class ProjectObjectiveModel {
 
   static get_number_of_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.get_number_of_records(
-        TableName,
+      var myPromise = AccessPrivilegesModel.get_number_of_records(
         ColumnName,
         value_
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -139,13 +141,13 @@ module.exports = class ProjectObjectiveModel {
     UserId
   ) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.user_specific_select_query(
-        TableName,
+      var myPromise = AccessPrivilegesModel.user_specific_select_query(
         ColumnName,
         value_,
         UserIdColumnName,
         UserId
       );
+
       myPromise.then(
         function(result) {
           resolve(result);
@@ -156,20 +158,4 @@ module.exports = class ProjectObjectiveModel {
       );
     });
   }
-
-  static getAllProjectsByFullDescription() {
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAllProjectsByFullDescription();
-      myPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
-
 };

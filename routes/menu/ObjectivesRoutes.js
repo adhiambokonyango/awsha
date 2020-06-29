@@ -1,8 +1,8 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the projects table's route class.
+This class is the Company table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"ProjectsController" class
+"ObjectivesController" class
 */
 
 
@@ -11,7 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const ProjectsController = require('../../controllers/menu/ProjectsController.js');
+const ObjectivesController = require('../../controllers/menu/ObjectivesController.js');
 
 
 
@@ -23,44 +23,25 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_projects', urlencodedParser,function(request,response){
+router.post('/add_objectives', urlencodedParser,function(request,response){
 
 
 
   var	jsonObject_ = {
 
 
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
+
+
+    ObjectiveDescription:request.body.ObjectiveDescription,
+
+
+
 
 
   };
-  
-  console.log(jsonObject_);
 
 
-  var myPromise = ProjectsController.insert(jsonObject_);
-
-
-  myPromise.then(function(result) {
-
-    var response_object={results:result}
-    response.send(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
-});
-
-
-
-
-
-
-router.post('/get_all_projects',urlencodedParser,function(request,response){
-
-  var myPromise = ProjectsController.get_all_records();
+  var myPromise = ObjectivesController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -79,10 +60,47 @@ router.post('/get_all_projects',urlencodedParser,function(request,response){
 
 
 
+router.post('/get_all_objectives',urlencodedParser,function(request,response){
+
+  var myPromise = ObjectivesController.get_all_records();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
+
+
+router.post('/sum_all_objectives',urlencodedParser,function(request,response){
+
+  var myPromise = ObjectivesController.sumAllObjectivePercentages();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
 
 
 
-router.post('/get_specific_projects',urlencodedParser,function(request,response){
+
+
+
+
+
+router.post('/get_specific_objectives',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -90,7 +108,7 @@ router.post('/get_specific_projects',urlencodedParser,function(request,response)
 
 
 
-  var myPromise = ProjectsController.get_specific_records(mKey,mValue);
+  var myPromise = ObjectivesController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -116,22 +134,22 @@ router.post('/get_specific_projects',urlencodedParser,function(request,response)
 
 
 
-router.post('/update_projects',urlencodedParser,function(request,response){
+router.post('/update_objectives',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
 
 
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
+    ObjectiveDescription:request.body.ObjectiveDescription,
+
 
 
   };
 
 
 
-  var myPromise = ProjectsController.batch_update(jsonObject_);
+  var myPromise = ObjectivesController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -152,7 +170,7 @@ router.post('/update_projects',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_individual_projects',urlencodedParser,function(request,response){
+router.post('/update_individual_objectives',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -161,14 +179,15 @@ router.post('/update_individual_projects',urlencodedParser,function(request,resp
   var	jsonObject_ = {
 
 
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
+
+    ObjectiveDescription:request.body.ObjectiveDescription,
+
 
 
   };
 
 
-  var myPromise = ProjectsController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = ObjectivesController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -187,7 +206,7 @@ router.post('/update_individual_projects',urlencodedParser,function(request,resp
 
 
 
-router.post('/delete_individual_projects',urlencodedParser,function(request,response){
+router.post('/delete_individual_objectives',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -198,7 +217,7 @@ router.post('/delete_individual_projects',urlencodedParser,function(request,resp
   var UserId=request.body.UserId;
 
 
-  var myPromise = ProjectsController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivesController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -217,7 +236,7 @@ router.post('/delete_individual_projects',urlencodedParser,function(request,resp
 
 
 
-router.post('/get_number_of_projects_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_objectives_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -225,7 +244,7 @@ router.post('/get_number_of_projects_records',urlencodedParser,function(request,
 
 
 
-  var myPromise = ProjectsController.get_number_of_records(column_name,value_);
+  var myPromise = ObjectivesController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -245,7 +264,7 @@ router.post('/get_number_of_projects_records',urlencodedParser,function(request,
 
 
 
-router.post('/projects_user_specific_query',urlencodedParser,function(request,response){
+router.post('/objectives_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -257,7 +276,7 @@ router.post('/projects_user_specific_query',urlencodedParser,function(request,re
 
 
 
-  var myPromise = ProjectsController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivesController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {

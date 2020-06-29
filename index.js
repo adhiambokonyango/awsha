@@ -77,10 +77,17 @@ app.use(require("./routes/menu/ProjectsRoutes.js"));
 app.use(require("./routes/menu/TeamMembersRoutes.js"));
 app.use(require("./routes/menu/TeamRoutes.js"));
 app.use(require("./routes/menu/CompanyRoutes.js"));
-app.use(require("./routes/menu/AdminRoutes.js"));
+app.use(require("./routes/menu/UsersRoutes.js"));
 app.use(require("./routes/menu/GenderRoutes.js"));
 app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
+app.use(require("./routes/menu/Objectives.js"));
 
+//user management
+app.use(require("./routes/users_management/AccessPrivilegesRoutes.js"));
+app.use(require("./routes/users_management/RolesRoutes.js"));
+app.use(require("./routes/users_management/UserAccessPrivilegesRoutes.js"));
+app.use(require("./routes/users_management/UserRolesRoutes.js"));
+app.use(require("./routes/users_management/UsersRoutes.js"));
 
 
 

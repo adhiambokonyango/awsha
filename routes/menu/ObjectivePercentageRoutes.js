@@ -31,8 +31,7 @@ router.post('/add_objective_percentage', urlencodedParser,function(request,respo
 
 
 
-    ProjectId:request.body.ProjectId,
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
+
     ObjectivePercentage:request.body.ObjectivePercentage,
 
 
@@ -142,8 +141,6 @@ router.post('/update_objective_percentage',urlencodedParser,function(request,res
 
 
 
-    ProjectId:request.body.ProjectId,
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
     ObjectivePercentage:request.body.ObjectivePercentage,
 
 
@@ -183,8 +180,6 @@ router.post('/update_individual_objective_percentage',urlencodedParser,function(
 
 
 
-    ProjectId:request.body.ProjectId,
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
     ObjectivePercentage:request.body.ObjectivePercentage,
 
 

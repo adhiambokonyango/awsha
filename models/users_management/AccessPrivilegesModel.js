@@ -1,5 +1,5 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the "term" table's model
+This class is the "roles" table's model
 class.It receives any CRUD operation
 requests and hands the over to class
 ModelMaster.It creates an instance of class
@@ -8,9 +8,9 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "project_objectives";
+const TableName = "access_privileges";
 
-module.exports = class ProjectObjectiveModel {
+module.exports = class AccessPrivilegesModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -156,20 +156,4 @@ module.exports = class ProjectObjectiveModel {
       );
     });
   }
-
-  static getAllProjectsByFullDescription() {
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAllProjectsByFullDescription();
-      myPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
-
 };

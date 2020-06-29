@@ -30,13 +30,13 @@ router.post("/admin_registration", urlencodedParser, function(
   var date = new Date();
   date.setHours(date.getHours() + 3);
   var jsonObject_ = {
-    AdminFirstName: request.body.AdminFirstName,
-    AdminMiddleName: request.body.AdminMiddleName,
-    AdminSurname: request.body.AdminSurname,
-    AdminPhoneNumber: request.body.AdminPhoneNumber,
-    AdminEmail: request.body.AdminEmail,
+    FirstName: request.body.FirstName,
+    MiddleName: request.body.MiddleName,
+    Surname: request.body.Surname,
+    PhoneNumber: request.body.PhoneNumber,
+    Email: request.body.Email,
     GenderId: request.body.GenderId,
-    AdminNationalId: request.body.AdminNationalId,
+    NationalId: request.body.NationalId,
     EncryptedPassword	: request.body.EncryptedPassword	,
     RegisteredDate: date
   };
@@ -116,13 +116,13 @@ router.post("/update_admin", urlencodedParser, function(
   date.setHours(date.getHours() + 3);
 
   var jsonObject_ = {
-    AdminFirstName: request.body.AdminFirstName,
-    AdminMiddleName: request.body.AdminMiddleName,
-    AdminSurname: request.body.AdminSurname,
-    AdminPhoneNumber: request.body.AdminPhoneNumber,
-    AdminEmail: request.body.AdminEmail,
+    FirstName: request.body.FirstName,
+    MiddleName: request.body.MiddleName,
+    Surname: request.body.Surname,
+    PhoneNumber: request.body.PhoneNumber,
+    Email: request.body.Email,
     GenderId: request.body.GenderId,
-    AdminNationalId: request.body.AdminNationalId,
+    NationalId: request.body.NationalId,
     EncryptedPassword	: request.body.EncryptedPassword	,
     RegisteredDate: date
   };
@@ -179,14 +179,14 @@ router.post("/update_individual_admin", urlencodedParser, function(
   date.setHours(date.getHours() + 0);
 
   var jsonObject_ = {
-    AdminFirstName: request.body.AdminFirstName,
-    AdminMiddleName: request.body.AdminMiddleName,
-    AdminSurname: request.body.AdminSurname,
-    AdminPhoneNumber: request.body.AdminPhoneNumber,
-    AdminEmail: request.body.AdminEmail,
+    FirstName: request.body.FirstName,
+    MiddleName: request.body.MiddleName,
+    Surname: request.body.Surname,
+    PhoneNumber: request.body.PhoneNumber,
+    Email: request.body.Email,
     GenderId: request.body.GenderId,
-    AdminNationalId: request.body.AdminNationalId,
-    EncryptedPassword	: request.body.EncryptedPassword,
+    NationalId: request.body.NationalId,
+    EncryptedPassword	: request.body.EncryptedPassword	,
     RegisteredDate: date
   };
 

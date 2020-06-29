@@ -33,7 +33,7 @@ router.post('/add_project_objectives', urlencodedParser,function(request,respons
     ProjectId:request.body.ProjectId,
     TeamMemberId:request.body.TeamMemberId,
     ProjectObjective:request.body.ProjectObjective,
-
+    ObjectivePercentageId:request.body.ObjectivePercentageId,
 
   };
 
@@ -109,7 +109,23 @@ router.post('/get_specific_project_objectives',urlencodedParser,function(request
 
 
 
+router.post('/get_projects_by_full_description',urlencodedParser,function(request,response){
 
+
+
+  var myPromise = ProjectsObjectiveController.getAllProjectsByFullDescription();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
 
 
 
@@ -127,6 +143,8 @@ router.post('/update_project_objectives',urlencodedParser,function(request,respo
     ProjectId:request.body.ProjectId,
     TeamMemberId:request.body.TeamMemberId,
     ProjectObjective:request.body.ProjectObjective,
+    ObjectivePercentageId:request.body.ObjectivePercentageId,
+
 
 
 
@@ -167,6 +185,8 @@ router.post('/update_individual_project_objectives',urlencodedParser,function(re
     ProjectId:request.body.ProjectId,
     TeamMemberId:request.body.TeamMemberId,
     ProjectObjective:request.body.ProjectObjective,
+    ObjectivePercentageId:request.body.ObjectivePercentageId,
+
 
 
 

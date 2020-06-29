@@ -1,16 +1,16 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the "term" table's model
-class.It receives any CRUD operation
-requests and hands the over to class
+This class is the "user_roles" table's model
+class.It receives any CRUD operation 
+requests and hands the over to class 
 ModelMaster.It creates an instance of class
 ModelMaster then passes parameters to its
 functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "project_objectives";
+const TableName = "user_roles";
 
-module.exports = class ProjectObjectiveModel {
+module.exports = class UserRolesModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -157,9 +157,9 @@ module.exports = class ProjectObjectiveModel {
     });
   }
 
-  static getAllProjectsByFullDescription() {
+  static getAUserRoles(userId) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAllProjectsByFullDescription();
+      var myPromise = ModelMaster.getAUserRoles(userId);
       myPromise.then(
         function(result) {
           resolve(result);
@@ -171,5 +171,32 @@ module.exports = class ProjectObjectiveModel {
     });
   }
 
+  static checkWhetherAUserHasACertainRole(userId,roleCode) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.checkWhetherAUserHasACertainRole(userId,roleCode);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
 
+
+  static checkUserAllowedLoginWithCertainRole(userRoleId) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.checkUserAllowedLoginWithCertainRole(userRoleId);
+      myPromise.then(
+          function(result) {
+            resolve(result);
+          },
+          function(err) {
+            reject(err);
+          }
+      );
+    });
+  }
 };

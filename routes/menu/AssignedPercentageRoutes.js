@@ -1,8 +1,8 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the projects table's route class.
+This class is the Company table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"ProjectsController" class
+"AssignedPercentageController" class
 */
 
 
@@ -11,7 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const ProjectsController = require('../../controllers/menu/ProjectsController.js');
+const AssignedPercentageController = require('../../controllers/menu/AssignedPercentageController.js');
 
 
 
@@ -23,44 +23,23 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_projects', urlencodedParser,function(request,response){
+router.post('/add_assigned_percentage', urlencodedParser,function(request,response){
 
 
 
   var	jsonObject_ = {
 
 
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
+
+    ProjectObjectiveId:request.body.ProjectObjectiveId,
+    AssignedPercentage:request.body.AssignedPercentage,
+
 
 
   };
-  
-  console.log(jsonObject_);
 
 
-  var myPromise = ProjectsController.insert(jsonObject_);
-
-
-  myPromise.then(function(result) {
-
-    var response_object={results:result}
-    response.send(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
-});
-
-
-
-
-
-
-router.post('/get_all_projects',urlencodedParser,function(request,response){
-
-  var myPromise = ProjectsController.get_all_records();
+  var myPromise = AssignedPercentageController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -79,10 +58,31 @@ router.post('/get_all_projects',urlencodedParser,function(request,response){
 
 
 
+router.post('/get_all_assigned_percentage',urlencodedParser,function(request,response){
+
+  var myPromise = AssignedPercentageController.get_all_records();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
 
 
 
-router.post('/get_specific_projects',urlencodedParser,function(request,response){
+
+
+
+
+
+
+router.post('/get_specific_assigned_percentage',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -90,7 +90,7 @@ router.post('/get_specific_projects',urlencodedParser,function(request,response)
 
 
 
-  var myPromise = ProjectsController.get_specific_records(mKey,mValue);
+  var myPromise = AssignedPercentageController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -116,22 +116,24 @@ router.post('/get_specific_projects',urlencodedParser,function(request,response)
 
 
 
-router.post('/update_projects',urlencodedParser,function(request,response){
+router.post('/update_assigned_percentage',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
 
 
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
+    ProjectObjectiveId:request.body.ProjectObjectiveId,
+    AssignedPercentage:request.body.AssignedPercentage,
+
+
 
 
   };
 
 
 
-  var myPromise = ProjectsController.batch_update(jsonObject_);
+  var myPromise = AssignedPercentageController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -152,7 +154,7 @@ router.post('/update_projects',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_individual_projects',urlencodedParser,function(request,response){
+router.post('/update_individual_assigned_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -161,14 +163,17 @@ router.post('/update_individual_projects',urlencodedParser,function(request,resp
   var	jsonObject_ = {
 
 
-    ProjectTitle:request.body.ProjectTitle,
-    ProjectDescription:request.body.ProjectDescription,
+
+    ProjectObjectiveId:request.body.ProjectObjectiveId,
+    AssignedPercentage:request.body.AssignedPercentage,
+
+
 
 
   };
 
 
-  var myPromise = ProjectsController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = AssignedPercentageController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -187,7 +192,7 @@ router.post('/update_individual_projects',urlencodedParser,function(request,resp
 
 
 
-router.post('/delete_individual_projects',urlencodedParser,function(request,response){
+router.post('/delete_individual_assigned_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -198,7 +203,7 @@ router.post('/delete_individual_projects',urlencodedParser,function(request,resp
   var UserId=request.body.UserId;
 
 
-  var myPromise = ProjectsController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = AssignedPercentageController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -217,7 +222,7 @@ router.post('/delete_individual_projects',urlencodedParser,function(request,resp
 
 
 
-router.post('/get_number_of_projects_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_assigned_percentage_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -225,7 +230,7 @@ router.post('/get_number_of_projects_records',urlencodedParser,function(request,
 
 
 
-  var myPromise = ProjectsController.get_number_of_records(column_name,value_);
+  var myPromise = AssignedPercentageController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -245,7 +250,7 @@ router.post('/get_number_of_projects_records',urlencodedParser,function(request,
 
 
 
-router.post('/projects_user_specific_query',urlencodedParser,function(request,response){
+router.post('/assigned_percentage_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -257,7 +262,7 @@ router.post('/projects_user_specific_query',urlencodedParser,function(request,re
 
 
 
-  var myPromise = ProjectsController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = AssignedPercentageController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
