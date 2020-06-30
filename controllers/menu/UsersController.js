@@ -1,9 +1,9 @@
 const ModelMaster = require("../../models/ModelMaster.js");
-const AdminModel = require("../../models/menu/AdminModel");
+const UsersModel = require("../../models/menu/UsersModel");
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 
-module.exports = class AdminController {
+module.exports = class UsersController {
   constructor() {}
 
   /*my_hash_function(password, salt){
@@ -20,9 +20,9 @@ module.exports = class AdminController {
   static insert_users(jsonObject_) {
     return new Promise(function(resolve, reject) {
       //var userAlreadyRegisteredResult;
-      var TableName = "admin";
-      var ColumnName = "AdminEmail";
-      var value_ = jsonObject_.AdminEmail;
+      var TableName = "users";
+      var ColumnName = "Email";
+      var value_ = jsonObject_.Email;
       var myModelMasterPromise = ModelMaster.selectSpecific(
         TableName,
         ColumnName,
@@ -45,7 +45,7 @@ module.exports = class AdminController {
             jsonObject_["EncryptedPassword"] = encrypted_Password;
             jsonObject_["Salt"] = salt;
 
-            var myUsersObjectPromise = AdminModel.insert(
+            var myUsersObjectPromise = UsersModel.insert(
               jsonObject_
             );
 
@@ -71,8 +71,8 @@ module.exports = class AdminController {
 
   static user_login(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var TableName = "admin";
-      var SearchColumn = "AdminEmail";
+      var TableName = "users";
+      var SearchColumn = "Email";
       var SearchValue = jsonObject_.AttemptedEmail;
 
       var myModelMasterPromise = ModelMaster.selectSpecific(
@@ -102,14 +102,14 @@ module.exports = class AdminController {
             ) {
               var response_object = {
                 error: false,
-                AdminId: userExistsResult[0].AdminId,
-                AdminFirstName: userExistsResult[0].AdminFirstName,
-                AdminMiddleName: userExistsResult[0].AdminMiddleName,
-                AdminSurname: userExistsResult[0].AdminSurname,
-                AdminPhoneNumber: userExistsResult[0].AdminPhoneNumber,
-                AdminEmail: userExistsResult[0].AdminEmail,
+                UserId: userExistsResult[0].UserId,
+                FirstName: userExistsResult[0].FirstName,
+                MiddleName: userExistsResult[0].MiddleName,
+                Surname: userExistsResult[0].Surname,
+                PhoneNumber: userExistsResult[0].PhoneNumber,
+                Email: userExistsResult[0].Email,
                 GenderId: userExistsResult[0].GenderId,
-                AdminNationalId: userExistsResult[0].AdminNationalId,
+                NationalId: userExistsResult[0].NationalId,
                 RegisteredDate: userExistsResult[0].RegisteredDate
               };
             } else {
@@ -130,7 +130,7 @@ module.exports = class AdminController {
 
   static get_all_admin() {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = AdminModel.get_all_records();
+      var myUsersObjectPromise = UsersModel.get_all_records();
 
       myUsersObjectPromise.then(
         function(result) {
@@ -145,7 +145,7 @@ module.exports = class AdminController {
 
   static get_specific_users(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = AdminModel.get_specific_records(
+      var myUsersObjectPromise = UsersModel.get_specific_records(
         ColumnName,
         value_
       );
@@ -163,7 +163,7 @@ module.exports = class AdminController {
 
   static batch_users_update(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = AdminModel.batch_update(
+      var myUsersObjectPromise = UsersModel.batch_update(
         jsonObject_
       );
 
@@ -180,7 +180,7 @@ module.exports = class AdminController {
 
   static individual_users_update(ColumnName, value_, jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = AdminModel.individual_record_update(
+      var myUsersObjectPromise = UsersModel.individual_record_update(
         ColumnName,
         value_,
         jsonObject_
@@ -199,7 +199,7 @@ module.exports = class AdminController {
 
   static delete_users_record(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
-      var myUsersObjectPromise = AdminModel.delete_user_specic_record(
+      var myUsersObjectPromise = UsersModel.delete_user_specic_record(
         ColumnName,
         value_
       );

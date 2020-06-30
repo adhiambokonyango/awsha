@@ -21,8 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dbConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/dbConnect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/AdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/UsersController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/menu/AdminModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/menu/UsersModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +119,8 @@
       <workItem from="1592288677529" duration="11000" />
       <workItem from="1592473550370" duration="3588000" />
       <workItem from="1592552036749" duration="13000" />
+      <workItem from="1593449167443" duration="7944000" />
+      <workItem from="1593518265230" duration="436000" />
     </task>
     <servers />
   </component>
@@ -230,17 +235,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/menu/AdminRoutes.js</url>
+          <url>file://$PROJECT_DIR$/routes/menu/UsersRoutes.js</url>
           <line>40</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controllers/menu/AdminController.js</url>
+          <url>file://$PROJECT_DIR$/controllers/menu/UsersController.js</url>
           <line>25</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controllers/menu/AdminController.js</url>
+          <url>file://$PROJECT_DIR$/controllers/menu/UsersController.js</url>
           <line>47</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>

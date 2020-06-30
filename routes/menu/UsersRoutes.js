@@ -3,7 +3,7 @@
 This class is the admins table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"AdminController" class
+"UsersController" class
 
 */
 
@@ -12,7 +12,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const AdminController = require("../../controllers/menu/AdminController.js");
+const UsersController = require("../../controllers/menu/UsersController.js");
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -22,7 +22,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post("/admin_registration", urlencodedParser, function(
+router.post("/user_registration", urlencodedParser, function(
   request,
   response
 ) {
@@ -41,11 +41,11 @@ router.post("/admin_registration", urlencodedParser, function(
     RegisteredDate: date
   };
 
-  var myAdminControllerObjectPromise = AdminController.insert_users(
+  var myUsersControllerObjectPromise = UsersController.insert_users(
     jsonObject_
   );
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
@@ -65,7 +65,7 @@ router.get("/admin_login", function(req, res) {
   res.sendFile(__dirname + "/" + "AdminLogin.html");
 });
 
-router.post("/admin_login", urlencodedParser, function(
+router.post("/user_login", urlencodedParser, function(
   request,
   response
 ) {
@@ -74,11 +74,11 @@ router.post("/admin_login", urlencodedParser, function(
     AttemptedPassword: request.body.AttemptedPassword
   };
 
-  var myAdminControllerObjectPromise = AdminController.user_login(
+  var myUsersControllerObjectPromise = UsersController.user_login(
     jsonObject_
   );
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       response.send(result);
     },
@@ -90,13 +90,13 @@ router.post("/admin_login", urlencodedParser, function(
 
 });
 
-router.post("/get_all_admin", urlencodedParser, function(
+router.post("/get_all_user", urlencodedParser, function(
   request,
   response
 ) {
-  var myAdminControllerObjectPromise = AdminController.get_all_admin();
+  var myUsersControllerObjectPromise = UsersController.get_all_admin();
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
@@ -108,7 +108,7 @@ router.post("/get_all_admin", urlencodedParser, function(
   );
 });
 
-router.post("/update_admin", urlencodedParser, function(
+router.post("/update_user", urlencodedParser, function(
   request,
   response
 ) {
@@ -127,11 +127,11 @@ router.post("/update_admin", urlencodedParser, function(
     RegisteredDate: date
   };
 
-  var myAdminControllerObjectPromise = AdminController.batch_admins_update(
+  var myUsersControllerObjectPromise = UsersController.batch_admins_update(
     jsonObject_
   );
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
@@ -143,7 +143,7 @@ router.post("/update_admin", urlencodedParser, function(
   );
 });
 
-router.post("/get_specific_admin", urlencodedParser, function(
+router.post("/get_specific_user", urlencodedParser, function(
   request,
   response
 ) {
@@ -151,12 +151,12 @@ router.post("/get_specific_admin", urlencodedParser, function(
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue = request.body.search_value;
 
-  var myAdminControllerObjectPromise = AdminController.get_specific_admins(
+  var myUsersControllerObjectPromise = UsersController.get_specific_admins(
     mKey,
     mValue
   );
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
@@ -168,7 +168,7 @@ router.post("/get_specific_admin", urlencodedParser, function(
   );
 });
 
-router.post("/update_individual_admin", urlencodedParser, function(
+router.post("/update_individual_user", urlencodedParser, function(
   request,
   response
 ) {
@@ -190,13 +190,13 @@ router.post("/update_individual_admin", urlencodedParser, function(
     RegisteredDate: date
   };
 
-  var myAdminControllerObjectPromise = AdminController.individual_admins_update(
+  var myUsersControllerObjectPromise = UsersController.individual_admins_update(
     column_name,
     value_,
     jsonObject_
   );
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
@@ -208,7 +208,7 @@ router.post("/update_individual_admin", urlencodedParser, function(
   );
 });
 
-router.post("/delete_individual_admin", urlencodedParser, function(
+router.post("/delete_individual_user", urlencodedParser, function(
   request,
   response
 ) {
@@ -216,12 +216,12 @@ router.post("/delete_individual_admin", urlencodedParser, function(
   //var mValue=parseInt(request.body.search_value, 10);
   var value_ = request.body.search_value;
 
-  var myAdminControllerObjectPromise = AdminController.delete_admins_record(
+  var myUsersControllerObjectPromise = UsersController.delete_admins_record(
     column_name,
     value_
   );
 
-  myAdminControllerObjectPromise.then(
+  myUsersControllerObjectPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
@@ -245,14 +245,14 @@ router.post(
 
     var SearchValue = request.body.SearchValue;
 
-    var myAdminControllerObjectPromise = AdminController.get_staff_members_with_a_specific_quality(
+    var myUsersControllerObjectPromise = UsersController.get_staff_members_with_a_specific_quality(
       TableTwo,
       JoiningKey,
       SearchColumn,
       SearchValue
     );
 
-    myAdminControllerObjectPromise.then(
+    myUsersControllerObjectPromise.then(
       function(result) {
         var response_object = { results: result };
         response.send(response_object);
