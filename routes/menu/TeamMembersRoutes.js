@@ -60,9 +60,9 @@ router.get("/admin_registration_form", function(req, res) {
   res.sendFile(__dirname + "/" + "AdminRegistration.html");
 });
 
-router.get("/admin_login", function(req, res) {
+/*router.get("/admin_login", function(req, res) {
   res.sendFile(__dirname + "/" + "AdminLogin.html");
-});
+});*/
 
 router.post("/team_members_login", urlencodedParser, function(
   request,
