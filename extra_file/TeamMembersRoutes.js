@@ -12,7 +12,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const TeamMembersController = require("../../controllers/menu/TeamMembersController.js");
+const TeamMembersController = require("./TeamMembersController.js");
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {

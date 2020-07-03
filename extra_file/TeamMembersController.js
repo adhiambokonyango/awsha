@@ -1,5 +1,5 @@
-const ModelMaster = require("../../models/ModelMaster.js");
-const TeamMembersModel = require("../../models/menu/TeamMembersModel");
+const ModelMaster = require("../models/ModelMaster.js");
+const TeamMembersModel = require("./TeamMembersModel");
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 

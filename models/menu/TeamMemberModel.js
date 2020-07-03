@@ -10,7 +10,7 @@ functions.
 const ModelMaster = require("../ModelMaster.js");
 const TableName = "team_members";
 
-module.exports = class TeamMembersModel {
+module.exports = class TeamMemberModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -156,19 +156,4 @@ module.exports = class TeamMembersModel {
       );
     });
   }
-
-  static getAllTeamMembersByFullDescription() {
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAllTeamMembersByFullDescription();
-      myPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
 };

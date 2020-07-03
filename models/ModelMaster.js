@@ -438,6 +438,51 @@ with no WHERE clause(No condition)
     });
   }
 
+
+  // SELECT ProjectId, ObjectiveId FROM project_objective
+  // WHERE ProjectId=1;
+
+
+  static adminPageDisplay() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT COUNT(ProjectId), ObjectiveId FROM project_objective GROUP BY ProjectId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // static adminPageDisplay(tableName, ColumnName, value_) {
+  //   return new Promise(function(resolve, reject) {
+  //     var sql =
+  //       "SELECT " +
+  //       ColumnName +
+  //       ColumnName +
+  //       "FROM" +
+  //       tableName +
+  //       " WHERE " +
+  //       ColumnName +
+  //       " = " +
+  //       mysql.escape(value_);
+  //     con.query(sql, function(err, result) {
+  //       if (err) {
+  //         reject(err);
+  //       } else {
+  //         var returned_value_ = result;
+  //         resolve(returned_value_);
+  //       }
+  //     });
+  //   });
+  // }
+
+
   static getAllTeamMembersByFullDescription() {
     return new Promise(function(resolve, reject) {
       con.query("SELECT * FROM team_members INNER JOIN team ON team.TeamId = team_members.TeamId INNER JOIN gender ON gender.GenderId = team_members.GenderId INNER JOIN company ON company.CompanyId = team_members.CompanyId;", function(
