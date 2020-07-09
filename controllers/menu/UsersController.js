@@ -84,7 +84,7 @@ module.exports = class UsersController {
       myModelMasterPromise.then(
         function(userExistsResult) {
           if (userExistsResult.length === 0) {
-            var error_msg = "There is no admin by this email";
+            var error_msg = "There is no user by this email";
             var response_object = { error: true, error_msg: error_msg };
             resolve(response_object);
           } else {
@@ -127,6 +127,12 @@ module.exports = class UsersController {
       );
     });
   }
+
+
+
+
+
+
 
   static get_all_admin() {
     return new Promise(function(resolve, reject) {

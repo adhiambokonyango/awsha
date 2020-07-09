@@ -14,7 +14,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const CompanyController = require('../../controllers/menu/CompanyController.js');
 
 
-
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
 

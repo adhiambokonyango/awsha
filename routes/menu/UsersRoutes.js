@@ -13,6 +13,12 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const UsersController = require("../../controllers/menu/UsersController.js");
+const passport = require("passport")
+const jwt = require("jsonwebtoken")
+const session = require('express-session');
+
+
+
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {

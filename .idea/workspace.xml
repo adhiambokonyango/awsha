@@ -20,18 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/menu/TeamMemberController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/menu/TeamMemberModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/menu/TeamMemberRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/basicAuth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectObjectiveController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectObjectiveController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/TeamMembersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/extra_file/TeamMembersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users_management/RolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users_management/RolesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/users_management/UserRolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users_management/UserRolesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/menu/ProjectObjectiveModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/menu/ProjectObjectiveModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/menu/TeamMembersModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/extra_file/TeamMembersModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/CompanyRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/CompanyRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/menu/ProjectObjectiveRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ProjectObjectiveRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/TeamMembersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/extra_file/TeamMembersRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,10 @@
       <recent name="$PROJECT_DIR$/routes/menu" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.RolesController.js">
+    <configuration name="RolesController.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controllers/users_management/RolesController.js" working-dir="$PROJECT_DIR$/controllers/users_management">
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="start" />
@@ -82,6 +85,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.RolesController.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -138,6 +146,14 @@
       <workItem from="1593637065836" duration="625000" />
       <workItem from="1593778881602" duration="675000" />
       <workItem from="1593788740527" duration="2541000" />
+      <workItem from="1593945486769" duration="6392000" />
+      <workItem from="1594062778017" duration="5610000" />
+      <workItem from="1594116651362" duration="119000" />
+      <workItem from="1594117773441" duration="4472000" />
+      <workItem from="1594123829951" duration="3076000" />
+      <workItem from="1594130917624" duration="937000" />
+      <workItem from="1594203205521" duration="1548000" />
+      <workItem from="1594294678396" duration="16000" />
     </task>
     <servers />
   </component>
@@ -175,26 +191,26 @@
     <state x="349" y="138" key="FileChooserDialogImpl/0.24.1366.744@0.24.1366.744" timestamp="1586244288624" />
     <state x="349" y="146" width="530" height="598" key="FileChooserDialogImpl/0.34.1366.734@0.34.1366.734" timestamp="1586974370460" />
     <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1591798433249" />
-    <state width="1278" height="259" key="GridCell.Tab.0.bottom" timestamp="1593530856301">
+    <state width="1278" height="337" key="GridCell.Tab.0.bottom" timestamp="1594064690799">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1338" height="303" key="GridCell.Tab.0.bottom/0.34.1366.734@0.34.1366.734" timestamp="1586539589531" />
-    <state width="1278" height="259" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1593530856301" />
-    <state width="1278" height="259" key="GridCell.Tab.0.center" timestamp="1593530856300">
+    <state width="1278" height="337" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
+    <state width="1278" height="337" key="GridCell.Tab.0.center" timestamp="1594064690798">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1338" height="303" key="GridCell.Tab.0.center/0.34.1366.734@0.34.1366.734" timestamp="1586539589530" />
-    <state width="1278" height="259" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1593530856300" />
-    <state width="1278" height="259" key="GridCell.Tab.0.left" timestamp="1593530856300">
+    <state width="1278" height="337" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
+    <state width="1278" height="337" key="GridCell.Tab.0.left" timestamp="1594064690798">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1338" height="303" key="GridCell.Tab.0.left/0.34.1366.734@0.34.1366.734" timestamp="1586539589529" />
-    <state width="1278" height="259" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1593530856300" />
-    <state width="1278" height="259" key="GridCell.Tab.0.right" timestamp="1593530856300">
+    <state width="1278" height="337" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
+    <state width="1278" height="337" key="GridCell.Tab.0.right" timestamp="1594064690799">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1338" height="303" key="GridCell.Tab.0.right/0.34.1366.734@0.34.1366.734" timestamp="1586539589530" />
-    <state width="1278" height="259" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1593530856300" />
+    <state width="1278" height="337" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
     <state width="1278" height="379" key="GridCell.Tab.1.bottom" timestamp="1593529770958">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
@@ -253,7 +269,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/menu/UsersRoutes.js</url>
-          <line>40</line>
+          <line>46</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -268,12 +284,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>40</line>
+          <line>45</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>47</line>
+          <line>52</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

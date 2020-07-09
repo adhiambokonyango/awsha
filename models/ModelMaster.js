@@ -13,6 +13,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var con = require("../common/dbConnect.js");
+const roles = require("user-groups-roles")
 
 module.exports = class ModelMaster {
   /*SON/2018-11-06 00:29 - DEVELOPMENT
@@ -31,6 +32,10 @@ with the key being the actual column name on the
 database.
 	
 */
+
+
+
+
   static insert(tableName, jsonObject_) {
     return new Promise(function(resolve, reject) {
       con.query("INSERT INTO " + tableName + " SET ?", jsonObject_, function(
@@ -534,6 +539,8 @@ with no WHERE clause(No condition)
       });
     });
   }
+
+
 
 
 
