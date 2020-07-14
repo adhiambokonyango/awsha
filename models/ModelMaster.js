@@ -109,6 +109,7 @@ your result
     });
   }
 
+
   static async promiselessSelectSpecific(tableName, ColumnName, value_) {
     var sql =
       "SELECT * FROM " +
@@ -541,6 +542,22 @@ with no WHERE clause(No condition)
   }
 
 
+  static getPrivilegesForParticularUserForParticularRole(userId,roleCode,accessPrivilegeCode) {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM roles INNER JOIN user_roles ON roles.RoleId = user_roles.RoleId INNER JOIN user_access_privileges ON user_access_privileges.UserRoleId = user_roles.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_access_privileges.UserId = "+userId+" AND roles.RoleCode = "+roleCode+" AND access_privileges.AccessPrivilegeCode = "+accessPrivilegeCode+";", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
 
 
 

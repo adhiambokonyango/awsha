@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const UsersController = require('../../controllers/user_management/UsersController');
+const ModelMaster = require("../../models/ModelMaster");
 
 
 
@@ -55,7 +56,7 @@ router.get('/signup', function (req, res) {
 
 
 
-router.post('/user_login', urlencodedParser,function(request,response){
+router.post('/login', urlencodedParser, async function(request,response){
 
 
 
@@ -74,16 +75,17 @@ router.post('/user_login', urlencodedParser,function(request,response){
 
 
 
-    var myUsersControllerObjectPromise = UsersController.user_login(jsonObject_);
+    var myUsersControllerObjectPromise = await UsersController.login(jsonObject_);
 
+    response.send(myUsersControllerObjectPromise);
 
-    myUsersControllerObjectPromise.then(function(result) {
-
-        response.send(result);
-    }, function(err) {
-        console.log(err);
-        response.send("An error occurred");
-    })
+    // myUsersControllerObjectPromise.then(function(result) {
+    //
+    //     response.send(result);
+    // }, function(err) {
+    //     console.log(err);
+    //     response.send("An error occurred");
+    // })
 
 });
 
@@ -94,7 +96,7 @@ router.post('/user_login', urlencodedParser,function(request,response){
 
 router.post('/get_all_users',urlencodedParser,function(request,response){
 
-    var myUsersControllerObjectPromise = UsersController.get_all_users();
+    var myUsersControllerObjectPromise = UsersController.selectAll();
 
 
     myUsersControllerObjectPromise.then(function(result) {
@@ -133,7 +135,7 @@ router.post('/update_users',urlencodedParser,function(request,response){
     };
 
 
-    var myUsersControllerObjectPromise = UsersController.batch_users_update(jsonObject_);
+    var myUsersControllerObjectPromise = UsersController.batchUpdate(jsonObject_);
 
 
     myUsersControllerObjectPromise.then(function(result) {
@@ -161,7 +163,7 @@ router.post('/get_specific_users',urlencodedParser,function(request,response){
 
 
 
-    var myUsersControllerObjectPromise = UsersController.get_specific_users(mKey,mValue);
+    var myUsersControllerObjectPromise = UsersController.selectSpecific(mKey,mValue);
 
 
     myUsersControllerObjectPromise.then(function(result) {
@@ -204,7 +206,7 @@ router.post('/update_individual_users',urlencodedParser,function(request,respons
     };
 
 
-    var myUsersControllerObjectPromise = UsersController.individual_users_update(column_name,value_,jsonObject_);
+    var myUsersControllerObjectPromise = UsersController.individualUpdate(column_name,value_,jsonObject_);
 
 
     myUsersControllerObjectPromise.then(function(result) {

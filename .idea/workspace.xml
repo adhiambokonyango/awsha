@@ -20,18 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/basicAuth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/AccessPrivilegesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/RolesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/UserRolesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/UsersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users_management/RolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users_management/RolesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/users_management/UserRolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/users_management/UserRolesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/UsersController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/CompanyRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/CompanyRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/ProjectObjectiveRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ProjectObjectiveRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/menu/UsersModel.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +63,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes/user_management" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -154,6 +156,11 @@
       <workItem from="1594130917624" duration="937000" />
       <workItem from="1594203205521" duration="1548000" />
       <workItem from="1594294678396" duration="16000" />
+      <workItem from="1594323565894" duration="3832000" />
+      <workItem from="1594401327322" duration="339000" />
+      <workItem from="1594469994518" duration="748000" />
+      <workItem from="1594623178171" duration="3866000" />
+      <workItem from="1594722237089" duration="6000" />
     </task>
     <servers />
   </component>

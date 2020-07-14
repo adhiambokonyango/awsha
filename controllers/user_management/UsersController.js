@@ -7,7 +7,6 @@ const UserRolesController=require('./UserRolesController');
 const AccessPrivilegesController=require('./AccessPrivilegesController');
 const UserAccessPrivilegesController=require('./UserAccessPrivilegesController');
 
-
 module.exports = class UsersController{
 
     static async insert(recordObject){
@@ -26,7 +25,7 @@ module.exports = class UsersController{
             hash.update(recordObject.EncryptedPassword);
             let encrypted_Password = hash.digest("hex");
 
-            delete recordObject["Password"];
+            delete recordObject["EncryptedPassword"];
             recordObject["EncryptedPassword"] = encrypted_Password;
             recordObject["Salt"] = salt;
 
@@ -44,17 +43,44 @@ module.exports = class UsersController{
     }
 
 
+
+    static async login(jsonObject_) {
+
+        var TableName = "users";
+        var SearchColumn = "Email";
+        var SearchValue = jsonObject_.AttemptedEmail;
+
+        // let roles = await RolesController.selectAll()
+        // let privileges = await AccessPrivilegesController.selectAll()
+
+        var user = Repository.promiselessSelectSpecific(
+          TableName,
+          SearchColumn,
+          SearchValue,
+          // roles,
+          // privileges
+        );
+
+        console.log(user);
+
+    }
+
+
+
+
+
     static async selectAll(){
         let response = await Repository.selectAll(tableName);
         return response;
     }
     
 
-    static async selectSpecific(columnName,columnValue){
-        let response = await Repository.selectSpecific(tableName,columnName,columnValue);
-        return response;
-    }
-    
+     static async selectSpecific(columnName,columnValue){
+         let response = await Repository.selectSpecific(tableName,columnName,columnValue);
+         return response;
+     }
+
+
 
     static async batchUpdate(batchObject){
         let response = await Repository.batch_update(tableName,batchObject);

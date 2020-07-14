@@ -118,19 +118,27 @@ app.use(require("./routes/menu/ProjectObjectiveRoutes"));
 app.use(require("./routes/menu/ProjectsRoutes.js"));
 app.use(require("./routes/menu/TeamRoutes.js"));
 app.use(require("./routes/menu/CompanyRoutes.js"));
-app.use(require("./routes/user_management/UsersRoutes.js"));
 app.use(require("./routes/menu/GenderRoutes.js"));
 app.use(require("./routes/menu/PercentageRoutes.js"));
 app.use(require("./routes/menu/ObjectivesRoutes.js"));
 app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
 app.use(require("./routes/menu/CompanyUserRoutes.js"));
+app.use(require("./routes/user_management/RolesRoutes.js"));
+app.use(require("./routes/user_management/AccessPrivilegesRoutes.js"));
+app.use(require("./routes/user_management/UserRolesRoutes.js"));
+app.use(require("./routes/user_management/UserAccessPrivilegesRoutes.js"));
+
+app.use(require("./routes/user_management/UsersRoutes.js"));
+
+
+
+
+
 
 
 
 
 // access middlewares
-
-
 // app.use(session({
 //   key: 'session_cookie_name',
 //   secret: 'session_cookie_secret',
