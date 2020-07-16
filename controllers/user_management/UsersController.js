@@ -6,6 +6,7 @@ const RolesController=require('./RolesController');
 const UserRolesController=require('./UserRolesController');
 const AccessPrivilegesController=require('./AccessPrivilegesController');
 const UserAccessPrivilegesController=require('./UserAccessPrivilegesController');
+const ModelMaster = require("../../models/ModelMaster");
 
 module.exports = class UsersController{
 
@@ -43,26 +44,63 @@ module.exports = class UsersController{
     }
 
 
+    static login(jsonObject_) {
+        return new Promise(function(resolve, reject) {
+            var TableName = "users";
+            var SearchColumn = "Email";
+            var SearchValue = jsonObject_.AttemptedEmail;
 
-    static async login(jsonObject_) {
+            var myModelMasterPromise = Repository.selectSpecific(
+              TableName,
+              SearchColumn,
+              SearchValue
+            );
 
-        var TableName = "users";
-        var SearchColumn = "Email";
-        var SearchValue = jsonObject_.AttemptedEmail;
+            myModelMasterPromise.then(
+              function(userExistsResult) {
+                  if (userExistsResult.length === 0) {
+                      var error_msg = "There is no staff member by this email";
+                      var response_object = { error: true, error_msg: error_msg };
+                      resolve(response_object);
+                  } else {
+                      // var loginResponse = [];
+                      var hash = crypto.createHmac(
+                        "sha512",
+                        userExistsResult[0].Salt
+                      ); /** Hashing algorithm sha512 */
+                      hash.update(jsonObject_.AttemptedPassword);
+                      var Attempted_encrypted_Password = hash.digest("hex");
 
-        // let roles = await RolesController.selectAll()
-        // let privileges = await AccessPrivilegesController.selectAll()
+                      if (
+                        Attempted_encrypted_Password ===
+                        userExistsResult[0].EncryptedPassword
+                      ) {
+                          var response_object = {
+                              error: false,
+                              UserId: userExistsResult[0].UserId,
+                              FirstName: userExistsResult[0].FirstName,
+                              MiddleName: userExistsResult[0].MiddleName,
+                              Surname: userExistsResult[0].Surname,
+                              PhoneNumber: userExistsResult[0].PhoneNumber,
+                              Email: userExistsResult[0].Email,
+                              GenderId: userExistsResult[0].GenderId,
+                              NationalId: userExistsResult[0].NationalId,
 
-        var user = Repository.promiselessSelectSpecific(
-          TableName,
-          SearchColumn,
-          SearchValue,
-          // roles,
-          // privileges
-        );
+                          };
+                      } else {
+                          var error_msg = "Login failed";
+                          var response_object = { error: true, error_msg: error_msg };
+                      }
 
-        console.log(user);
-
+                      //loginResponse.push(response_object);
+                      resolve(response_object);
+                  }
+              },
+              function(err) {
+                  reject(err);
+              }
+            );
+        });
     }
 
 

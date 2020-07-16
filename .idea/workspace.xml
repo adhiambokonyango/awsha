@@ -20,19 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/user_management/AccessPrivilegesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/RolesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/UserRolesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/user_management/OfficeAdminController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/UsersController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/menu/UsersModel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/UsersRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +56,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes/user_management" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -161,6 +154,11 @@
       <workItem from="1594469994518" duration="748000" />
       <workItem from="1594623178171" duration="3866000" />
       <workItem from="1594722237089" duration="6000" />
+      <workItem from="1594804464950" duration="608000" />
+      <workItem from="1594830330414" duration="2066000" />
+      <workItem from="1594890959268" duration="623000" />
+      <workItem from="1594892138207" duration="5674000" />
+      <workItem from="1594911061522" duration="354000" />
     </task>
     <servers />
   </component>
@@ -192,12 +190,11 @@
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="944" height="506" key="DebuggerActiveHint/65.24.1301.744@65.24.1301.744" timestamp="1593524319933" />
-    <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl" timestamp="1591798433249">
+    <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl" timestamp="1594911152591">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
-    <state x="349" y="138" key="FileChooserDialogImpl/0.24.1366.744@0.24.1366.744" timestamp="1586244288624" />
     <state x="349" y="146" width="530" height="598" key="FileChooserDialogImpl/0.34.1366.734@0.34.1366.734" timestamp="1586974370460" />
-    <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1591798433249" />
+    <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1594911152591" />
     <state width="1278" height="337" key="GridCell.Tab.0.bottom" timestamp="1594064690799">
       <screen x="65" y="24" width="1301" height="744" />
     </state>

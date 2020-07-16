@@ -129,6 +129,8 @@ app.use(require("./routes/user_management/UserRolesRoutes.js"));
 app.use(require("./routes/user_management/UserAccessPrivilegesRoutes.js"));
 
 app.use(require("./routes/user_management/UsersRoutes.js"));
+app.use(require("./routes/user_management/SystemAdminRoutes.js"));
+app.use(require("./routes/user_management/OfficeAdminRoutes.js"));
 
 
 

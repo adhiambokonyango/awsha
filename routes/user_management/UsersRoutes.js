@@ -13,9 +13,8 @@ router.use(function timeLog(req, res, next) {
     next();
 });
 
+router.post('/user_registration', urlencodedParser,function(request,response){
 
-
-router.post('/user_registration', urlencodedParser,async function(request,response){
     var date = new Date();
     date.setHours(date.getHours() + 3);
 
@@ -38,60 +37,49 @@ router.post('/user_registration', urlencodedParser,async function(request,respon
         // Password:request.body.Password
     };
 
-    let serverResponse = await UsersController.insert(recordObject);
+    var myPromise = UsersController.insert(recordObject);
 
-    response.send(serverResponse);
+
+    myPromise.then(function(result) {
+
+        var response_object={results:result}
+        response.send(response_object);
+    }, function(err) {
+        console.log(err);
+        response.send("An error occurred");
+    })
 
 });
-
-
 
 
 router.get('/signup', function (req, res) {
     res.sendFile( __dirname + "/" + "form.html" );
 })
 
-
-
-
-
-
-router.post('/login', urlencodedParser, async function(request,response){
-
-
-
-    var	jsonObject_ = {
-
-
-        AttemptedEmail:request.body.AttemptedEmail,
-        AttemptedPassword:request.body.AttemptedPassword,
-        AttemptedRoleCode:request.body.AttemptedRoleCode
-
-
-
+router.post("/login", urlencodedParser, function(
+  request,
+  response
+) {
+    var jsonObject_ = {
+        AttemptedEmail: request.body.AttemptedEmail,
+        AttemptedPassword: request.body.AttemptedPassword,
+        AttemptedRoleCode: request.body.AttemptedRoleCode
     };
 
+    var myCompanySystemUsersControllerObjectPromise = UsersController.login(
+      jsonObject_
+    );
 
-
-
-
-    var myUsersControllerObjectPromise = await UsersController.login(jsonObject_);
-
-    response.send(myUsersControllerObjectPromise);
-
-    // myUsersControllerObjectPromise.then(function(result) {
-    //
-    //     response.send(result);
-    // }, function(err) {
-    //     console.log(err);
-    //     response.send("An error occurred");
-    // })
-
+    myCompanySystemUsersControllerObjectPromise.then(
+      function(result) {
+          response.send(result);
+      },
+      function(err) {
+          console.log(err);
+          response.send("An error occurred");
+      }
+    );
 });
-
-
-
-
 
 
 router.post('/get_all_users',urlencodedParser,function(request,response){
