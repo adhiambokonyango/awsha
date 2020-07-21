@@ -54,10 +54,10 @@ module.exports = class SystemAdminAccessPrivilegesController{
         return response;
     }
 
-    static getPrivilegesForParticularSystemAdminForParticularRole(SystemAdminId,roleCode,accessPrivilegeCode) {
+    static getPrivilegesForParticularUserForParticularRole(systemAdminId,roleCode,accessPrivilegeCode) {
 
         return new Promise(function(resolve, reject) {
-            var myPromise = ModelMaster.getPrivilegesForParticularSystemAdminForParticularRole(SystemAdminId,roleCode,accessPrivilegeCode);
+            var myPromise = ModelMaster.getPrivilegesForParticularUserForParticularRole(systemAdminId,roleCode,accessPrivilegeCode);
             myPromise.then(
               function(result) {
                   resolve(result);
