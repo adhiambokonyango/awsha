@@ -19,10 +19,10 @@ router.post('/system_admin_registration', urlencodedParser,function(request,resp
 
 
   var	recordObject = {
-    AdminFirstName: request.body.AdminFirstName,
-    AdminMiddleName: request.body.AdminMiddleName,
-    AdminSurname: request.body.AdminSurname,
-    AdminPhoneNumber: request.body.AdminPhoneNumber,
+    FirstName: request.body.FirstName,
+   MiddleName: request.body.MiddleName,
+    Surname: request.body.Surname,
+    PhoneNumber: request.body.PhoneNumber,
     Email: request.body.Email,
     GenderId: request.body.GenderId,
     NationalId: request.body.NationalId,
@@ -107,10 +107,10 @@ router.post('/update_system_admin',urlencodedParser,function(request,response){
 
   var	jsonObject_ = {
 
-    AdminFirstName: request.body.AdminFirstName,
-    AdminMiddleName: request.body.AdminMiddleName,
-    AdminSurname: request.body.AdminSurname,
-    AdminPhoneNumber: request.body.AdminPhoneNumber,
+    FirstName: request.body.FirstName,
+    MiddleName: request.body.MiddleName,
+    Surname: request.body.Surname,
+    PhoneNumber: request.body.PhoneNumber,
     Email: request.body.Email,
     GenderId: request.body.GenderId,
     NationalId: request.body.NationalId,
@@ -178,10 +178,10 @@ router.post('/update_individual_system_admin',urlencodedParser,function(request,
 
   var	jsonObject_ = {
 
-    AdminFirstName: request.body.AdminFirstName,
-    AdminMiddleName: request.body.AdminMiddleName,
-    AdminSurname: request.body.AdminSurname,
-    AdminPhoneNumber: request.body.AdminPhoneNumber,
+    FirstName: request.body.FirstName,
+    MiddleName: request.body.MiddleName,
+    Surname: request.body.Surname,
+    PhoneNumber: request.body.PhoneNumber,
     Email: request.body.Email,
     GenderId: request.body.GenderId,
     NationalId: request.body.NationalId,

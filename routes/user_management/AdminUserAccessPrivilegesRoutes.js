@@ -27,7 +27,7 @@ router.post(
     date.setHours(date.getHours() + 0);
 
     var jsonObject_ = {
-      AdminPermisionStatus: request.body.AdminPermisionStatus
+      AdminPermissionStatus: request.body.AdminPermissionStatus
     };
 
     var myPromise = AdminUserAccessPrivilegesController.individualUpdate(
@@ -82,7 +82,7 @@ router.post("/add_user_access_privileges", urlencodedParser, function(
     AdminId: request.body.AdminId,
     AdminUserRoleId: request.body.AdminUserRoleId,
     AdminAccessPrivilegeId: request.body.AdminAccessPrivilegeId,
-    AdminPermisionStatus: request.body.AdminPermisionStatus
+    AdminPermissionStatus: request.body.AdminPermissionStatus
   };
 
   var myPromise = AdminUserAccessPrivilegesController.insert(jsonObject_);
@@ -155,7 +155,7 @@ router.post("/update_user_access_privileges", urlencodedParser, function(
   var jsonObject_ = {
     AdminUserRoleId: request.body.AdminUserRoleId,
     AdminAccessPrivilegeId: request.body.AdminAccessPrivilegeId,
-    AdminPermisionStatus: request.body.AdminPermisionStatus
+    AdminPermissionStatus: request.body.AdminPermissionStatus
   };
 
   var myPromise = AdminUserAccessPrivilegesController.batch_update(jsonObject_);

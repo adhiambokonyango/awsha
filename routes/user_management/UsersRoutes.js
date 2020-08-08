@@ -30,11 +30,6 @@ router.post('/user_registration', urlencodedParser,function(request,response){
         EncryptedPassword	: request.body.EncryptedPassword	,
         RegisteredDate: date
 
-
-
-        // UserName:request.body.UserName,
-        // UserEmail:request.body.UserEmail,
-        // Password:request.body.Password
     };
 
     var myPromise = UsersController.insert(recordObject);

@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 const Repository=require('../Repository');
-const tableName="users";
+const tableName="system_admin";
 const SystemAdminRolesController=require('./SystemAdminRolesController');
 const AdminUserRolesController=require('./AdminUserRolesController');
 const SystemAdminAccessPrivilegesController=require('./SystemAdminAccessPrivilegesController');
@@ -152,9 +152,9 @@ module.exports = class SystemAdminController{
     for (let i = 0;i<accessPrivilegeArray.length;i++) {
       const payload = {
         AdminId: userId,
-        AdminRoleId: userRoleId,
+        AdminUserRoleId: userRoleId,
         AdminAccessPrivilegeId: accessPrivilegeArray[i].AdminAccessPrivilegeId,
-        AdminPermisionStatus: 0
+        AdminPermissionStatus: 0
       };
 
       await AdminUserAccessPrivilegesController.insert(payload);

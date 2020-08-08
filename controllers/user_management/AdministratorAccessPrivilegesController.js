@@ -1,8 +1,6 @@
 const Repository=require('../Repository');
 const tableName="administrator_access_privileges";
 
-const ModelMaster = require("../../models/ModelMaster");
-
 module.exports = class AdministratorAccessPrivilegesController{
 
 

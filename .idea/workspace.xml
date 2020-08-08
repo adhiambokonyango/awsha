@@ -20,19 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdminUserAccessPrivilegesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdminUserRolesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorUserAccessPrivilegesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorUserRolesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/AdminUserRolesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/AdministratorUserAccessPrivilegesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/AdministratorUserRolesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorAccessPrivilegesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +170,7 @@
       <workItem from="1596801504993" duration="2710000" />
       <workItem from="1596868087933" duration="120000" />
       <workItem from="1596887422118" duration="4675000" />
-      <workItem from="1596899322159" duration="2977000" />
+      <workItem from="1596899322159" duration="9182000" />
     </task>
     <servers />
   </component>

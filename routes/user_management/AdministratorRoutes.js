@@ -30,10 +30,6 @@ router.post('/office_admin_registration', urlencodedParser,function(request,resp
     RegisteredDate: date
 
 
-
-    // UserName:request.body.UserName,
-    // UserEmail:request.body.UserEmail,
-    // Password:request.body.Password
   };
 
   var myPromise = AdministratorController.insert(recordObject);

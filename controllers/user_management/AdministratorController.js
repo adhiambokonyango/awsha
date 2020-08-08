@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 const Repository=require('../Repository');
-const tableName="users";
+const tableName="administrator";
 const AdministratorRolesController=require('./AdministratorRolesController');
 const AdministratorUserRolesController=require('./AdministratorUserRolesController');
 const AdministratorAccessPrivilegesController=require('./AdministratorAccessPrivilegesController');
@@ -45,7 +45,7 @@ module.exports = class AdministratorController{
 
   static login(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var TableName = "users";
+      var TableName = "administrator";
       var SearchColumn = "Email";
       var SearchValue = jsonObject_.AttemptedEmail;
 
@@ -152,9 +152,9 @@ module.exports = class AdministratorController{
     for (let i = 0;i<accessPrivilegeArray.length;i++) {
       const payload = {
         AdministratorId: userId,
-        AdministratorRoleId: userRoleId,
-        AdministratorAccessPrivilegeId: accessPrivilegeArray[i].AccessPrivilegeId,
-        AdministratorPermisionStatus: 0
+        AdministratorUserRoleId: userRoleId,
+        AdministratorAccessPrivilegeId: accessPrivilegeArray[i].AdministratorAccessPrivilegeId,
+        AdministratorPermissionStatus: 0
       };
 
       await AdministratorUserAccessPrivilegesController.insert(payload);
