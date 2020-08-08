@@ -3,7 +3,7 @@ var mysql = require("mysql");
 const con = mysql.createPool({
   host: "localhost",
   user: "mary",
-  password: "31547207",
+  password: "Mary31547207",
   database: "awsha",
   insecureAuth: true
 });

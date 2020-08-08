@@ -2,11 +2,10 @@ const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 const Repository=require('../Repository');
 const tableName="system_admin";
-const RolesController=require('./RolesController');
-const UserRolesController=require('./UserRolesController');
-const AccessPrivilegesController=require('./AccessPrivilegesController');
-const UserAccessPrivilegesController=require('./UserAccessPrivilegesController');
-const ModelMaster = require("../../models/ModelMaster");
+const SystemAdminRolesController=require('./SystemAdminRolesController');
+const AssignedSystemAdminRolesController=require('./AssignedSystemAdminRolesController.js');
+const SystemAdminAccessPrivilegesController=require('./SystemAdminAccessPrivilegesController');
+const AssignedSystemAdminAccessPrivilegesController=require('./AssignedSystemAdminAccessPrivilegesController');
 
 module.exports = class SystemAdminController{
 
@@ -132,33 +131,33 @@ module.exports = class SystemAdminController{
   }
 
   static async assignAUserRoles(userId) {
-    let rolesArray = await RolesController.selectAll();
+    let rolesArray = await SystemAdminRolesController.selectAll();
 
     for (let i = 0;i < rolesArray.length;i++) {
 
       const payload = {
         AdminId: userId,
-        RoleId: rolesArray[i].RoleId,
-        ConfirmationStatus: 0
+        AdminRoleId: rolesArray[i].AdminRoleId,
+        AdminConfirmationStatus: 0
       };
-      let userRoleInsertObject = await UserRolesController.insert(payload);
+      let userRoleInsertObject = await AssignedSystemAdminRolesController.insert(payload);
       SystemAdminController.assignAUserAccessPrivileges(userId,userRoleInsertObject.recordId);
     }
 
   }
 
   static async assignAUserAccessPrivileges(userId,userRoleId) {
-    let accessPrivilegeArray = await AccessPrivilegesController.selectAll();
+    let accessPrivilegeArray = await SystemAdminAccessPrivilegesController.selectAll();
 
     for (let i = 0;i<accessPrivilegeArray.length;i++) {
       const payload = {
         AdminId: userId,
-        UserRoleId: userRoleId,
-        AccessPrivilegeId: accessPrivilegeArray[i].AccessPrivilegeId,
-        PermisionStatus: 0
+        AssignedAdminRoleId: userRoleId,
+        AdminAccessPrivilegeId: accessPrivilegeArray[i].AdminAccessPrivilegeId,
+        AdminPermisionStatus: 0
       };
 
-      await UserAccessPrivilegesController.insert(payload);
+      await AssignedSystemAdminAccessPrivilegesController.insert(payload);
     }
   }
 }

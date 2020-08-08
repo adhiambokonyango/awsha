@@ -32,8 +32,8 @@ router.use(function timeLog(req, res, next) {
 		    
 			
 			
-			RoleDescription:request.body.RoleDescription,
-			RoleCode:request.body.RoleCode
+			AdminRoleDescription:request.body.AdminRoleDescription,
+			AdminRoleCode:request.body.AdminRoleCode
 			
 			
 			
@@ -129,18 +129,19 @@ router.use(function timeLog(req, res, next) {
        date.setHours(date.getHours()+0);
 	   
         var	jsonObject_ = {
-         
-		    
-			
-			
-			RoleDescription:request.body.RoleDescription,
-			RoleCode:request.body.RoleCode
-			
-			
-			
-		 
-		
-      
+
+
+
+
+          AdminRoleDescription:request.body.AdminRoleDescription,
+          AdminRoleCode:request.body.AdminRoleCode
+
+
+
+
+
+
+
         };
 	
     
@@ -174,17 +175,18 @@ router.use(function timeLog(req, res, next) {
        date.setHours(date.getHours()+0);
 	   
         var	jsonObject_ = {
-         
-		    
-			
-			
-			RoleDescription:request.body.RoleDescription,
-			RoleCode:request.body.RoleCode
-			
-			
-		 
-		
-      
+
+
+
+
+          AdminRoleDescription:request.body.AdminRoleDescription,
+          AdminRoleCode:request.body.AdminRoleCode
+
+
+
+
+
+
         };
 	
          
@@ -273,11 +275,11 @@ router.post('/roles_user_specific_query',urlencodedParser,function(request,respo
 	
 	var UserIdColumnName=request.body.UserIdColumnName;
 	
-	var UserId=request.body.UserId;
+	var UserId=request.body.AdminId;
 	
 	
     
-    var myPromise = SystemAdminRolesController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+    var myPromise = SystemAdminRolesController.selectSpecific(ColumnName,value_,UserIdColumnName,UserId);
 	      	        
 		   
 		   myPromise.then(function(result) {

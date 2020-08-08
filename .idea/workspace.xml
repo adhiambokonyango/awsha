@@ -20,13 +20,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/user_management/OfficeAdminController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dbConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/dbConnect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AssignedSystemAdminAccessPrivilegesController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AssignedSystemAdminRolesController.js.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/OfficeAdminAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/OfficeAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/OfficeAdminRolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorRolesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminAccessPrivileges.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/Changes.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/Changes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Protocol.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Protocol.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/Field.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Handshake.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Handshake.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_duplex.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_duplex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_passthrough.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_passthrough.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_readable.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_readable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_transform.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_transform.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_writable.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_writable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mysql/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AssignedSystemAdminAccessPrivilegesRoutes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AssignedSystemAdminRolesRoutes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/OfficeAdminAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorAccessPrivilegesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/OfficeAdminRolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRolesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/OfficeAdminRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminAccessPrivilegesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminRolesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRolesRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +107,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../awsha_client" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -159,6 +211,15 @@
       <workItem from="1594890959268" duration="623000" />
       <workItem from="1594892138207" duration="5674000" />
       <workItem from="1594911061522" duration="354000" />
+      <workItem from="1596206471197" duration="1294000" />
+      <workItem from="1596446732164" duration="10122000" />
+      <workItem from="1596629808842" duration="4049000" />
+      <workItem from="1596638538698" duration="1238000" />
+      <workItem from="1596736418854" duration="1055000" />
+      <workItem from="1596790726421" duration="2219000" />
+      <workItem from="1596801504993" duration="2710000" />
+      <workItem from="1596868087933" duration="120000" />
+      <workItem from="1596887422118" duration="4675000" />
     </task>
     <servers />
   </component>
@@ -178,42 +239,42 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="367" y="51" width="694" height="699" key="#AdministratorRolesController.js" timestamp="1596458268943">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="367" y="51" width="694" height="699" key="#AdministratorRolesController.js/72.27.1294.741@72.27.1294.741" timestamp="1596458268943" />
     <state x="180" y="41" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589383353847">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state x="180" y="41" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.24.1301.744@65.24.1301.744" timestamp="1589383353847" />
-    <state x="350" y="90" width="655" height="619" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586532244632">
-      <screen x="0" y="34" width="1366" height="734" />
+    <state x="452" y="146" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596898791177">
+      <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state x="350" y="90" width="655" height="619" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.34.1366.734@0.34.1366.734" timestamp="1586532244632" />
+    <state x="452" y="146" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1294.741@72.27.1294.741" timestamp="1596898791177" />
     <state width="944" height="506" key="DebuggerActiveHint" timestamp="1593524319933">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="944" height="506" key="DebuggerActiveHint/65.24.1301.744@65.24.1301.744" timestamp="1593524319933" />
-    <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl" timestamp="1594911152591">
-      <screen x="65" y="24" width="1301" height="744" />
+    <state x="402" y="141" width="424" height="482" key="FileChooserDialogImpl" timestamp="1596889852004">
+      <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state x="349" y="146" width="530" height="598" key="FileChooserDialogImpl/0.34.1366.734@0.34.1366.734" timestamp="1586974370460" />
     <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1594911152591" />
+    <state x="402" y="141" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1596889852004" />
     <state width="1278" height="337" key="GridCell.Tab.0.bottom" timestamp="1594064690799">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
-    <state width="1338" height="303" key="GridCell.Tab.0.bottom/0.34.1366.734@0.34.1366.734" timestamp="1586539589531" />
     <state width="1278" height="337" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
     <state width="1278" height="337" key="GridCell.Tab.0.center" timestamp="1594064690798">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
-    <state width="1338" height="303" key="GridCell.Tab.0.center/0.34.1366.734@0.34.1366.734" timestamp="1586539589530" />
     <state width="1278" height="337" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
     <state width="1278" height="337" key="GridCell.Tab.0.left" timestamp="1594064690798">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
-    <state width="1338" height="303" key="GridCell.Tab.0.left/0.34.1366.734@0.34.1366.734" timestamp="1586539589529" />
     <state width="1278" height="337" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
     <state width="1278" height="337" key="GridCell.Tab.0.right" timestamp="1594064690799">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
-    <state width="1338" height="303" key="GridCell.Tab.0.right/0.34.1366.734@0.34.1366.734" timestamp="1586539589530" />
     <state width="1278" height="337" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
     <state width="1278" height="379" key="GridCell.Tab.1.bottom" timestamp="1593529770958">
       <screen x="65" y="24" width="1301" height="744" />
@@ -263,6 +324,10 @@
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="1278" height="379" key="GridCell.Tab.3.right/65.24.1301.744@65.24.1301.744" timestamp="1593529770961" />
+    <state x="209" y="27" width="1022" height="737" key="SettingsEditor" timestamp="1596450785194">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="209" y="27" width="1022" height="737" key="SettingsEditor/72.27.1294.741@72.27.1294.741" timestamp="1596450785194" />
     <state x="406" y="121" width="618" height="580" key="find.popup" timestamp="1593525144991">
       <screen x="65" y="24" width="1301" height="744" />
     </state>

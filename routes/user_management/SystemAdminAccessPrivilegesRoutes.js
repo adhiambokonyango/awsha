@@ -21,8 +21,8 @@ router.post("/add_access_privileges", urlencodedParser, function(
   response
 ) {
   var jsonObject_ = {
-    AccessPrivilegeDescription: request.body.AccessPrivilegeDescription,
-    AccessPrivilegeCode: request.body.AccessPrivilegeCode
+    AdminAccessPrivilegeDescription: request.body.AdminAccessPrivilegeDescription,
+    AdminAccessPrivilegeCode: request.body.AdminAccessPrivilegeCode
   };
 
   var myPromise = SystemAdminAccessPrivilegesController.insert(jsonObject_);
@@ -43,7 +43,7 @@ router.post("/get_all_access_privileges", urlencodedParser, function(
   request,
   response
 ) {
-  var myPromise = SystemAdminAccessPrivilegesController.get_all_records();
+  var myPromise = SystemAdminAccessPrivilegesController.selectAll();
 
   myPromise.then(
     function(result) {
@@ -87,8 +87,8 @@ router.post("/update_access_privileges", urlencodedParser, function(
   date.setHours(date.getHours() + 0);
 
   var jsonObject_ = {
-    AccessPrivilegeDescription: request.body.AccessPrivilegeDescription,
-    AccessPrivilegeCode: request.body.AccessPrivilegeCode
+    AdminAccessPrivilegeDescription: request.body.AdminAccessPrivilegeDescription,
+    AdminAccessPrivilegeCode: request.body.AdminAccessPrivilegeCode
   };
 
   var myPromise = SystemAdminAccessPrivilegesController.batch_update(jsonObject_);
@@ -116,11 +116,11 @@ router.post("/update_individual_access_privileges", urlencodedParser, function(
   date.setHours(date.getHours() + 0);
 
   var jsonObject_ = {
-    AccessPrivilegeDescription: request.body.AccessPrivilegeDescription,
-    AccessPrivilegeCode: request.body.AccessPrivilegeCode
+    AdminAccessPrivilegeDescription: request.body.AdminAccessPrivilegeDescription,
+    AdminAccessPrivilegeCode: request.body.AdminAccessPrivilegeCode
   };
 
-  var myPromise = SystemAdminAccessPrivilegesController.individual_record_update(
+  var myPromise = SystemAdminAccessPrivilegesController.individualUpdate(
     column_name,
     value_,
     jsonObject_
@@ -148,7 +148,7 @@ router.post("/delete_individual_access_privileges", urlencodedParser, function(
 
   var SystemAdminIdColumnName = request.body.SystemAdminIdColumnName;
 
-  var SystemAdminId = request.body.SystemAdminId;
+  var SystemAdminId = request.body.AdminId;
 
   var myPromise = SystemAdminAccessPrivilegesController.delete_user_specic_record(
     column_name,
@@ -205,7 +205,7 @@ router.post(
 
     var SystemAdminIdColumnName = request.body.UserIdColumnName;
 
-    var SystemAdminId = request.body.UserId;
+    var SystemAdminId = request.body.AdminId;
 
     var myPromise = SystemAdminAccessPrivilegesController.user_specific_select_query(
       ColumnName,
