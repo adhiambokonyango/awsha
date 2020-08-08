@@ -1,11 +1,11 @@
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 const Repository=require('../Repository');
-const tableName="administrator";
+const tableName="users";
 const AdministratorRolesController=require('./AdministratorRolesController');
-const AssignedAdministratorRolesController=require('./AssignedAdministratorRolesController');
+const AdministratorUserRolesController=require('./AdministratorUserRolesController');
 const AdministratorAccessPrivilegesController=require('./AdministratorAccessPrivilegesController');
-const AssignedAdministratorAccessPrivilegesController=require('./AssignedAdministratorAccessPrivilegesController');
+const AdministratorUserAccessPrivilegesController=require('./AdministratorUserAccessPrivilegesController');
 
 module.exports = class AdministratorController{
 
@@ -45,7 +45,7 @@ module.exports = class AdministratorController{
 
   static login(jsonObject_) {
     return new Promise(function(resolve, reject) {
-      var TableName = "administrator";
+      var TableName = "users";
       var SearchColumn = "Email";
       var SearchValue = jsonObject_.AttemptedEmail;
 
@@ -140,7 +140,7 @@ module.exports = class AdministratorController{
         AdministratorRoleId: rolesArray[i].AdministratorRoleId,
         AdministratorConfirmationStatus: 0
       };
-      let userRoleInsertObject = await AssignedAdministratorRolesController.insert(payload);
+      let userRoleInsertObject = await AdministratorUserRolesController.insert(payload);
       AdministratorController.assignAUserAccessPrivileges(userId,userRoleInsertObject.recordId);
     }
 
@@ -153,11 +153,11 @@ module.exports = class AdministratorController{
       const payload = {
         AdministratorId: userId,
         AdministratorRoleId: userRoleId,
-        AdministratorAccessPrivilegeId: accessPrivilegeArray[i].AdministratorAccessPrivilegeId,
+        AdministratorAccessPrivilegeId: accessPrivilegeArray[i].AccessPrivilegeId,
         AdministratorPermisionStatus: 0
       };
 
-      await AssignedAdministratorAccessPrivilegesController.insert(payload);
+      await AdministratorUserAccessPrivilegesController.insert(payload);
     }
   }
 }

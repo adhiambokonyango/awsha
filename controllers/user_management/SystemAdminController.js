@@ -1,11 +1,11 @@
 const crypto = require("crypto");
 var pbkdf2 = require("pbkdf2");
 const Repository=require('../Repository');
-const tableName="system_admin";
+const tableName="users";
 const SystemAdminRolesController=require('./SystemAdminRolesController');
-const AssignedSystemAdminRolesController=require('./AssignedSystemAdminRolesController.js');
+const AdminUserRolesController=require('./AdminUserRolesController');
 const SystemAdminAccessPrivilegesController=require('./SystemAdminAccessPrivilegesController');
-const AssignedSystemAdminAccessPrivilegesController=require('./AssignedSystemAdminAccessPrivilegesController');
+const AdminUserAccessPrivilegesController=require('./AdminUserAccessPrivilegesController');
 
 module.exports = class SystemAdminController{
 
@@ -77,10 +77,10 @@ module.exports = class SystemAdminController{
               var response_object = {
                 error: false,
                 AdminId: userExistsResult[0].AdminId,
-                AdminFirstName: userExistsResult[0].AdminFirstName,
-                AdminMiddleName: userExistsResult[0].AdminMiddleName,
-                AdminSurname: userExistsResult[0].AdminSurname,
-                AdminPhoneNumber: userExistsResult[0].AdminPhoneNumber,
+                FirstName: userExistsResult[0].FirstName,
+                MiddleName: userExistsResult[0].MiddleName,
+                Surname: userExistsResult[0].Surname,
+                PhoneNumber: userExistsResult[0].PhoneNumber,
                 Email: userExistsResult[0].Email,
                 GenderId: userExistsResult[0].GenderId,
                 NationalId: userExistsResult[0].NationalId,
@@ -140,7 +140,7 @@ module.exports = class SystemAdminController{
         AdminRoleId: rolesArray[i].AdminRoleId,
         AdminConfirmationStatus: 0
       };
-      let userRoleInsertObject = await AssignedSystemAdminRolesController.insert(payload);
+      let userRoleInsertObject = await AdminUserRolesController.insert(payload);
       SystemAdminController.assignAUserAccessPrivileges(userId,userRoleInsertObject.recordId);
     }
 
@@ -152,12 +152,12 @@ module.exports = class SystemAdminController{
     for (let i = 0;i<accessPrivilegeArray.length;i++) {
       const payload = {
         AdminId: userId,
-        AssignedAdminRoleId: userRoleId,
+        AdminRoleId: userRoleId,
         AdminAccessPrivilegeId: accessPrivilegeArray[i].AdminAccessPrivilegeId,
         AdminPermisionStatus: 0
       };
 
-      await AssignedSystemAdminAccessPrivilegesController.insert(payload);
+      await AdminUserAccessPrivilegesController.insert(payload);
     }
   }
 }

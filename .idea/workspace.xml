@@ -20,64 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdminUserAccessPrivilegesController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdminUserRolesController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorUserAccessPrivilegesController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorUserRolesController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/AdminUserRolesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/AdministratorUserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/user_management/AdministratorUserRolesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dbConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/dbConnect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AssignedSystemAdminAccessPrivilegesController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AssignedSystemAdminRolesController.js.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/OfficeAdminAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorAccessPrivilegesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/OfficeAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/OfficeAdminRolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorRolesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminAccessPrivileges.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/bignumber.js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/Changes.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/Changes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Protocol.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Protocol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/Field.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/Field.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Handshake.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Handshake.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_duplex.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_duplex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_passthrough.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_passthrough.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_readable.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_readable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_transform.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_transform.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_writable.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_writable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/AssignedSystemAdminAccessPrivilegesRoutes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/AssignedSystemAdminRolesRoutes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/OfficeAdminAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorAccessPrivilegesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/OfficeAdminRolesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRolesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/OfficeAdminRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminAccessPrivilegesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminRolesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRolesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,6 +175,7 @@
       <workItem from="1596801504993" duration="2710000" />
       <workItem from="1596868087933" duration="120000" />
       <workItem from="1596887422118" duration="4675000" />
+      <workItem from="1596899322159" duration="2977000" />
     </task>
     <servers />
   </component>

@@ -118,19 +118,30 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
 // app.use(require("./routes/menu/ProjectsRoutes.js"));
 // app.use(require("./routes/menu/TeamRoutes.js"));
 // app.use(require("./routes/menu/CompanyRoutes.js"));
- app.use(require("./routes/menu/GenderRoutes.js"));
+
 // app.use(require("./routes/menu/PercentageRoutes.js"));
 // app.use(require("./routes/menu/ObjectivesRoutes.js"));
 // app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
 // app.use(require("./routes/menu/CompanyUserRoutes.js"));
 
+app.use(require("./routes/menu/GenderRoutes.js"));
+
 app.use(require("./routes/user_management/RolesRoutes.js"));
 app.use(require("./routes/user_management/AccessPrivilegesRoutes.js"));
 app.use(require("./routes/user_management/UserRolesRoutes.js"));
 app.use(require("./routes/user_management/UserAccessPrivilegesRoutes.js"));
-
 app.use(require("./routes/user_management/UsersRoutes.js"));
+
+app.use(require("./routes/user_management/SystemAdminRolesRoutes.js"));
+app.use(require("./routes/user_management/SystemAdminAccessPrivilegesRoutes.js"));
+app.use(require("./routes/user_management/AdminUserRolesRoutes.js"));
+app.use(require("./routes/user_management/AdminUserAccessPrivilegesRoutes.js"));
 app.use(require("./routes/user_management/SystemAdminRoutes.js"));
+
+app.use(require("./routes/user_management/AdministratorUserRolesRoutes.js"));
+app.use(require("./routes/user_management/AdministratorUserAccessPrivilegesRoutes.js"));
+app.use(require("./routes/user_management/AdministratorRolesRoutes.js"));
+app.use(require("./routes/user_management/AdministratorAccessPrivilegesRoutes.js"));
 app.use(require("./routes/user_management/AdministratorRoutes.js"));
 
 

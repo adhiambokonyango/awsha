@@ -3,7 +3,6 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const SystemAdminController = require('../../controllers/user_management/SystemAdminController');
-const ModelMaster = require("../../models/ModelMaster");
 
 
 
@@ -32,9 +31,7 @@ router.post('/system_admin_registration', urlencodedParser,function(request,resp
 
 
 
-    // UserName:request.body.UserName,
-    // UserEmail:request.body.UserEmail,
-    // Password:request.body.Password
+
   };
 
   var myPromise = SystemAdminController.insert(recordObject);
