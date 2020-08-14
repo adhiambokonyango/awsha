@@ -119,6 +119,11 @@ module.exports = class UsersController{
      }
 
 
+    static async getAllUsersAndPrivileges(columnName,columnValue){
+        let response = await Repository.getAllUsersAndPrivileges(tableName,columnName,columnValue);
+        return response;
+    }
+
 
     static async batchUpdate(batchObject){
         let response = await Repository.batch_update(tableName,batchObject);
@@ -155,7 +160,7 @@ module.exports = class UsersController{
                 UserId: userId,
                 UserRoleId: userRoleId,
                 AccessPrivilegeId: accessPrivilegeArray[i].AccessPrivilegeId,
-                PermisionStatus: 0
+                PermissionStatus: 0
             };
 
             await UserAccessPrivilegesController.insert(payload);

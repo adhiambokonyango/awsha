@@ -314,6 +314,55 @@ delete() deletes a specific record(s).
     });
   }
 
+  static getAllUserPrivilegesByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM user_access_privileges INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId INNER JOIN users ON users.UserId=user_access_privileges.UserId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
 
+  static getAllAdminPrivilegesByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM admin_user_access_privileges INNER JOIN system_admin_access_privileges ON system_admin_access_privileges.AdminAccessPrivilegeId = admin_user_access_privileges.AdminAccessPrivilegeId INNER JOIN system_admin ON system_admin.AdminId = admin_user_access_privileges.AdminId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+  static getAllAdministratorPrivilegesByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM administrator_user_access_privileges INNER JOIN administrator_access_privileges ON administrator_access_privileges.AdministratorAccessPrivilegeId = administrator_user_access_privileges.AdministratorAccessPrivilegeId INNER JOIN administrator ON administrator.AdministratorId = administrator_user_access_privileges.AdministratorId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
 
 };

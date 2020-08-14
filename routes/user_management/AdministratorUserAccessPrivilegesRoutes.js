@@ -17,7 +17,7 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.post(
-  "/update_individual_user_access_privileges",
+  "/update_individual_administrator_user_access_privileges",
   urlencodedParser,
   function(request, response) {
     var column_name = request.body.ColumnName;
@@ -119,6 +119,25 @@ router.post("/get_all_user_access_privileges", urlencodedParser, function(
     }
   );
 });
+
+router.post('/get_administrator_user_privileges_by_full_description',urlencodedParser,function(request,response){
+
+
+
+  var myPromise = AdministratorUserAccessPrivilegesController.getAllAdministratorPrivilegesByFullDescription();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
+
 
 router.post("/get_specific_user_access_privileges", urlencodedParser, function(
   request,

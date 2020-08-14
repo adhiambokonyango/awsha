@@ -13,27 +13,17 @@ module.exports = class UserAccessPrivilegesController{
         return response;
     }
 
-    static get_specific_records(ColumnName, value_) {
-        var TableName = "user_access_privileges";
-        var ColumnName = "UserAccessPrivilegeId";
-        return new Promise(function(resolve, reject) {
-            var myPromise = ModelMaster.selectSpecific(TableName, ColumnName, value_);
-            myPromise.then(
-              function(result) {
-                  resolve(result);
-              },
-              function(err) {
-                  reject(err);
-              }
-            );
-        });
-    }
+
 
     static async selectAll(){
         let response = await Repository.selectAll(tableName);
         return response;
     }
 
+    static async getAllUserPrivilegesByFullDescription(){
+        let response = await Repository.getAllUserPrivilegesByFullDescription(tableName);
+        return response;
+    }
 
 
 
@@ -54,19 +44,6 @@ module.exports = class UserAccessPrivilegesController{
         return response;
     }
 
-    static getPrivilegesForParticularUserForParticularRole(userId,roleCode,accessPrivilegeCode) {
 
-        return new Promise(function(resolve, reject) {
-            var myPromise = ModelMaster.getPrivilegesForParticularUserForParticularRole(userId,roleCode,accessPrivilegeCode);
-            myPromise.then(
-              function(result) {
-                  resolve(result);
-              },
-              function(err) {
-                  reject(err);
-              }
-            );
-        });
-    }
 
 }

@@ -21,12 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorAccessPrivilegesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdminUserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdminUserAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorUserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorUserAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AccessPrivilegesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/SystemAdminRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AdministratorUserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorUserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -171,6 +174,15 @@
       <workItem from="1596868087933" duration="120000" />
       <workItem from="1596887422118" duration="4675000" />
       <workItem from="1596899322159" duration="9182000" />
+      <workItem from="1596966186584" duration="59000" />
+      <workItem from="1596969140569" duration="961000" />
+      <workItem from="1596975185956" duration="221000" />
+      <workItem from="1597050059113" duration="1820000" />
+      <workItem from="1597125291085" duration="5997000" />
+      <workItem from="1597154472734" duration="595000" />
+      <workItem from="1597220490612" duration="602000" />
+      <workItem from="1597252775014" duration="600000" />
+      <workItem from="1597328493951" duration="600000" />
     </task>
     <servers />
   </component>
@@ -206,11 +218,11 @@
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state width="944" height="506" key="DebuggerActiveHint/65.24.1301.744@65.24.1301.744" timestamp="1593524319933" />
-    <state x="402" y="141" width="424" height="482" key="FileChooserDialogImpl" timestamp="1596889852004">
+    <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl" timestamp="1597154481727">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1594911152591" />
-    <state x="402" y="141" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1596889852004" />
+    <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1597154481727" />
     <state width="1278" height="337" key="GridCell.Tab.0.bottom" timestamp="1594064690799">
       <screen x="65" y="24" width="1301" height="744" />
     </state>

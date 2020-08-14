@@ -20,7 +20,10 @@ module.exports = class AdminUserAccessPrivilegesController{
     return response;
   }
 
-
+  static async getAllAdminPrivilegesByFullDescription(){
+    let response = await Repository.getAllAdminPrivilegesByFullDescription(tableName);
+    return response;
+  }
 
 
   static async selectSpecific(columnName,columnValue){

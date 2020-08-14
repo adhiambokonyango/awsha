@@ -19,6 +19,11 @@ module.exports = class AdministratorUserAccessPrivilegesController{
     return response;
   }
 
+  static async getAllAdministratorPrivilegesByFullDescription(){
+    let response = await Repository.getAllAdministratorPrivilegesByFullDescription(tableName);
+    return response;
+  }
+
 
 
 

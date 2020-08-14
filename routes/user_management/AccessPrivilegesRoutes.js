@@ -43,7 +43,7 @@ router.post("/get_all_access_privileges", urlencodedParser, function(
   request,
   response
 ) {
-  var myPromise = AccessPrivilegesController.get_all_records();
+  var myPromise = AccessPrivilegesController.selectAll();
 
   myPromise.then(
     function(result) {

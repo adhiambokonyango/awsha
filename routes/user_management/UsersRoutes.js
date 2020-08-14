@@ -203,6 +203,24 @@ router.post('/update_individual_users',urlencodedParser,function(request,respons
 
 });
 
+router.post('/get_users_and_privileges',urlencodedParser,function(request,response){
+
+
+
+    var myPromise = UsersController.getAllUsersAndPrivileges();
+
+
+    myPromise.then(function(result) {
+
+        var response_object={results:result}
+        response.send(response_object);
+    }, function(err) {
+        response.send("An error occurred");
+        console.log(err);
+    })
+
+});
+
 
 
 module.exports = router;

@@ -27,7 +27,7 @@ router.post(
     date.setHours(date.getHours() + 0);
 
     var jsonObject_ = {
-      PermisionStatus: request.body.PermisionStatus
+      PermissionStatus: request.body.PermissionStatus
     };
 
     var myPromise = UserAccessPrivilegesController.individualUpdate(
@@ -49,30 +49,7 @@ router.post(
   }
 );
 
-router.post("/get_specific_privileges", urlencodedParser, function(
-  request,
-  response
-) {
-  var mKey = request.body.column_name;
-  //var mValue=parseInt(request.query.search_value, 10);
-  var mValue = request.body.search_value;
 
-  var myPromise = UserAccessPrivilegesController.get_specific_records(
-    mKey,
-    mValue
-  );
-
-  myPromise.then(
-    function(result) {
-      var response_object = { results: result };
-      response.send(response_object);
-    },
-    function(err) {
-      response.send("An error occurred");
-      console.log(err);
-    }
-  );
-});
 
 router.post("/add_user_access_privileges", urlencodedParser, function(
   request,
@@ -82,7 +59,7 @@ router.post("/add_user_access_privileges", urlencodedParser, function(
     UserId: request.body.UserId,
     UserRoleId: request.body.UserRoleId,
     AccessPrivilegeId: request.body.AccessPrivilegeId,
-    PermisionStatus: request.body.PermisionStatus
+    PermissionStatus: request.body.PermissionStatus
   };
 
   var myPromise = UserAccessPrivilegesController.insert(jsonObject_);
@@ -120,6 +97,26 @@ router.post("/get_all_user_access_privileges", urlencodedParser, function(
   );
 });
 
+router.post('/get_user_privileges_by_full_description',urlencodedParser,function(request,response){
+
+
+
+  var myPromise = UserAccessPrivilegesController.getAllUserPrivilegesByFullDescription();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
+
+
+
 router.post("/get_specific_user_access_privileges", urlencodedParser, function(
   request,
   response
@@ -155,7 +152,7 @@ router.post("/update_user_access_privileges", urlencodedParser, function(
   var jsonObject_ = {
     UserRoleId: request.body.UserRoleId,
     AccessPrivilegeId: request.body.AccessPrivilegeId,
-    PermisionStatus: request.body.PermisionStatus
+    PermissionStatus: request.body.PermissionStatus
   };
 
   var myPromise = UserAccessPrivilegesController.batch_update(jsonObject_);
@@ -236,7 +233,7 @@ router.post(
   "/user_access_privileges_user_specific_query",
   urlencodedParser,
   function(request, response) {
-    var ColumnName = request.body.PermisionStatus;
+    var ColumnName = request.body.PermissionStatus;
     //var mValue=parseInt(request.body.search_value, 10);
     var value_ = request.body.value_;
 
