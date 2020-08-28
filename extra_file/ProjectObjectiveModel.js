@@ -7,10 +7,10 @@ ModelMaster then passes parameters to its
 functions.
 */
 
-const ModelMaster = require("../ModelMaster.js");
-const TableName = "company_user";
+const ModelMaster = require("../models/ModelMaster.js");
+const TableName = "project_objective";
 
-module.exports = class CompanyUserModel {
+module.exports = class ProjectObjectiveModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -41,6 +41,22 @@ module.exports = class CompanyUserModel {
       );
     });
   }
+
+  static adminPageDisplay(ColumnName, value_) {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.adminPageDisplay(TableName, ColumnName, value_);
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
+
+
 
   static get_specific_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
@@ -156,4 +172,20 @@ module.exports = class CompanyUserModel {
       );
     });
   }
+
+  static getAllProjectsByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      var myPromise = ModelMaster.getAllProjectsByFullDescription();
+      myPromise.then(
+        function(result) {
+          resolve(result);
+        },
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
+
+
 };

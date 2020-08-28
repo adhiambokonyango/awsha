@@ -2,7 +2,7 @@
 This class is the Company table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"CompanyUserController" class
+"ObjectivePercentageController" class
 */
 
 
@@ -11,7 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const CompanyUserController = require('../../controllers/menu/CompanyUserController.js');
+const ObjectivePercentageController = require('./ObjectivePercentageController.js');
 
 
 
@@ -23,7 +23,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_company_user', urlencodedParser,function(request,response){
+router.post('/add_objective_percentage', urlencodedParser,function(request,response){
 
 
 
@@ -31,14 +31,15 @@ router.post('/add_company_user', urlencodedParser,function(request,response){
 
 
 
-    CompanyId:request.body.CompanyId,
-    UserId:request.body.UserId,
+    ProjectObjectiveId:request.body.ProjectObjectiveId,
+    AssignedPercentage:request.body.AssignedPercentage,
+
 
 
   };
 
 
-  var myPromise = CompanyUserController.insert(jsonObject_);
+  var myPromise = ObjectivePercentageController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -57,9 +58,9 @@ router.post('/add_company_user', urlencodedParser,function(request,response){
 
 
 
-router.post('/get_all_company_user',urlencodedParser,function(request,response){
+router.post('/get_all_objective_percentage',urlencodedParser,function(request,response){
 
-  var myPromise = CompanyUserController.get_all_records();
+  var myPromise = ObjectivePercentageController.get_all_records();
 
 
   myPromise.then(function(result) {
@@ -81,7 +82,7 @@ router.post('/get_all_company_user',urlencodedParser,function(request,response){
 
 
 
-router.post('/get_specific_company_user',urlencodedParser,function(request,response){
+router.post('/get_specific_objective_percentage',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -89,7 +90,7 @@ router.post('/get_specific_company_user',urlencodedParser,function(request,respo
 
 
 
-  var myPromise = CompanyUserController.get_specific_records(mKey,mValue);
+  var myPromise = ObjectivePercentageController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -115,15 +116,16 @@ router.post('/get_specific_company_user',urlencodedParser,function(request,respo
 
 
 
-router.post('/update_company_user',urlencodedParser,function(request,response){
+router.post('/update_objective_percentage',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
 
 
-    CompanyId:request.body.CompanyId,
-    UserId:request.body.UserId,
+    ProjectObjectiveId:request.body.ProjectObjectiveId,
+    AssignedPercentage:request.body.AssignedPercentage,
+
 
 
 
@@ -131,7 +133,7 @@ router.post('/update_company_user',urlencodedParser,function(request,response){
 
 
 
-  var myPromise = CompanyUserController.batch_update(jsonObject_);
+  var myPromise = ObjectivePercentageController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -152,7 +154,7 @@ router.post('/update_company_user',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_individual_company_user',urlencodedParser,function(request,response){
+router.post('/update_individual_objective_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -162,14 +164,16 @@ router.post('/update_individual_company_user',urlencodedParser,function(request,
 
 
 
-    CompanyId:request.body.CompanyId,
-    UserId:request.body.UserId,
+    ProjectObjectiveId:request.body.ProjectObjectiveId,
+    AssignedPercentage:request.body.AssignedPercentage,
+
+
 
 
   };
 
 
-  var myPromise = CompanyUserController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = ObjectivePercentageController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -188,7 +192,7 @@ router.post('/update_individual_company_user',urlencodedParser,function(request,
 
 
 
-router.post('/delete_individual_company_user',urlencodedParser,function(request,response){
+router.post('/delete_individual_objective_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -199,7 +203,7 @@ router.post('/delete_individual_company_user',urlencodedParser,function(request,
   var UserId=request.body.UserId;
 
 
-  var myPromise = CompanyUserController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivePercentageController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -218,7 +222,7 @@ router.post('/delete_individual_company_user',urlencodedParser,function(request,
 
 
 
-router.post('/get_number_of_company_user_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_objective_percentage_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -226,7 +230,7 @@ router.post('/get_number_of_company_user_records',urlencodedParser,function(requ
 
 
 
-  var myPromise = CompanyUserController.get_number_of_records(column_name,value_);
+  var myPromise = ObjectivePercentageController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -246,7 +250,7 @@ router.post('/get_number_of_company_user_records',urlencodedParser,function(requ
 
 
 
-router.post('/company_user_specific_query',urlencodedParser,function(request,response){
+router.post('/objective_percentage_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -258,7 +262,7 @@ router.post('/company_user_specific_query',urlencodedParser,function(request,res
 
 
 
-  var myPromise = CompanyUserController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivePercentageController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {

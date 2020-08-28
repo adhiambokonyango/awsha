@@ -2,7 +2,7 @@
 This class is the Company table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"ObjectivesController" class
+"PercentageController" class
 */
 
 
@@ -11,7 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const ObjectivesController = require('../../controllers/menu/ObjectivesController.js');
+const PercentageController = require('./PercentageController.js');
 
 
 
@@ -23,20 +23,25 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_objectives', urlencodedParser,function(request,response){
+router.post('/add_percentage', urlencodedParser,function(request,response){
 
 
 
   var	jsonObject_ = {
 
-    ProjectId:request.body.ProjectId,
-    ObjectiveDescription:request.body.ObjectiveDescription,
+
+
+
     ObjectivePercentage:request.body.ObjectivePercentage,
+
+
+
+
 
   };
 
 
-  var myPromise = ObjectivesController.insert(jsonObject_);
+  var myPromise = PercentageController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -55,26 +60,9 @@ router.post('/add_objectives', urlencodedParser,function(request,response){
 
 
 
-router.post('/get_all_objectives',urlencodedParser,function(request,response){
+router.post('/get_all_percentage',urlencodedParser,function(request,response){
 
-  var myPromise = ObjectivesController.get_all_records();
-
-
-  myPromise.then(function(result) {
-
-    var response_object={results:result}
-    response.send(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
-});
-
-
-router.post('/sum_all_objectives',urlencodedParser,function(request,response){
-
-  var myPromise = ObjectivesController.sumAllObjectivePercentages();
+  var myPromise = PercentageController.get_all_records();
 
 
   myPromise.then(function(result) {
@@ -89,13 +77,30 @@ router.post('/sum_all_objectives',urlencodedParser,function(request,response){
 });
 
 
+router.post('/sum_all_percentage',urlencodedParser,function(request,response){
+
+  var myPromise = PercentageController.sumAllObjectivePercentages();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
 
 
 
 
 
 
-router.post('/get_specific_objectives',urlencodedParser,function(request,response){
+
+
+router.post('/get_specific_percentage',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -103,7 +108,7 @@ router.post('/get_specific_objectives',urlencodedParser,function(request,respons
 
 
 
-  var myPromise = ObjectivesController.get_specific_records(mKey,mValue);
+  var myPromise = PercentageController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -129,24 +134,22 @@ router.post('/get_specific_objectives',urlencodedParser,function(request,respons
 
 
 
-router.post('/update_objectives',urlencodedParser,function(request,response){
+router.post('/update_percentage',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
 
 
-
-    ProjectId:request.body.ProjectId,
-    ObjectiveDescription:request.body.ObjectiveDescription,
     ObjectivePercentage:request.body.ObjectivePercentage,
+
 
 
   };
 
 
 
-  var myPromise = ObjectivesController.batch_update(jsonObject_);
+  var myPromise = PercentageController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -167,7 +170,7 @@ router.post('/update_objectives',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_individual_objectives',urlencodedParser,function(request,response){
+router.post('/update_individual_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -177,16 +180,14 @@ router.post('/update_individual_objectives',urlencodedParser,function(request,re
 
 
 
-
-    ProjectId:request.body.ProjectId,
-    ObjectiveDescription:request.body.ObjectiveDescription,
     ObjectivePercentage:request.body.ObjectivePercentage,
+
 
 
   };
 
 
-  var myPromise = ObjectivesController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = PercentageController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -205,7 +206,7 @@ router.post('/update_individual_objectives',urlencodedParser,function(request,re
 
 
 
-router.post('/delete_individual_objectives',urlencodedParser,function(request,response){
+router.post('/delete_individual_percentage',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -216,7 +217,7 @@ router.post('/delete_individual_objectives',urlencodedParser,function(request,re
   var UserId=request.body.UserId;
 
 
-  var myPromise = ObjectivesController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = PercentageController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -235,7 +236,7 @@ router.post('/delete_individual_objectives',urlencodedParser,function(request,re
 
 
 
-router.post('/get_number_of_objectives_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_percentage_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -243,7 +244,7 @@ router.post('/get_number_of_objectives_records',urlencodedParser,function(reques
 
 
 
-  var myPromise = ObjectivesController.get_number_of_records(column_name,value_);
+  var myPromise = PercentageController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -263,7 +264,7 @@ router.post('/get_number_of_objectives_records',urlencodedParser,function(reques
 
 
 
-router.post('/objectives_user_specific_query',urlencodedParser,function(request,response){
+router.post('/percentage_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -275,7 +276,7 @@ router.post('/objectives_user_specific_query',urlencodedParser,function(request,
 
 
 
-  var myPromise = ObjectivesController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = PercentageController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {

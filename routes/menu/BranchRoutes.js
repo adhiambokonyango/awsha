@@ -1,8 +1,8 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the Company table's route class.
+This class is the Branch table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"ObjectivePercentageController" class
+"BranchController" class
 */
 
 
@@ -11,8 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const ObjectivePercentageController = require('../../controllers/menu/ObjectivePercentageController.js');
-
+const BranchController = require('../../controllers/menu/BranchController.js');
 
 
 //Middle ware that is specific to this router
@@ -23,7 +22,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_objective_percentage', urlencodedParser,function(request,response){
+router.post('/add_branch', urlencodedParser,function(request,response){
 
 
 
@@ -31,15 +30,14 @@ router.post('/add_objective_percentage', urlencodedParser,function(request,respo
 
 
 
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
-    AssignedPercentage:request.body.AssignedPercentage,
+    BranchName:request.body.BranchName,
 
 
 
   };
 
 
-  var myPromise = ObjectivePercentageController.insert(jsonObject_);
+  var myPromise = BranchController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -58,9 +56,9 @@ router.post('/add_objective_percentage', urlencodedParser,function(request,respo
 
 
 
-router.post('/get_all_objective_percentage',urlencodedParser,function(request,response){
+router.post('/get_all_branch',urlencodedParser,function(request,response){
 
-  var myPromise = ObjectivePercentageController.get_all_records();
+  var myPromise = BranchController.get_all_records();
 
 
   myPromise.then(function(result) {
@@ -82,7 +80,7 @@ router.post('/get_all_objective_percentage',urlencodedParser,function(request,re
 
 
 
-router.post('/get_specific_objective_percentage',urlencodedParser,function(request,response){
+router.post('/get_specific_branch',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -90,7 +88,7 @@ router.post('/get_specific_objective_percentage',urlencodedParser,function(reque
 
 
 
-  var myPromise = ObjectivePercentageController.get_specific_records(mKey,mValue);
+  var myPromise = BranchController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -116,24 +114,18 @@ router.post('/get_specific_objective_percentage',urlencodedParser,function(reque
 
 
 
-router.post('/update_objective_percentage',urlencodedParser,function(request,response){
+router.post('/update_branch',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
-
-
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
-    AssignedPercentage:request.body.AssignedPercentage,
-
-
-
+    BranchName:request.body.BranchName,
 
   };
 
 
 
-  var myPromise = ObjectivePercentageController.batch_update(jsonObject_);
+  var myPromise = BranchController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -154,7 +146,7 @@ router.post('/update_objective_percentage',urlencodedParser,function(request,res
 
 
 
-router.post('/update_individual_objective_percentage',urlencodedParser,function(request,response){
+router.post('/update_individual_branch',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -164,16 +156,12 @@ router.post('/update_individual_objective_percentage',urlencodedParser,function(
 
 
 
-    ProjectObjectiveId:request.body.ProjectObjectiveId,
-    AssignedPercentage:request.body.AssignedPercentage,
-
-
-
+    BranchName:request.body.BranchName,
 
   };
 
 
-  var myPromise = ObjectivePercentageController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = BranchController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -192,7 +180,7 @@ router.post('/update_individual_objective_percentage',urlencodedParser,function(
 
 
 
-router.post('/delete_individual_objective_percentage',urlencodedParser,function(request,response){
+router.post('/delete_individual_branch',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -203,7 +191,7 @@ router.post('/delete_individual_objective_percentage',urlencodedParser,function(
   var UserId=request.body.UserId;
 
 
-  var myPromise = ObjectivePercentageController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = BranchController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -222,7 +210,7 @@ router.post('/delete_individual_objective_percentage',urlencodedParser,function(
 
 
 
-router.post('/get_number_of_objective_percentage_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_branch_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -230,7 +218,7 @@ router.post('/get_number_of_objective_percentage_records',urlencodedParser,funct
 
 
 
-  var myPromise = ObjectivePercentageController.get_number_of_records(column_name,value_);
+  var myPromise = BranchController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -250,7 +238,7 @@ router.post('/get_number_of_objective_percentage_records',urlencodedParser,funct
 
 
 
-router.post('/objective_percentage_user_specific_query',urlencodedParser,function(request,response){
+router.post('/branch_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -262,7 +250,7 @@ router.post('/objective_percentage_user_specific_query',urlencodedParser,functio
 
 
 
-  var myPromise = ObjectivePercentageController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = BranchController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {

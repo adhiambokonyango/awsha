@@ -8,9 +8,9 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "project_objective";
+const TableName = "branches";
 
-module.exports = class ProjectObjectiveModel {
+module.exports = class BranchModel {
   constructor() {}
 
   static insert(jsonObject_) {
@@ -41,22 +41,6 @@ module.exports = class ProjectObjectiveModel {
       );
     });
   }
-
-  static adminPageDisplay(ColumnName, value_) {
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.adminPageDisplay(TableName, ColumnName, value_);
-      myPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
-
 
   static get_specific_records(ColumnName, value_) {
     return new Promise(function(resolve, reject) {
@@ -172,20 +156,4 @@ module.exports = class ProjectObjectiveModel {
       );
     });
   }
-
-  static getAllProjectsByFullDescription() {
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.getAllProjectsByFullDescription();
-      myPromise.then(
-        function(result) {
-          resolve(result);
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
-
 };

@@ -1,17 +1,17 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
 This class is the term_iterations's controller class.
 It receives calls from the "CompanyRoutes" class and
-passes the calls down to the "CompanyModel" class
+passes the calls down to the "ObjectivePercentageModel" class
 */
 
 
 
-const CompanyModel = require('../../models/menu/CompanyModel.js');
+const ObjectivePercentageModel = require('./ObjectivePercentageModel.js');
 
 
 
 
-module.exports = class CompanyController{
+module.exports = class ObjectivePercentageController{
   constructor(){
 
   }
@@ -21,7 +21,7 @@ module.exports = class CompanyController{
   static insert(jsonObject_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = CompanyModel.insert(jsonObject_);
+      var myPromise = ObjectivePercentageModel.insert(jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -41,7 +41,7 @@ module.exports = class CompanyController{
   static get_all_records(){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = CompanyModel.get_all_records();
+      var myPromise = ObjectivePercentageModel.get_all_records();
 
 
       myPromise.then(function(result) {
@@ -61,7 +61,7 @@ module.exports = class CompanyController{
   static get_specific_records(ColumnName,value_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = CompanyModel.get_specific_records(ColumnName,value_);
+      var myPromise = ObjectivePercentageModel.get_specific_records(ColumnName,value_);
 
 
       myPromise.then(function(result) {
@@ -80,7 +80,7 @@ module.exports = class CompanyController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = CompanyModel.batch_update(jsonObject_);
+      var myPromise = ObjectivePercentageModel.batch_update(jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -101,7 +101,7 @@ module.exports = class CompanyController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = CompanyModel.individual_record_update(ColumnName,value_,jsonObject_);
+      var myPromise = ObjectivePercentageModel.individual_record_update(ColumnName,value_,jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -122,7 +122,7 @@ module.exports = class CompanyController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = CompanyModel.delete_user_specic_record(ColumnName,value_,UserIdColumnName,UserId);
+      var myPromise = ObjectivePercentageModel.delete_user_specic_record(ColumnName,value_,UserIdColumnName,UserId);
 
 
       myPromise.then(function(result) {
@@ -141,7 +141,7 @@ module.exports = class CompanyController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = CompanyModel.get_number_of_records(ColumnName,value_);
+      var myPromise = ObjectivePercentageModel.get_number_of_records(ColumnName,value_);
 
 
       myPromise.then(function(result) {
@@ -163,7 +163,7 @@ module.exports = class CompanyController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = CompanyModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+      var myPromise = ObjectivePercentageModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
       myPromise.then(function(result) {

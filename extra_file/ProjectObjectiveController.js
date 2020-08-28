@@ -6,7 +6,7 @@ passes the calls down to the "ProjectObjectiveModel" class
 
 
 
-const ProjectObjectiveModel = require('../../models/menu/ProjectObjectiveModel.js');
+const ProjectObjectiveModel = require('./ProjectObjectiveModel.js');
 
 
 

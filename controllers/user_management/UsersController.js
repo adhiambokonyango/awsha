@@ -6,7 +6,9 @@ const RolesController=require('./RolesController');
 const UserRolesController=require('./UserRolesController');
 const AccessPrivilegesController=require('./AccessPrivilegesController');
 const UserAccessPrivilegesController=require('./UserAccessPrivilegesController');
-const ModelMaster = require("../../models/ModelMaster");
+const BranchController=require('../menu/BranchController');
+const BranchActivationController=require('../menu/BranchActivationController');
+
 
 module.exports = class UsersController{
 
@@ -33,6 +35,7 @@ module.exports = class UsersController{
             let insertResponse = await Repository.insert(tableName,recordObject);
 
             UsersController.assignAUserRoles(insertResponse.recordId);
+            UsersController.assignAUserBranch(insertResponse.recordId);
             responseObject = {registrationSuccess: true, registrationErrorMessage: "User registration successful" , userDetails: insertResponse }
 
         } else {
@@ -87,24 +90,24 @@ module.exports = class UsersController{
                               NationalId: userExistsResult[0].NationalId,
 
                           };
+
                       } else {
                           var error_msg = "Login failed";
                           var response_object = { error: true, error_msg: error_msg };
                       }
-
-                      //loginResponse.push(response_object);
                       resolve(response_object);
+                      //loginResponse.push(response_object);
+
                   }
+
               },
+
               function(err) {
                   reject(err);
               }
             );
         });
     }
-
-
-
 
 
     static async selectAll(){
@@ -166,4 +169,21 @@ module.exports = class UsersController{
             await UserAccessPrivilegesController.insert(payload);
         }
     }
+
+
+    static async assignAUserBranch(userId) {
+        let branchesArray = await BranchController.get_all_records();
+
+        for (let i = 0;i<branchesArray.length;i++) {
+            const payload = {
+                UserId: userId,
+                BranchId: branchesArray[i].BranchId,
+                BranchActivationStatus: 0
+            };
+
+            await BranchActivationController.insert(payload);
+        }
+    }
+
+
 }

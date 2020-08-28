@@ -32,6 +32,7 @@ router.post('/add_projects', urlencodedParser,function(request,response){
 
     ProjectTitle:request.body.ProjectTitle,
     ProjectDescription:request.body.ProjectDescription,
+    ProjectProgress: request.body.ProjectProgress
 
 
   };
@@ -125,7 +126,7 @@ router.post('/update_projects',urlencodedParser,function(request,response){
 
     ProjectTitle:request.body.ProjectTitle,
     ProjectDescription:request.body.ProjectDescription,
-
+    ProjectProgress: request.body.ProjectProgress
 
   };
 
@@ -163,7 +164,7 @@ router.post('/update_individual_projects',urlencodedParser,function(request,resp
 
     ProjectTitle:request.body.ProjectTitle,
     ProjectDescription:request.body.ProjectDescription,
-
+    ProjectProgress: request.body.ProjectProgress
 
   };
 

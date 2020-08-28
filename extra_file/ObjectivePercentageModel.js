@@ -7,7 +7,7 @@ ModelMaster then passes parameters to its
 functions.
 */
 
-const ModelMaster = require("../ModelMaster.js");
+const ModelMaster = require("../models/ModelMaster.js");
 const TableName = "objective_percentage";
 
 module.exports = class ObjectivePercentageModel {

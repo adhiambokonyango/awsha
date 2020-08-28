@@ -85,10 +85,6 @@ app.use((req, res, next) => {
 
 
 
-
-
-
-
 app.get("/display_image", (req, res) => {
   //res.sendFile(path.join(__dirname, "./uploads/df37ba09d301ed7e28a5ac7bdbd36a92"));
   var imageID = req.query.imageID;
@@ -117,12 +113,14 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
 // app.use(require("./routes/menu/ProjectObjectiveRoutes"));
 // app.use(require("./routes/menu/ProjectsRoutes.js"));
 // app.use(require("./routes/menu/TeamRoutes.js"));
-// app.use(require("./routes/menu/CompanyRoutes.js"));
+
+ app.use(require("./routes/menu/BranchActivationRoutes.js"));
 
 // app.use(require("./routes/menu/PercentageRoutes.js"));
 // app.use(require("./routes/menu/ObjectivesRoutes.js"));
 // app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
-// app.use(require("./routes/menu/CompanyUserRoutes.js"));
+
+ app.use(require("./routes/menu/BranchRoutes.js"));
 
 app.use(require("./routes/menu/GenderRoutes.js"));
 
@@ -143,6 +141,11 @@ app.use(require("./routes/user_management/AdministratorUserAccessPrivilegesRoute
 app.use(require("./routes/user_management/AdministratorRolesRoutes.js"));
 app.use(require("./routes/user_management/AdministratorAccessPrivilegesRoutes.js"));
 app.use(require("./routes/user_management/AdministratorRoutes.js"));
+
+  app.use(require("./routes/session_management/SessionActivitiesRoutes.js"));
+  app.use(require("./routes/session_management/SessionLogsRoutes.js"));
+  app.use(require("./routes/session_management/UserSessionActivitiesRoutes.js"));
+
 
 
 

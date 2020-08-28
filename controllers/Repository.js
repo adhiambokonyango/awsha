@@ -365,4 +365,23 @@ delete() deletes a specific record(s).
     });
   }
 
+  static getAllCompanyStatusByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM company_user INNER JOIN company ON company.CompanyId = company_user.CompanyId INNER JOIN users ON users.UserId = company_user.UserId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+
+
 };

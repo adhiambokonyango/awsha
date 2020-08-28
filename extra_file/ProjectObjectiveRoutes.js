@@ -1,8 +1,8 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the Company table's route class.
+This class is the projects table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"CompanyController" class
+"ProjectsObjectiveController" class
 */
 
 
@@ -11,7 +11,9 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const CompanyController = require('../../controllers/menu/CompanyController.js');
+const ProjectsObjectiveController = require('./ProjectObjectiveController.js');
+
+
 
 
 //Middle ware that is specific to this router
@@ -22,47 +24,22 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_company', urlencodedParser,function(request,response){
-
+router.post('/add_project_objectives', urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
 
-
-    CompanyName:request.body.CompanyName,
-    CompanyEmail:request.body.CompanyEmail,
-    CompanyPostalAdress:request.body.CompanyPostalAdress,
-    CompanyLocation:request.body.CompanyLocation,
-    CompanyTelephone:request.body.CompanyTelephone,
-
+    ProjectId:request.body.ProjectId,
+    ObjectiveId:request.body.ObjectiveId,
 
 
   };
 
-
-  var myPromise = CompanyController.insert(jsonObject_);
-
-
-  myPromise.then(function(result) {
-
-    var response_object={results:result}
-    response.send(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
-});
+  console.log(jsonObject_);
 
 
-
-
-
-
-router.post('/get_all_company',urlencodedParser,function(request,response){
-
-  var myPromise = CompanyController.get_all_records();
+  var myPromise = ProjectsObjectiveController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -81,10 +58,26 @@ router.post('/get_all_company',urlencodedParser,function(request,response){
 
 
 
+router.post('/get_all_project_objectives',urlencodedParser,function(request,response){
+
+  var myPromise = ProjectsObjectiveController.get_all_records();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
 
 
 
-router.post('/get_specific_company',urlencodedParser,function(request,response){
+
+router.post('/get_display',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -92,7 +85,32 @@ router.post('/get_specific_company',urlencodedParser,function(request,response){
 
 
 
-  var myPromise = CompanyController.get_specific_records(mKey,mValue);
+  var myPromise = ProjectsObjectiveController.adminPageDisplay(mKey,mValue);
+
+
+  myPromise.then(function(result) {
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+
+});
+
+
+
+
+router.post('/get_specific_project_objectives',urlencodedParser,function(request,response){
+  var mKey=request.body.column_name;
+  //var mValue=parseInt(request.query.search_value, 10);
+  var mValue=request.body.search_value;
+
+
+
+
+  var myPromise = ProjectsObjectiveController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -110,6 +128,23 @@ router.post('/get_specific_company',urlencodedParser,function(request,response){
 
 
 
+router.post('/get_projects_by_full_description',urlencodedParser,function(request,response){
+
+
+
+  var myPromise = ProjectsObjectiveController.getAllProjectsByFullDescription();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
 
 
 
@@ -117,19 +152,16 @@ router.post('/get_specific_company',urlencodedParser,function(request,response){
 
 
 
-
-router.post('/update_company',urlencodedParser,function(request,response){
+router.post('/update_project_objectives',urlencodedParser,function(request,response){
 
 
   var	jsonObject_ = {
 
 
 
-    CompanyName:request.body.CompanyName,
-    CompanyEmail:request.body.CompanyEmail,
-    CompanyPostalAdress:request.body.CompanyPostalAdress,
-    CompanyLocation:request.body.CompanyLocation,
-    CompanyTelephone:request.body.CompanyTelephone,
+    ProjectId:request.body.ProjectId,
+    ObjectiveId:request.body.ObjectiveId,
+
 
 
 
@@ -137,7 +169,7 @@ router.post('/update_company',urlencodedParser,function(request,response){
 
 
 
-  var myPromise = CompanyController.batch_update(jsonObject_);
+  var myPromise = ProjectsObjectiveController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -158,7 +190,7 @@ router.post('/update_company',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_individual_company',urlencodedParser,function(request,response){
+router.post('/update_individual_project_objectives',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
@@ -167,19 +199,16 @@ router.post('/update_individual_company',urlencodedParser,function(request,respo
   var	jsonObject_ = {
 
 
+    ProjectId:request.body.ProjectId,
+    ObjectiveId:request.body.ObjectiveId,
 
-    CompanyName:request.body.CompanyName,
-    CompanyEmail:request.body.CompanyEmail,
-    CompanyPostalAdress:request.body.CompanyPostalAdress,
-    CompanyLocation:request.body.CompanyLocation,
-    CompanyTelephone:request.body.CompanyTelephone,
 
 
 
   };
 
 
-  var myPromise = CompanyController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = ProjectsObjectiveController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -198,7 +227,7 @@ router.post('/update_individual_company',urlencodedParser,function(request,respo
 
 
 
-router.post('/delete_individual_company',urlencodedParser,function(request,response){
+router.post('/delete_individual_project_objectives',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -209,7 +238,7 @@ router.post('/delete_individual_company',urlencodedParser,function(request,respo
   var UserId=request.body.UserId;
 
 
-  var myPromise = CompanyController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = ProjectsObjectiveController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -228,7 +257,7 @@ router.post('/delete_individual_company',urlencodedParser,function(request,respo
 
 
 
-router.post('/get_number_of_company_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_project_objectives_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -236,7 +265,7 @@ router.post('/get_number_of_company_records',urlencodedParser,function(request,r
 
 
 
-  var myPromise = CompanyController.get_number_of_records(column_name,value_);
+  var myPromise = ProjectsObjectiveController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -256,7 +285,7 @@ router.post('/get_number_of_company_records',urlencodedParser,function(request,r
 
 
 
-router.post('/company_user_specific_query',urlencodedParser,function(request,response){
+router.post('/project_objectives_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -268,7 +297,7 @@ router.post('/company_user_specific_query',urlencodedParser,function(request,res
 
 
 
-  var myPromise = CompanyController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = ProjectsObjectiveController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {

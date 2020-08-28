@@ -1,12 +1,12 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
 This class is the term_iterations's controller class.
-It receives calls from the "CompanyRoutes" class and
-passes the calls down to the "ObjectivePercentageModel" class
+It receives calls from the "ObjectivePercentageRoutes" class and
+passes the calls down to the "PercentageModel" class
 */
 
 
 
-const ObjectivePercentageModel = require('../../models/menu/ObjectivePercentageModel.js');
+const PercentageModel = require('./PercentageModel.js');
 
 
 
@@ -21,7 +21,7 @@ module.exports = class ObjectivePercentageController{
   static insert(jsonObject_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = ObjectivePercentageModel.insert(jsonObject_);
+      var myPromise = PercentageModel.insert(jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -41,7 +41,7 @@ module.exports = class ObjectivePercentageController{
   static get_all_records(){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = ObjectivePercentageModel.get_all_records();
+      var myPromise = PercentageModel.get_all_records();
 
 
       myPromise.then(function(result) {
@@ -61,7 +61,7 @@ module.exports = class ObjectivePercentageController{
   static get_specific_records(ColumnName,value_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = ObjectivePercentageModel.get_specific_records(ColumnName,value_);
+      var myPromise = PercentageModel.get_specific_records(ColumnName,value_);
 
 
       myPromise.then(function(result) {
@@ -80,7 +80,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ObjectivePercentageModel.batch_update(jsonObject_);
+      var myPromise = PercentageModel.batch_update(jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -101,7 +101,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ObjectivePercentageModel.individual_record_update(ColumnName,value_,jsonObject_);
+      var myPromise = PercentageModel.individual_record_update(ColumnName,value_,jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -122,7 +122,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ObjectivePercentageModel.delete_user_specic_record(ColumnName,value_,UserIdColumnName,UserId);
+      var myPromise = PercentageModel.delete_user_specic_record(ColumnName,value_,UserIdColumnName,UserId);
 
 
       myPromise.then(function(result) {
@@ -141,7 +141,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ObjectivePercentageModel.get_number_of_records(ColumnName,value_);
+      var myPromise = PercentageModel.get_number_of_records(ColumnName,value_);
 
 
       myPromise.then(function(result) {
@@ -163,7 +163,24 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ObjectivePercentageModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+      var myPromise = PercentageModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+
+
+      myPromise.then(function(result) {
+
+        resolve(result);
+      }, function(err) {
+        reject(err);
+      })
+
+    })
+  }
+
+  static sumAllObjectivePercentages(){
+    return new Promise(function(resolve, reject) {
+
+
+      var myPromise = PercentageModel.sumAllObjectivePercentages();
 
 
       myPromise.then(function(result) {

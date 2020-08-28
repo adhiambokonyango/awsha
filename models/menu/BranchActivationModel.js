@@ -8,9 +8,9 @@ functions.
 */
 
 const ModelMaster = require("../ModelMaster.js");
-const TableName = "company";
+const TableName = "branch_activation";
 
-module.exports = class CompanyModel {
+module.exports = class BranchActivationModel {
   constructor() {}
 
   static insert(jsonObject_) {

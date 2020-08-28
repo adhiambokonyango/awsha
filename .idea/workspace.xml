@@ -20,16 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/controllers/session_management/SessionActivitiesController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/session_management/SessionLogsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/session_management/UserSessionActivitiesController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/session_management/SessionActivitiesRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/session_management/UserSessionActivitiesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdminUserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdminUserAccessPrivilegesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorUserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorUserAccessPrivilegesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/CompanyUserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/CompanyUserController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/AccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AccessPrivilegesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdminUserAccessPrivilegesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/AdministratorUserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorUserAccessPrivilegesRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/CompanyUserRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/CompanyUserRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,6 +185,25 @@
       <workItem from="1597220490612" duration="602000" />
       <workItem from="1597252775014" duration="600000" />
       <workItem from="1597328493951" duration="600000" />
+      <workItem from="1597410124847" duration="613000" />
+      <workItem from="1597428018099" duration="1277000" />
+      <workItem from="1597509708005" duration="6212000" />
+      <workItem from="1597594436859" duration="2187000" />
+      <workItem from="1597649769247" duration="8000" />
+      <workItem from="1597650920616" duration="1340000" />
+      <workItem from="1597767504637" duration="1822000" />
+      <workItem from="1597858808419" duration="599000" />
+      <workItem from="1597928565727" duration="658000" />
+      <workItem from="1598101120917" duration="3935000" />
+      <workItem from="1598169648493" duration="8337000" />
+      <workItem from="1598345897567" duration="19000" />
+      <workItem from="1598346408794" duration="36000" />
+      <workItem from="1598347154725" duration="15000" />
+      <workItem from="1598347754720" duration="393000" />
+      <workItem from="1598348486993" duration="27000" />
+      <workItem from="1598352856803" duration="4188000" />
+      <workItem from="1598368065716" duration="3509000" />
+      <workItem from="1598530421411" duration="6508000" />
     </task>
     <servers />
   </component>

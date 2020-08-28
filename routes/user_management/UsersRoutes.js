@@ -95,9 +95,6 @@ router.post('/get_all_users',urlencodedParser,function(request,response){
 
 
 
-
-
-
 router.post('/update_users',urlencodedParser,function(request,response){
 
     var date = new Date();

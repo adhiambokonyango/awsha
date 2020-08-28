@@ -1,27 +1,31 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
 This class is the term_iterations's controller class.
-It receives calls from the "ObjectivePercentageRoutes" class and
-passes the calls down to the "PercentageModel" class
+It receives calls from the "CompanyRoutes" class and
+passes the calls down to the "BranchActivationModel" class
 */
 
 
 
-const PercentageModel = require('../../models/menu/PercentageModel.js');
+const BranchActivationModel = require('../../models/menu/BranchActivationModel.js');
+
+const Repository=require('../Repository');
+const tableName = "company_user";
 
 
-
-
-module.exports = class ObjectivePercentageController{
+module.exports = class BranchActivationController{
   constructor(){
 
   }
 
-
+  static async individualUpdate(columnName,columnValue,recordObject){
+    let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
+    return response;
+  }
 
   static insert(jsonObject_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = PercentageModel.insert(jsonObject_);
+      var myPromise = BranchActivationModel.insert(jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -36,12 +40,16 @@ module.exports = class ObjectivePercentageController{
 
 
 
+  static async getAllCompanyStatusByFullDescription(){
+    let response = await Repository.getAllCompanyStatusByFullDescription(tableName);
+    return response;
+  }
 
 
   static get_all_records(){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = PercentageModel.get_all_records();
+      var myPromise = BranchActivationModel.get_all_records();
 
 
       myPromise.then(function(result) {
@@ -61,7 +69,7 @@ module.exports = class ObjectivePercentageController{
   static get_specific_records(ColumnName,value_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = PercentageModel.get_specific_records(ColumnName,value_);
+      var myPromise = BranchActivationModel.get_specific_records(ColumnName,value_);
 
 
       myPromise.then(function(result) {
@@ -80,7 +88,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = PercentageModel.batch_update(jsonObject_);
+      var myPromise = BranchActivationModel.batch_update(jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -101,7 +109,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = PercentageModel.individual_record_update(ColumnName,value_,jsonObject_);
+      var myPromise = BranchActivationModel.individual_record_update(ColumnName,value_,jsonObject_);
 
 
       myPromise.then(function(result) {
@@ -122,7 +130,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = PercentageModel.delete_user_specic_record(ColumnName,value_,UserIdColumnName,UserId);
+      var myPromise = BranchActivationModel.delete_user_specic_record(ColumnName,value_,UserIdColumnName,UserId);
 
 
       myPromise.then(function(result) {
@@ -141,7 +149,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = PercentageModel.get_number_of_records(ColumnName,value_);
+      var myPromise = BranchActivationModel.get_number_of_records(ColumnName,value_);
 
 
       myPromise.then(function(result) {
@@ -163,24 +171,7 @@ module.exports = class ObjectivePercentageController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = PercentageModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
-
-
-      myPromise.then(function(result) {
-
-        resolve(result);
-      }, function(err) {
-        reject(err);
-      })
-
-    })
-  }
-
-  static sumAllObjectivePercentages(){
-    return new Promise(function(resolve, reject) {
-
-
-      var myPromise = PercentageModel.sumAllObjectivePercentages();
+      var myPromise = BranchActivationModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
       myPromise.then(function(result) {
