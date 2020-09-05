@@ -26,7 +26,6 @@ router.post("/add_session_logs", urlencodedParser, function(request, response) {
     UserId: request.body.UserId,
     SessionStartDate: date,
     SessionEndDate: date,
-
   };
 
   var myPromise = SessionLogsController.insert(jsonObject_);

@@ -1,13 +1,10 @@
 const Repository=require('../Repository');
-const tableName="session_logs";
-const UsersController=require('../user_management/UsersController');
-
-module.exports = class SessionLogsController{
+const tableName="users_objectives";
 
 
+module.exports = class UsersObjectivesController{
 
   static async insert(recordObject){
-    //let userId = await UsersController.selectSpecific(recordObject.UserId)
     let response = await Repository.insert(tableName,recordObject);
     return response;
   }

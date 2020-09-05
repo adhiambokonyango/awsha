@@ -111,7 +111,7 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
 /*SON/2019-1-04 11:50 - DEVELOPMENT : Start Common Utilities*/
 
 // app.use(require("./routes/menu/ProjectObjectiveRoutes"));
-// app.use(require("./routes/menu/ProjectsRoutes.js"));
+ app.use(require("./routes/menu/ProjectsRoutes.js"));
 // app.use(require("./routes/menu/TeamRoutes.js"));
 
  app.use(require("./routes/menu/BranchActivationRoutes.js"));

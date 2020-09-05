@@ -8,7 +8,7 @@ const AccessPrivilegesController=require('./AccessPrivilegesController');
 const UserAccessPrivilegesController=require('./UserAccessPrivilegesController');
 const BranchController=require('../menu/BranchController');
 const BranchActivationController=require('../menu/BranchActivationController');
-
+const SessionLogsController=require('../session_management/SessionLogsController');
 
 module.exports = class UsersController{
 
@@ -90,6 +90,18 @@ module.exports = class UsersController{
                               NationalId: userExistsResult[0].NationalId,
 
                           };
+
+                         let userId = response_object.UserId;
+                          var date = new Date();
+                          // date.setHours(date.getHours()+0);
+                          date.setTime(date.getTime());
+                         const payload = {
+                             UserId: userId,
+                             SessionStartDate: date,
+                             SessionEndDate: date
+                         };
+                         let session = SessionLogsController.insert(payload);
+                         resolve(session);
 
                       } else {
                           var error_msg = "Login failed";
@@ -185,5 +197,14 @@ module.exports = class UsersController{
         }
     }
 
+    // static async registerSession() {
+    //     let loggedIn = UsersController.login();
+    //     for(let i = 0;i<loggedIn.length;i++){
+    //         const payload = {
+    //             UserId: loggedIn.UserId
+    //         };
+    //         await SessionLogsController.insert(payload);
+    //     }
+    // }
 
 }
