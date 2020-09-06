@@ -9,6 +9,7 @@ const UserAccessPrivilegesController=require('./UserAccessPrivilegesController')
 const BranchController=require('../menu/BranchController');
 const BranchActivationController=require('../menu/BranchActivationController');
 const SessionLogsController=require('../session_management/SessionLogsController');
+const UserSessionActivitiesController=require('../session_management/UserSessionActivitiesController')
 
 module.exports = class UsersController{
 
@@ -49,6 +50,7 @@ module.exports = class UsersController{
 
     static login(jsonObject_) {
         return new Promise(function(resolve, reject) {
+
             var TableName = "users";
             var SearchColumn = "Email";
             var SearchValue = jsonObject_.AttemptedEmail;
@@ -91,17 +93,32 @@ module.exports = class UsersController{
 
                           };
 
-                         let userId = response_object.UserId;
+                          // create session
+                          let userId = response_object.UserId;
                           var date = new Date();
-                          // date.setHours(date.getHours()+0);
                           date.setTime(date.getTime());
-                         const payload = {
-                             UserId: userId,
-                             SessionStartDate: date,
-                             SessionEndDate: date
-                         };
-                         let session = SessionLogsController.insert(payload);
-                         resolve(session);
+                          const payload = {
+                              UserId: userId,
+                              SessionStartDate: date,
+                              SessionEndDate: date
+                          };
+                          let session = SessionLogsController.insert(payload);
+                          session.then(
+                            function(response_object){
+                                let sessionId = response_object.recordId;
+                                const payload = {
+                                    SessionLogId: sessionId,
+                                    SessionActivityId: 1,
+                                    SessionActivityDate: date
+                                }
+                                let userActivity = UserSessionActivitiesController.insert(payload);
+                                userActivity.then(function(result){
+                                    if(result){
+                                        resolve(result);
+                                    }
+                                })
+
+                            });
 
                       } else {
                           var error_msg = "Login failed";
@@ -109,10 +126,10 @@ module.exports = class UsersController{
                       }
                       resolve(response_object);
                       //loginResponse.push(response_object);
-
                   }
 
               },
+
 
               function(err) {
                   reject(err);
@@ -197,14 +214,5 @@ module.exports = class UsersController{
         }
     }
 
-    // static async registerSession() {
-    //     let loggedIn = UsersController.login();
-    //     for(let i = 0;i<loggedIn.length;i++){
-    //         const payload = {
-    //             UserId: loggedIn.UserId
-    //         };
-    //         await SessionLogsController.insert(payload);
-    //     }
-    // }
 
 }

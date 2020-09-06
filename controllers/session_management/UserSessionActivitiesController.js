@@ -1,5 +1,6 @@
 const Repository=require('../Repository');
 const tableName="user_session_activities";
+const UsersController=require('../user_management/UsersController')
 
 
 module.exports = class UserSessionActivitiesController{
@@ -32,4 +33,18 @@ module.exports = class UserSessionActivitiesController{
     let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
     return response;
   }
+
+  static async userSession() {
+    let session = await UsersController.login();
+    let sessionId = session.recordId;
+    const payload = {
+      SessionLogId: sessionId,
+      SessionActivityId: 1
+    }
+    await UserSessionActivitiesController.insert(payload);
+    console.log(sessionId);
+  }
+
+
+
 }

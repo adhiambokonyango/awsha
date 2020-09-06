@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/menu/UsersObjectivesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/menu/UsersObjectivesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/session_management/SessionLogsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/session_management/SessionLogsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +57,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -68,8 +66,11 @@
       <recent name="$PROJECT_DIR$/routes/menu" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Node.js.UsersController.js">
     <configuration name="SessionLogsRoutes.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="SessionLogsRoutes.js" working-dir="$PROJECT_DIR$/routes/session_management">
+      <method v="2" />
+    </configuration>
+    <configuration name="UsersController.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controllers/user_management/UsersController.js" working-dir="$PROJECT_DIR$/controllers/user_management">
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
@@ -81,10 +82,12 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.UsersController.js" />
         <item itemvalue="Node.js.SessionLogsRoutes.js" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -200,11 +203,13 @@
       <workItem from="1598969127989" duration="3390000" />
       <workItem from="1599240990514" duration="361000" />
       <workItem from="1599244390262" duration="2647000" />
+      <workItem from="1599304214219" duration="13685000" />
+      <workItem from="1599323531580" duration="128000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -244,26 +249,26 @@
     </state>
     <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1594911152591" />
     <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1597154481727" />
-    <state width="1271" height="489" key="GridCell.Tab.0.bottom" timestamp="1599248963315">
+    <state width="1271" height="172" key="GridCell.Tab.0.bottom" timestamp="1599323164227">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
-    <state width="1271" height="489" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599248963315" />
-    <state width="1271" height="489" key="GridCell.Tab.0.center" timestamp="1599248963314">
+    <state width="1271" height="172" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599323164227" />
+    <state width="1271" height="172" key="GridCell.Tab.0.center" timestamp="1599323164226">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
-    <state width="1271" height="489" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1599248963314" />
-    <state width="1271" height="489" key="GridCell.Tab.0.left" timestamp="1599248963314">
+    <state width="1271" height="172" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1599323164226" />
+    <state width="1271" height="172" key="GridCell.Tab.0.left" timestamp="1599323164225">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
-    <state width="1271" height="489" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1599248963314" />
-    <state width="1271" height="489" key="GridCell.Tab.0.right" timestamp="1599248963315">
+    <state width="1271" height="172" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1599323164225" />
+    <state width="1271" height="172" key="GridCell.Tab.0.right" timestamp="1599323164226">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
-    <state width="1271" height="489" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1599248963315" />
+    <state width="1271" height="172" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1599323164226" />
     <state width="1271" height="489" key="GridCell.Tab.1.bottom" timestamp="1599248963316">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
@@ -398,8 +403,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js</url>
-          <line>31</line>
-          <properties lambdaOrdinal="-1" />
+          <line>30</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
