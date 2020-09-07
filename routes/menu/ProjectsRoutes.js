@@ -37,7 +37,7 @@ router.post('/add_projects', urlencodedParser,function(request,response){
 
   };
   
-  console.log(jsonObject_);
+  //console.log(jsonObject_);
 
 
   var myPromise = ProjectsController.insert(jsonObject_);
@@ -78,7 +78,29 @@ router.post('/get_all_projects',urlencodedParser,function(request,response){
 
 
 
+router.post("/project_selection", urlencodedParser, function(
+  request,
+  response
+) {
+  var jsonObject_ = {
+    AttemptedProjectTitle: request.body.AttemptedProjectTitle,
 
+  };
+
+  var myPromise = ProjectsController.projectSelect(
+    jsonObject_
+  );
+
+  myPromise.then(
+    function(result) {
+      response.send(result);
+    },
+    function(err) {
+      console.log(err);
+      response.send("An error occurred");
+    }
+  );
+});
 
 
 

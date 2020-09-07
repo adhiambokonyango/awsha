@@ -6,6 +6,8 @@ const AdministratorRolesController=require('./AdministratorRolesController');
 const AdministratorUserRolesController=require('./AdministratorUserRolesController');
 const AdministratorAccessPrivilegesController=require('./AdministratorAccessPrivilegesController');
 const AdministratorUserAccessPrivilegesController=require('./AdministratorUserAccessPrivilegesController');
+const AdministratorSessionLogsController=require('../session_management/AdministratorSessionLogsController');
+const AdministratorUserSessionActivitiesController=require('../session_management/AdministratorUserSessionActivitiesController')
 
 module.exports = class AdministratorController{
 
@@ -86,6 +88,32 @@ module.exports = class AdministratorController{
                 NationalId: userExistsResult[0].NationalId,
 
               };
+              // create session
+              let userId = response_object.AdministratorId;
+              var date = new Date();
+              date.setTime(date.getTime());
+              const payload = {
+                AdministratorId: userId,
+                AdministratorSessionStartDate: date,
+                AdministratorSessionEndDate: date
+              };
+              let session = AdministratorSessionLogsController.insert(payload);
+              session.then(
+                function(response_object){
+                  let sessionId = response_object.recordId;
+                  const payload = {
+                    AdministratorSessionLogId: sessionId,
+                    AdministratorSessionActivityId: 1,
+                    AdministratorSessionActivityDate: date
+                  }
+                  let userActivity = AdministratorUserSessionActivitiesController.insert(payload);
+                  userActivity.then(function(result){
+                    if(result){
+                      resolve(result);
+                    }
+                  })
+
+                });
             } else {
               var error_msg = "Login failed";
               var response_object = { error: true, error_msg: error_msg };

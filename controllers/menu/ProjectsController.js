@@ -7,7 +7,8 @@ passes the calls down to the "ProjectsModel" class
 
 
 const ProjectsModel = require('../../models/menu/ProjectsModel.js');
-
+const Repository=require('../Repository')
+const tableName="projects";
 
 
 
@@ -16,9 +17,82 @@ module.exports = class ProjectsController{
 
   }
 
+// record project
+  static async insert(recordObject){
+    let userValidationColumn = "ProjectTitle";
+    let responseObject = {};
+
+    let projectRequestArray = await ProjectsController.get_specific_records(userValidationColumn,recordObject.ProjectTitle);
+
+    if(projectRequestArray.length === 0) {
+
+      let insertResponse = await Repository.insert(tableName,recordObject);
+
+      responseObject = {registrationSuccess: true, registrationErrorMessage: "User registration successful" , userDetails: insertResponse }
+
+    } else {
+      responseObject = {registrationSuccess: false, registrationErrorMessage: "A user already exists by this email"}
+
+    }
+
+    return responseObject;
+  }
 
 
-  static insert(jsonObject_){
+// UI project selection
+  static projectSelect(jsonObject_) {
+    return new Promise(function(resolve, reject) {
+
+      var TableName = "projects";
+      var SearchColumn = "ProjectTitle";
+      var SearchValue = jsonObject_.AttemptedProjectTitle;
+
+      var myModelMasterPromise = Repository.selectSpecific(
+        TableName,
+        SearchColumn,
+        SearchValue
+      );
+
+      myModelMasterPromise.then(
+        function(titleExistsResult) {
+          if (titleExistsResult.length < 0) {
+            var error_msg = "There is no project by this title";
+            var response_object = { error: true, error_msg: error_msg };
+            resolve(response_object);
+          } else {
+            var projectTitle = titleExistsResult[0].ProjectTitle;
+            if (
+              projectTitle ===
+              titleExistsResult[0].ProjectTitle
+            ) {
+              var response_object = {
+                error: false,
+                ProjectId: titleExistsResult[0].ProjectId,
+                ProjectTitle: titleExistsResult[0].ProjectTitle
+
+              };
+
+            } else {
+              var error_msg = "Selection failed";
+              var response_object = { error: true, error_msg: error_msg };
+            }
+            resolve(response_object);
+            //loginResponse.push(response_object);
+          }
+
+        },
+
+
+        function(err) {
+          reject(err);
+        }
+      );
+    });
+  }
+
+
+
+  static recordProject(jsonObject_){
     return new Promise(function(resolve, reject) {
 
       var myPromise = ProjectsModel.insert(jsonObject_);

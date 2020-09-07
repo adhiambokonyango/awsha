@@ -6,6 +6,8 @@ const SystemAdminRolesController=require('./SystemAdminRolesController');
 const AdminUserRolesController=require('./AdminUserRolesController');
 const SystemAdminAccessPrivilegesController=require('./SystemAdminAccessPrivilegesController');
 const AdminUserAccessPrivilegesController=require('./AdminUserAccessPrivilegesController');
+const AdminSessionLogsController=require('../session_management/AdminSessionLogsController');
+const AdminUserSessionActivitiesController=require('../session_management/AdminUserSessionActivitiesController')
 
 module.exports = class SystemAdminController{
 
@@ -84,8 +86,33 @@ module.exports = class SystemAdminController{
                 Email: userExistsResult[0].Email,
                 GenderId: userExistsResult[0].GenderId,
                 NationalId: userExistsResult[0].NationalId,
-
               };
+              // create session
+              let userId = response_object.AdminId;
+              var date = new Date();
+              date.setTime(date.getTime());
+              const payload = {
+                AdminId: userId,
+                AdminSessionStartDate: date,
+                AdminSessionEndDate: date
+              };
+              let session = AdminSessionLogsController.insert(payload);
+              session.then(
+                function(response_object){
+                  let sessionId = response_object.recordId;
+                  const payload = {
+                    AdminSessionLogId: sessionId,
+                    AdminSessionActivityId: 1,
+                    AdminSessionActivityDate: date
+                  }
+                  let userActivity = AdminUserSessionActivitiesController.insert(payload);
+                  userActivity.then(function(result){
+                    if(result){
+                      resolve(result);
+                    }
+                  })
+
+                });
             } else {
               var error_msg = "Login failed";
               var response_object = { error: true, error_msg: error_msg };

@@ -142,9 +142,17 @@ app.use(require("./routes/user_management/AdministratorRolesRoutes.js"));
 app.use(require("./routes/user_management/AdministratorAccessPrivilegesRoutes.js"));
 app.use(require("./routes/user_management/AdministratorRoutes.js"));
 
-  app.use(require("./routes/session_management/SessionActivitiesRoutes.js"));
-  app.use(require("./routes/session_management/SessionLogsRoutes.js"));
-  app.use(require("./routes/session_management/UserSessionActivitiesRoutes.js"));
+app.use(require("./routes/session_management/SessionActivitiesRoutes.js"));
+app.use(require("./routes/session_management/SessionLogsRoutes.js"));
+app.use(require("./routes/session_management/UserSessionActivitiesRoutes.js"));
+
+app.use(require("./routes/session_management/AdminSessionLogsRoutes.js"));
+app.use(require("./routes/session_management/AdminSessionActivitiesRoutes.js"));
+app.use(require("./routes/session_management/AdminUserSessionActivitiesRoutes.js"));
+
+app.use(require("./routes/session_management/AdministratorSessionActivitiesRoutes.js"));
+app.use(require("./routes/session_management/AdministratorSessionLogsRoutes.js"));
+app.use(require("./routes/session_management/AdministratorUserSessionActivitiesRoutes.js"));
 
 
 
