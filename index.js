@@ -111,18 +111,16 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
 /*SON/2019-1-04 11:50 - DEVELOPMENT : Start Common Utilities*/
 
 // app.use(require("./routes/menu/ProjectObjectiveRoutes"));
- app.use(require("./routes/menu/ProjectsRoutes.js"));
 // app.use(require("./routes/menu/TeamRoutes.js"));
-
- app.use(require("./routes/menu/BranchActivationRoutes.js"));
-
 // app.use(require("./routes/menu/PercentageRoutes.js"));
 // app.use(require("./routes/menu/ObjectivesRoutes.js"));
 // app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
 
- app.use(require("./routes/menu/BranchRoutes.js"));
-
+app.use(require("./routes/menu/ProjectsRoutes.js"));
+app.use(require("./routes/menu/BranchActivationRoutes.js"));
+app.use(require("./routes/menu/BranchRoutes.js"));
 app.use(require("./routes/menu/GenderRoutes.js"));
+app.use(require("./routes/menu/BranchProjectsRoutes"));
 
 app.use(require("./routes/user_management/RolesRoutes.js"));
 app.use(require("./routes/user_management/AccessPrivilegesRoutes.js"));

@@ -194,7 +194,6 @@ module.exports = class UsersController{
                 AccessPrivilegeId: accessPrivilegeArray[i].AccessPrivilegeId,
                 PermissionStatus: 0
             };
-
             await UserAccessPrivilegesController.insert(payload);
         }
     }

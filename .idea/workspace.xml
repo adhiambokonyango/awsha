@@ -20,25 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/awsha (2).sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/session_management/AdminSessionActivitiesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/session_management/AdminSessionLogsController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/session_management/AdminUserSessionActivitiesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/session_management/AdministratorSessionActivitiesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/session_management/AdministratorSessionLogsController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/session_management/AdministratorUserSessionActivitiesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/session_management/AdminSessionActivitiesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/session_management/AdminSessionLogsRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/session_management/AdminUserSessionActivitiesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/session_management/AdministratorSessionActivitiesRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/session_management/AdministratorSessionLogsRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/session_management/AdministratorUserSessionActivitiesRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/SystemAdminController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/ProjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ProjectsRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +209,8 @@
       <workItem from="1599323531580" duration="128000" />
       <workItem from="1599410819021" duration="3951000" />
       <workItem from="1599417379969" duration="2631000" />
-      <workItem from="1599464468991" duration="12266000" />
+      <workItem from="1599464468991" duration="12704000" />
+      <workItem from="1599490691691" duration="1263000" />
     </task>
     <servers />
   </component>

@@ -28,7 +28,7 @@ module.exports = class BranchModel {
     });
   }
 
-  static get_all_records() {
+  static selectAll() {
     return new Promise(function(resolve, reject) {
       var myPromise = ModelMaster.selectAll(TableName);
       myPromise.then(

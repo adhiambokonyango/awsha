@@ -38,10 +38,10 @@ module.exports = class BranchController{
 
 
 
-  static get_all_records(){
+  static selectAll(){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = BranchModel.get_all_records();
+      var myPromise = BranchModel.selectAll();
 
 
       myPromise.then(function(result) {

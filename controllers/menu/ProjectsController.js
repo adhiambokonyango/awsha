@@ -9,6 +9,8 @@ passes the calls down to the "ProjectsModel" class
 const ProjectsModel = require('../../models/menu/ProjectsModel.js');
 const Repository=require('../Repository')
 const tableName="projects";
+const BranchController=require('./BranchController');
+const BranchProjectsController=require('./BranchProjectsController');
 
 
 
@@ -29,7 +31,7 @@ module.exports = class ProjectsController{
       let insertResponse = await Repository.insert(tableName,recordObject);
 
       responseObject = {registrationSuccess: true, registrationErrorMessage: "User registration successful" , userDetails: insertResponse }
-
+      ProjectsController.assignAProjectBranch(insertResponse.recordId);
     } else {
       responseObject = {registrationSuccess: false, registrationErrorMessage: "A user already exists by this email"}
 
@@ -251,6 +253,17 @@ module.exports = class ProjectsController{
   }
 
 
+  static async assignAProjectBranch(userId) {
+    let branchesArray = await BranchController.get_all_records();
 
+    for (let i = 0;i<branchesArray.length;i++) {
+      const payload = {
+        ProjectId: userId,
+        BranchId: branchesArray[i].BranchId,
+        BranchProjectStatus: 0
+      };
 
+      await BranchProjectsController.insert(payload);
+    }
+  }
 }

@@ -58,7 +58,7 @@ router.post('/add_branch', urlencodedParser,function(request,response){
 
 router.post('/get_all_branch',urlencodedParser,function(request,response){
 
-  var myPromise = BranchController.get_all_records();
+  var myPromise = BranchController.selectAll();
 
 
   myPromise.then(function(result) {
