@@ -16,6 +16,40 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+router.post(
+  "/update_individual_end_time",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.SessionLogId;
+    var value_ = request.body.SessionLogId;
+    var date = new Date();
+    date.setTime(date.getTime());
+    var jsonObject_ = {
+      SessionEndDate: request.body.SessionEndDate
+    };
+
+    var myPromise = SessionLogsController.individualUpdate(
+      column_name,
+      value_,
+      jsonObject_
+    );
+
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+        console.log(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
+
+
+
 router.post("/add_session_logs", urlencodedParser, function(request, response) {
   var date = new Date();
   // date.setHours(date.getHours()+0);

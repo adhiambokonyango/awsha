@@ -37,6 +37,7 @@
     "validator": "^13.0.0"
   },
   "devDependencies": {
+    "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "prettier": "^1.17.0",

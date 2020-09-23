@@ -30,10 +30,10 @@ module.exports = class ProjectsController{
 
       let insertResponse = await Repository.insert(tableName,recordObject);
 
-      responseObject = {registrationSuccess: true, registrationErrorMessage: "User registration successful" , userDetails: insertResponse }
+      responseObject = {registrationSuccess: true, registrationErrorMessage: "project registration successful" , projectDetails: insertResponse }
       ProjectsController.assignAProjectBranch(insertResponse.recordId);
     } else {
-      responseObject = {registrationSuccess: false, registrationErrorMessage: "A user already exists by this email"}
+      responseObject = {registrationSuccess: false, registrationErrorMessage: "A project already exists by this title"}
 
     }
 
@@ -253,12 +253,12 @@ module.exports = class ProjectsController{
   }
 
 
-  static async assignAProjectBranch(userId) {
-    let branchesArray = await BranchController.get_all_records();
+  static async assignAProjectBranch(projectId) {
+    let branchesArray = await BranchController.selectAll();
 
     for (let i = 0;i<branchesArray.length;i++) {
       const payload = {
-        ProjectId: userId,
+        ProjectId: projectId,
         BranchId: branchesArray[i].BranchId,
         BranchProjectStatus: 0
       };

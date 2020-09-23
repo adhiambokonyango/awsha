@@ -9,9 +9,11 @@ const UserAccessPrivilegesController=require('./UserAccessPrivilegesController')
 const BranchController=require('../menu/BranchController');
 const BranchActivationController=require('../menu/BranchActivationController');
 const SessionLogsController=require('../session_management/SessionLogsController');
-const UserSessionActivitiesController=require('../session_management/UserSessionActivitiesController')
+const UserSessionActivitiesController=require('../session_management/UserSessionActivitiesController');
 
+const request = require('request');
 module.exports = class UsersController{
+
 
     static async insert(recordObject){
         let userValidationColumn = "Email";
@@ -92,7 +94,6 @@ module.exports = class UsersController{
                               NationalId: userExistsResult[0].NationalId,
 
                           };
-
                           // create session
                           let userId = response_object.UserId;
                           var date = new Date();
@@ -200,7 +201,7 @@ module.exports = class UsersController{
 
 
     static async assignAUserBranch(userId) {
-        let branchesArray = await BranchController.get_all_records();
+        let branchesArray = await BranchController.selectAll();
 
         for (let i = 0;i<branchesArray.length;i++) {
             const payload = {

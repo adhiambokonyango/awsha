@@ -383,5 +383,22 @@ delete() deletes a specific record(s).
   }
 
 
+  static getAllBanchProjectStatusByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM branch_projects INNER JOIN projects ON projects.ProjectId = branch_projects.ProjectId INNER JOIN branches ON branches.BranchId = branch_projects.BranchId ;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
 
 };

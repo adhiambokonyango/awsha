@@ -10,13 +10,21 @@ module.exports = class BranchProjectsController{
   }
 
 
+  static async getAllBanchProjectStatusByFullDescription(){
+    let response = await Repository.getAllBanchProjectStatusByFullDescription(tableName);
+    return response;
+  }
+
   static async selectAll(){
     let response = await Repository.selectAll(tableName);
     return response;
   }
 
 
+
   static async selectSpecific(columnName,columnValue){
+    columnName = "BranchProjectId";
+    columnValue = "BranchProjectId";
     let response = await Repository.selectSpecific(tableName,columnName,columnValue);
     return response;
   }
@@ -29,6 +37,8 @@ module.exports = class BranchProjectsController{
 
 
   static async individualUpdate(columnName,columnValue,recordObject){
+    columnName = "BranchProjectId";
+    columnValue = "BranchProjectId";
     let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
     return response;
   }

@@ -1,10 +1,13 @@
+
+
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const UsersController = require('../../controllers/user_management/UsersController');
 const ModelMaster = require("../../models/ModelMaster");
-
+const UssdTest = require('./UssdTest');
+const axios = require('axios');
 
 
 //Middle ware that is specific to this router
@@ -12,6 +15,26 @@ router.use(function timeLog(req, res, next) {
 
     next();
 });
+
+// attempt
+router.get('/ussd_test', urlencodedParser, function (request, response){
+    const url = "http://jsonplaceholder.typicode.com/posts";
+    const options = {
+        body: {}, response:{}, err:{}
+    };
+    const AXIOS_RESPONSE = axios.get(url, options);
+    response.json({
+        // count: AXIOS_RESPONSE.data.length,
+        repos: AXIOS_RESPONSE.data,
+    });
+    AXIOS_RESPONSE.then(
+      function(result){
+          console.log(result);
+      }
+    )
+})
+
+
 
 router.post('/user_registration', urlencodedParser,function(request,response){
 

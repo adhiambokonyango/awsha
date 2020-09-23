@@ -20,7 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/routes/user_management/UssdTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/BranchProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/BranchProjectsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/session_management/SessionLogsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/session_management/SessionLogsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UserAccessPrivilegesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/BranchProjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/BranchProjectsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UserAccessPrivilegesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,6 +225,15 @@
       <workItem from="1599417379969" duration="2631000" />
       <workItem from="1599464468991" duration="12704000" />
       <workItem from="1599490691691" duration="1263000" />
+      <workItem from="1600173255811" duration="3681000" />
+      <workItem from="1600264553020" duration="4757000" />
+      <workItem from="1600285141387" duration="539000" />
+      <workItem from="1600327143720" duration="2866000" />
+      <workItem from="1600424793333" duration="599000" />
+      <workItem from="1600426168487" duration="612000" />
+      <workItem from="1600672749746" duration="5139000" />
+      <workItem from="1600765674492" duration="2958000" />
+      <workItem from="1600884018631" duration="4775000" />
     </task>
     <servers />
   </component>
@@ -409,7 +432,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js</url>
-          <line>30</line>
+          <line>64</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>

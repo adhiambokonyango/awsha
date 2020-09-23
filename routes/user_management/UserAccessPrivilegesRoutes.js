@@ -124,16 +124,15 @@ router.post("/get_specific_user_access_privileges", urlencodedParser, function(
   var mKey = request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue = request.body.search_value;
-
-  var myPromise = UserAccessPrivilegesController.get_specific_records(
+  var myPromise = UserAccessPrivilegesController.selectSpecific(
     mKey,
     mValue
   );
-
   myPromise.then(
     function(result) {
       var response_object = { results: result };
       response.send(response_object);
+      console.log(response_object);
     },
     function(err) {
       response.send("An error occurred");

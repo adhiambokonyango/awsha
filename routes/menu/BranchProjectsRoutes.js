@@ -5,20 +5,45 @@ calls from the client and passes the calls down to the
 "BranchProjectsController" class
 */
 
-
-
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const BranchProjectsController = require('../../controllers/menu/BranchProjectsController.js');
 
-
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
-
   next();
 });
+
+router.post(
+  "/update_individual_branch_project_status",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+    var date = new Date();
+    date.setHours(date.getHours());
+    var jsonObject_ = {
+      BranchProjectStatus: request.body.BranchProjectStatus
+    };
+    var myPromise = BranchProjectsController.individualUpdate(
+      column_name,
+      value_,
+      jsonObject_
+    );
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
 
 
 
@@ -75,12 +100,23 @@ router.post('/get_all_branch_projects',urlencodedParser,function(request,respons
 
 });
 
+router.post('/get_all_branch_projects_by_full_description',urlencodedParser,function(request,response){
 
 
 
+  var myPromise = BranchProjectsController.getAllBanchProjectStatusByFullDescription();
 
 
+  myPromise.then(function(result) {
 
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
 
 
 router.post('/get_specific_branch_projects',urlencodedParser,function(request,response){
@@ -91,7 +127,7 @@ router.post('/get_specific_branch_projects',urlencodedParser,function(request,re
 
 
 
-  var myPromise = BranchProjectsController.get_specific_records(mKey,mValue);
+  var myPromise = BranchProjectsController.selectSpecific(mKey,mValue);
 
 
   myPromise.then(function(result) {

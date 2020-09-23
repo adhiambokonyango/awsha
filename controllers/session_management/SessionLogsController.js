@@ -1,6 +1,6 @@
 const Repository=require('../Repository');
 const tableName="session_logs";
-const UsersController=require('../user_management/UsersController');
+
 
 module.exports = class SessionLogsController{
 
@@ -32,6 +32,8 @@ module.exports = class SessionLogsController{
 
 
   static async individualUpdate(columnName,columnValue,recordObject){
+    columnName="SessionLogId",
+      columnValue="SessionLogId"
     let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
     return response;
   }
