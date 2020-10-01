@@ -385,7 +385,10 @@ delete() deletes a specific record(s).
 
   static getAllBanchProjectStatusByFullDescription() {
     return new Promise(function(resolve, reject) {
-      con.query("SELECT * FROM branch_projects INNER JOIN projects ON projects.ProjectId = branch_projects.ProjectId INNER JOIN branches ON branches.BranchId = branch_projects.BranchId ;", function(
+      con.query("SELECT *\n" +
+        "       FROM branch_projects \n" +
+        "      INNER JOIN projects ON projects.ProjectId = branch_projects.ProjectId \n" +
+        "      INNER JOIN branches ON branches.BranchId = branch_projects.BranchId ;", function(
         err,
         result,
         fields
@@ -400,5 +403,22 @@ delete() deletes a specific record(s).
     });
   }
 
+ // project branch details
+//   static projectBranchDetails() {
+//     return new Promise(function(resolve, reject) {
+//       con.query("SELECT * FROM projects INNER JOIN branches ON branches.BranchId = projects.BranchId GROUP BY projects.ProjectTitle;", function(
+//       err,
+//         result,
+//         fields
+//     ) {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           var returned_value_ = result;
+//           resolve(returned_value_);
+//         }
+//       });
+//   });
+// }
 
 };

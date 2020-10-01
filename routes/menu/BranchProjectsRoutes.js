@@ -118,6 +118,23 @@ router.post('/get_all_branch_projects_by_full_description',urlencodedParser,func
 
 });
 
+// router.post('/get_project_branch_details',urlencodedParser,function(request,response){
+//
+//
+//
+//   var myPromise = BranchProjectsController.projectBranchDetails();
+//
+//
+//   myPromise.then(function(result) {
+//
+//     var response_object={results:result}
+//     response.send(response_object);
+//   }, function(err) {
+//     response.send("An error occurred");
+//     console.log(err);
+//   })
+//
+// });
 
 router.post('/get_specific_branch_projects',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;

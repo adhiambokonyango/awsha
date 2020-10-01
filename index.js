@@ -111,7 +111,7 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
 // app.use(require("./routes/menu/ProjectObjectiveRoutes"));
 // app.use(require("./routes/menu/TeamRoutes.js"));
 // app.use(require("./routes/menu/PercentageRoutes.js"));
-// app.use(require("./routes/menu/ObjectivesRoutes.js"));
+ app.use(require("./routes/menu/ObjectivesRoutes.js"));
 // app.use(require("./routes/menu/ObjectivePercentageRoutes.js"));
 
 app.use(require("./routes/menu/ProjectsRoutes.js"));

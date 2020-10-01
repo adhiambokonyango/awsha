@@ -20,7 +20,10 @@ module.exports = class BranchProjectsController{
     return response;
   }
 
-
+  // static async projectBranchDetails(){
+  //   let response = await Repository.projectBranchDetails(tableName);
+  //   return response;
+  // }
 
   static async selectSpecific(columnName,columnValue){
     columnName = "BranchProjectId";

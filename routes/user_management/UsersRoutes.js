@@ -16,26 +16,6 @@ router.use(function timeLog(req, res, next) {
     next();
 });
 
-// attempt
-router.get('/ussd_test', urlencodedParser, function (request, response){
-    const url = "http://jsonplaceholder.typicode.com/posts";
-    const options = {
-        body: {}, response:{}, err:{}
-    };
-    const AXIOS_RESPONSE = axios.get(url, options);
-    response.json({
-        // count: AXIOS_RESPONSE.data.length,
-        repos: AXIOS_RESPONSE.data,
-    });
-    AXIOS_RESPONSE.then(
-      function(result){
-          console.log(result);
-      }
-    )
-})
-
-
-
 router.post('/user_registration', urlencodedParser,function(request,response){
 
     var date = new Date();

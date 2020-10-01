@@ -19,6 +19,8 @@ module.exports = class ProjectsController{
 
   }
 
+
+
 // record project
   static async insert(recordObject){
     let userValidationColumn = "ProjectTitle";
@@ -30,8 +32,16 @@ module.exports = class ProjectsController{
 
       let insertResponse = await Repository.insert(tableName,recordObject);
 
-      responseObject = {registrationSuccess: true, registrationErrorMessage: "project registration successful" , projectDetails: insertResponse }
       ProjectsController.assignAProjectBranch(insertResponse.recordId);
+
+      responseObject = {
+        registrationSuccess: true,
+        registrationErrorMessage: "project registration successful" ,
+        projectDetails: insertResponse,
+
+      }
+
+
     } else {
       responseObject = {registrationSuccess: false, registrationErrorMessage: "A project already exists by this title"}
 
@@ -93,7 +103,7 @@ module.exports = class ProjectsController{
   }
 
 
-
+// regular insert
   static recordProject(jsonObject_){
     return new Promise(function(resolve, reject) {
 
