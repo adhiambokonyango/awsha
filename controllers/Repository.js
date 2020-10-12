@@ -403,6 +403,24 @@ delete() deletes a specific record(s).
     });
   }
 
+  // projects and objectives
+  static getAllProjectsAndObjectivesByFullDescription() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM objectives INNER JOIN projects ON projects.ProjectId = objectives.ProjectId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
  // project branch details
 //   static projectBranchDetails() {
 //     return new Promise(function(resolve, reject) {

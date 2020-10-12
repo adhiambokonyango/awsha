@@ -7,8 +7,9 @@ passes the calls down to the "ObjectivesModel" class
 
 
 const ObjectivesModel = require('../../models/menu/ObjectivesModel.js');
-
-
+const Repository = require('../Repository');
+const tableName="objectives";
+const ProjectsController= require('../menu/ProjectsController')
 
 
 module.exports = class ObjectivesController{
@@ -45,8 +46,7 @@ module.exports = class ObjectivesController{
 
 
       myPromise.then(function(result) {
-
-        resolve(result);
+          resolve(result)
       }, function(err) {
         reject(err);
       })
@@ -55,7 +55,10 @@ module.exports = class ObjectivesController{
   }
 
 
-
+  static async getAllProjectsAndObjectivesByFullDescription(batchObject){
+    let response = await Repository.getAllProjectsAndObjectivesByFullDescription(tableName,batchObject);
+    return response;
+  }
 
 
   static get_specific_records(ColumnName,value_){
@@ -159,11 +162,10 @@ module.exports = class ObjectivesController{
 
 
 
-  static user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId){
+  static project_specific_select_query(value_){
     return new Promise(function(resolve, reject) {
 
-
-      var myPromise = ObjectivesModel.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+      var myPromise = ObjectivesModel.project_specific_select_query(value_);
 
 
       myPromise.then(function(result) {

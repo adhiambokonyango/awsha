@@ -132,19 +132,12 @@ module.exports = class ObjectivesModel {
     });
   }
 
-  static user_specific_select_query(
-    ColumnName,
+  static project_specific_select_query(
     value_,
-    UserIdColumnName,
-    UserId
   ) {
     return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.user_specific_select_query(
-        TableName,
-        ColumnName,
+      var myPromise = ModelMaster.project_specific_select_query(
         value_,
-        UserIdColumnName,
-        UserId
       );
       myPromise.then(
         function(result) {

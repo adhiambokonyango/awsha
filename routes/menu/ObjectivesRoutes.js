@@ -201,7 +201,23 @@ router.post('/update_individual_objectives',urlencodedParser,function(request,re
 });
 
 
+router.post('/get_all_objectives_projects_by_full_description',urlencodedParser,function(request,response){
 
+
+
+  var myPromise = ObjectivesController.getAllProjectsAndObjectivesByFullDescription();
+
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
 
 
 
@@ -263,19 +279,12 @@ router.post('/get_number_of_objectives_records',urlencodedParser,function(reques
 
 
 
-router.post('/objectives_user_specific_query',urlencodedParser,function(request,response){
+router.post('/objectives_project_select_query',urlencodedParser,function(request,response){
 
-  var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
-  var value_=request.body.value_;
+  var value_=request.body.ProjectId;
 
-  var UserIdColumnName=request.body.UserIdColumnName;
-
-  var UserId=request.body.UserId;
-
-
-
-  var myPromise = ObjectivesController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = ObjectivesController.project_specific_select_query( value_);
 
 
   myPromise.then(function(result) {

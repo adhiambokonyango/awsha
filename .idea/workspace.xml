@@ -22,12 +22,10 @@
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/BranchProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/BranchProjectsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/BranchProjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/BranchProjectsRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/UssdTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UssdTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/ObjectivesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ObjectivesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/menu/ObjectivesModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/menu/ObjectivesModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +73,8 @@
       <recent name="$PROJECT_DIR$/routes/menu" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration name="SessionLogsRoutes.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="SessionLogsRoutes.js" working-dir="$PROJECT_DIR$/routes/session_management">
+  <component name="RunManager" selected="Node.js.ObjectivesRoutes.js">
+    <configuration name="ObjectivesRoutes.js" type="NodeJSConfigurationType" path-to-js-file="ObjectivesRoutes.js" working-dir="$PROJECT_DIR$/routes/menu">
       <method v="2" />
     </configuration>
     <configuration name="UsersController.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controllers/user_management/UsersController.js" working-dir="$PROJECT_DIR$/controllers/user_management">
@@ -89,10 +87,14 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Node.js.ObjectivesRoutes.js" />
+      <item itemvalue="Node.js.UsersController.js" />
+      <item itemvalue="npm.start" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.UsersController.js" />
-        <item itemvalue="Node.js.SessionLogsRoutes.js" />
       </list>
     </recent_temporary>
   </component>
@@ -233,7 +235,15 @@
       <workItem from="1601313401650" duration="615000" />
       <workItem from="1601383308885" duration="599000" />
       <workItem from="1601481732139" duration="5483000" />
-      <workItem from="1601534848422" duration="5437000" />
+      <workItem from="1601534848422" duration="5671000" />
+      <workItem from="1601995770858" duration="637000" />
+      <workItem from="1601998074720" duration="2844000" />
+      <workItem from="1602054739900" duration="1365000" />
+      <workItem from="1602087241497" duration="605000" />
+      <workItem from="1602093346481" duration="8000" />
+      <workItem from="1602495797489" duration="4938000" />
+      <workItem from="1602520031516" duration="317000" />
+      <workItem from="1602520714188" duration="598000" />
     </task>
     <servers />
   </component>
@@ -265,107 +275,95 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="367" y="51" width="694" height="699" key="#SessionLogsRoutes.js/72.27.1294.741@72.27.1294.741" timestamp="1599244547828" />
+    <state x="177" y="55" width="1084" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602499804125">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="177" y="55" width="1084" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1294.741@72.27.1294.741" timestamp="1602499804125" />
     <state x="452" y="146" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596898791177">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="452" y="146" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1294.741@72.27.1294.741" timestamp="1596898791177" />
-    <state width="944" height="506" key="DebuggerActiveHint" timestamp="1593524319933">
-      <screen x="65" y="24" width="1301" height="744" />
-    </state>
-    <state width="944" height="506" key="DebuggerActiveHint/65.24.1301.744@65.24.1301.744" timestamp="1593524319933" />
     <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl" timestamp="1597154481727">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1594911152591" />
     <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1597154481727" />
-    <state width="1271" height="92" key="GridCell.Tab.0.bottom" timestamp="1599414946887">
+    <state width="1271" height="422" key="GridCell.Tab.0.bottom" timestamp="1602499860745">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
-    <state width="1271" height="92" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599414946887" />
-    <state width="1271" height="92" key="GridCell.Tab.0.center" timestamp="1599414946887">
+    <state width="1271" height="422" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860745" />
+    <state width="1271" height="422" key="GridCell.Tab.0.center" timestamp="1602499860744">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
-    <state width="1271" height="92" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1599414946887" />
-    <state width="1271" height="92" key="GridCell.Tab.0.left" timestamp="1599414946886">
+    <state width="1271" height="422" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860744" />
+    <state width="1271" height="422" key="GridCell.Tab.0.left" timestamp="1602499860741">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
-    <state width="1271" height="92" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1599414946886" />
-    <state width="1271" height="92" key="GridCell.Tab.0.right" timestamp="1599414946887">
+    <state width="1271" height="422" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860741" />
+    <state width="1271" height="422" key="GridCell.Tab.0.right" timestamp="1602499860745">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state width="1278" height="337" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
-    <state width="1271" height="92" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1599414946887" />
-    <state width="1271" height="92" key="GridCell.Tab.1.bottom" timestamp="1599414946888">
+    <state width="1271" height="422" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860745" />
+    <state width="1271" height="422" key="GridCell.Tab.1.bottom" timestamp="1602499860747">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.1.bottom/65.24.1301.744@65.24.1301.744" timestamp="1593529770958" />
-    <state width="1271" height="92" key="GridCell.Tab.1.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599414946888" />
-    <state width="1271" height="92" key="GridCell.Tab.1.center" timestamp="1599414946888">
+    <state width="1271" height="422" key="GridCell.Tab.1.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
+    <state width="1271" height="422" key="GridCell.Tab.1.center" timestamp="1602499860746">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.1.center/65.24.1301.744@65.24.1301.744" timestamp="1593529770957" />
-    <state width="1271" height="92" key="GridCell.Tab.1.center/72.27.1294.741@72.27.1294.741" timestamp="1599414946888" />
-    <state width="1271" height="92" key="GridCell.Tab.1.left" timestamp="1599414946888">
+    <state width="1271" height="422" key="GridCell.Tab.1.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860746" />
+    <state width="1271" height="422" key="GridCell.Tab.1.left" timestamp="1602499860746">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.1.left/65.24.1301.744@65.24.1301.744" timestamp="1593529770957" />
-    <state width="1271" height="92" key="GridCell.Tab.1.left/72.27.1294.741@72.27.1294.741" timestamp="1599414946888" />
-    <state width="1271" height="92" key="GridCell.Tab.1.right" timestamp="1599414946888">
+    <state width="1271" height="422" key="GridCell.Tab.1.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860746" />
+    <state width="1271" height="422" key="GridCell.Tab.1.right" timestamp="1602499860746">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.1.right/65.24.1301.744@65.24.1301.744" timestamp="1593529770958" />
-    <state width="1271" height="92" key="GridCell.Tab.1.right/72.27.1294.741@72.27.1294.741" timestamp="1599414946888" />
-    <state width="1271" height="92" key="GridCell.Tab.2.bottom" timestamp="1599414946890">
+    <state width="1271" height="422" key="GridCell.Tab.1.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860746" />
+    <state width="1271" height="422" key="GridCell.Tab.2.bottom" timestamp="1602499860748">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.2.bottom/65.24.1301.744@65.24.1301.744" timestamp="1593529770961" />
-    <state width="1271" height="92" key="GridCell.Tab.2.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599414946890" />
-    <state width="1271" height="92" key="GridCell.Tab.2.center" timestamp="1599414946889">
+    <state width="1271" height="422" key="GridCell.Tab.2.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860748" />
+    <state width="1271" height="422" key="GridCell.Tab.2.center" timestamp="1602499860747">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.2.center/65.24.1301.744@65.24.1301.744" timestamp="1593529770959" />
-    <state width="1271" height="92" key="GridCell.Tab.2.center/72.27.1294.741@72.27.1294.741" timestamp="1599414946889" />
-    <state width="1271" height="92" key="GridCell.Tab.2.left" timestamp="1599414946889">
+    <state width="1271" height="422" key="GridCell.Tab.2.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
+    <state width="1271" height="422" key="GridCell.Tab.2.left" timestamp="1602499860747">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.2.left/65.24.1301.744@65.24.1301.744" timestamp="1593529770959" />
-    <state width="1271" height="92" key="GridCell.Tab.2.left/72.27.1294.741@72.27.1294.741" timestamp="1599414946889" />
-    <state width="1271" height="92" key="GridCell.Tab.2.right" timestamp="1599414946889">
+    <state width="1271" height="422" key="GridCell.Tab.2.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
+    <state width="1271" height="422" key="GridCell.Tab.2.right" timestamp="1602499860747">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.2.right/65.24.1301.744@65.24.1301.744" timestamp="1593529770960" />
-    <state width="1271" height="92" key="GridCell.Tab.2.right/72.27.1294.741@72.27.1294.741" timestamp="1599414946889" />
-    <state width="1271" height="92" key="GridCell.Tab.3.bottom" timestamp="1599414946891">
+    <state width="1271" height="422" key="GridCell.Tab.2.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
+    <state width="1271" height="422" key="GridCell.Tab.3.bottom" timestamp="1602499860749">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.3.bottom/65.24.1301.744@65.24.1301.744" timestamp="1593529770962" />
-    <state width="1271" height="92" key="GridCell.Tab.3.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599414946891" />
-    <state width="1271" height="92" key="GridCell.Tab.3.center" timestamp="1599414946890">
+    <state width="1271" height="422" key="GridCell.Tab.3.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860749" />
+    <state width="1271" height="422" key="GridCell.Tab.3.center" timestamp="1602499860748">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.3.center/65.24.1301.744@65.24.1301.744" timestamp="1593529770961" />
-    <state width="1271" height="92" key="GridCell.Tab.3.center/72.27.1294.741@72.27.1294.741" timestamp="1599414946890" />
-    <state width="1271" height="92" key="GridCell.Tab.3.left" timestamp="1599414946890">
+    <state width="1271" height="422" key="GridCell.Tab.3.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860748" />
+    <state width="1271" height="422" key="GridCell.Tab.3.left" timestamp="1602499860748">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.3.left/65.24.1301.744@65.24.1301.744" timestamp="1593529770961" />
-    <state width="1271" height="92" key="GridCell.Tab.3.left/72.27.1294.741@72.27.1294.741" timestamp="1599414946890" />
-    <state width="1271" height="92" key="GridCell.Tab.3.right" timestamp="1599414946891">
+    <state width="1271" height="422" key="GridCell.Tab.3.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860748" />
+    <state width="1271" height="422" key="GridCell.Tab.3.right" timestamp="1602499860749">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1278" height="379" key="GridCell.Tab.3.right/65.24.1301.744@65.24.1301.744" timestamp="1593529770961" />
-    <state width="1271" height="92" key="GridCell.Tab.3.right/72.27.1294.741@72.27.1294.741" timestamp="1599414946891" />
+    <state width="1271" height="422" key="GridCell.Tab.3.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860749" />
     <state x="209" y="27" width="1022" height="737" key="SettingsEditor" timestamp="1596450785194">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="209" y="27" width="1022" height="737" key="SettingsEditor/72.27.1294.741@72.27.1294.741" timestamp="1596450785194" />
-    <state x="406" y="121" width="618" height="580" key="find.popup" timestamp="1593525144991">
-      <screen x="65" y="24" width="1301" height="744" />
+    <state x="242" y="99" width="943" height="603" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1602499574891">
+      <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state x="406" y="121" width="618" height="580" key="find.popup/65.24.1301.744@65.24.1301.744" timestamp="1593525144991" />
+    <state x="242" y="99" width="943" height="603" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/72.27.1294.741@72.27.1294.741" timestamp="1602499574891" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -434,6 +432,46 @@
           <url>file://$PROJECT_DIR$/routes/session_management/SessionLogsRoutes.js</url>
           <line>64</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js</url>
+          <line>286</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js</url>
+          <line>292</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controllers/menu/ObjectivesController.js</url>
+          <line>167</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controllers/menu/ObjectivesController.js</url>
+          <line>172</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/menu/ObjectivesModel.js</url>
+          <line>143</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/menu/ObjectivesModel.js</url>
+          <line>139</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
+          <line>323</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
+          <line>329</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

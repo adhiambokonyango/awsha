@@ -312,6 +312,28 @@ batch_program() is a special function that handles batch jobs.
   }
 
 
+  // project Id specific query
+  static project_specific_select_query(
+
+    value_,
+   
+  ) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT * FROM objectives WHERE ProjectId = " +
+        mysql.escape(value_)
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+
 
   /*This function implements a select query based on the session Id/User making this request*/
 
