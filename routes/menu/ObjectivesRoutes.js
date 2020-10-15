@@ -21,6 +21,38 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+router.post(
+  "/update_individual_objective_is_checkbox_checked",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+    var jsonObject_ = {
+      IsCheckBoxChecked: request.body.IsCheckBoxChecked
+    };
+
+    var myPromise = ObjectivesController.individual_record_update(
+      column_name,
+      value_,
+      jsonObject_
+    );
+
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
 
 
 router.post('/add_objectives', urlencodedParser,function(request,response){
@@ -32,7 +64,7 @@ router.post('/add_objectives', urlencodedParser,function(request,response){
     ProjectId:request.body.ProjectId,
     ObjectiveDescription:request.body.ObjectiveDescription,
     ObjectivePercentage:request.body.ObjectivePercentage,
-
+    IsCheckBoxChecked: 0
   };
 
 
@@ -140,7 +172,7 @@ router.post('/update_objectives',urlencodedParser,function(request,response){
     ProjectId:request.body.ProjectId,
     ObjectiveDescription:request.body.ObjectiveDescription,
     ObjectivePercentage:request.body.ObjectivePercentage,
-
+    IsCheckBoxChecked: 0
 
   };
 
@@ -181,7 +213,7 @@ router.post('/update_individual_objectives',urlencodedParser,function(request,re
     ProjectId:request.body.ProjectId,
     ObjectiveDescription:request.body.ObjectiveDescription,
     ObjectivePercentage:request.body.ObjectivePercentage,
-
+    IsCheckBoxChecked: 0
 
   };
 

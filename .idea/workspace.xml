@@ -21,11 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/menu/ObjectivesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ObjectivesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/menu/ObjectivesModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/menu/ObjectivesModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/ProjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ProjectsRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,6 +243,8 @@
       <workItem from="1602495797489" duration="4938000" />
       <workItem from="1602520031516" duration="317000" />
       <workItem from="1602520714188" duration="598000" />
+      <workItem from="1602579431833" duration="3098000" />
+      <workItem from="1602752109981" duration="2215000" />
     </task>
     <servers />
   </component>
@@ -435,12 +436,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js</url>
-          <line>286</line>
+          <line>318</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/menu/ObjectivesRoutes.js</url>
-          <line>292</line>
+          <line>324</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

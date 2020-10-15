@@ -104,7 +104,7 @@ module.exports = class ObjectivesController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ObjectivesModel.individual_record_update(ColumnName,value_,jsonObject_);
+      var myPromise = ObjectivesModel.individual_record_update(ColumnName,value_,jsonObject_, tableName);
 
 
       myPromise.then(function(result) {

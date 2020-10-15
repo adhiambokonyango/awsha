@@ -147,7 +147,7 @@ module.exports = class ProjectsController{
   static get_specific_records(ColumnName,value_){
     return new Promise(function(resolve, reject) {
 
-      var myPromise = ProjectsModel.get_specific_records(ColumnName,value_);
+      var myPromise = ProjectsModel.get_specific_records(ColumnName,value_, tableName);
 
 
       myPromise.then(function(result) {
@@ -187,7 +187,7 @@ module.exports = class ProjectsController{
     return new Promise(function(resolve, reject) {
 
 
-      var myPromise = ProjectsModel.individual_record_update(ColumnName,value_,jsonObject_);
+      var myPromise = ProjectsModel.individual_record_update(ColumnName,value_,jsonObject_, tableName);
 
 
       myPromise.then(function(result) {

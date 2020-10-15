@@ -21,6 +21,38 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+router.post(
+  "/update_individual_project_progress",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+    var jsonObject_ = {
+      ProjectProgress: request.body.ProjectProgress
+    };
+
+    var myPromise = ProjectsController.individual_record_update(
+      column_name,
+      value_,
+      jsonObject_
+    );
+
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
 
 
 router.post('/add_projects', urlencodedParser,function(request,response){
