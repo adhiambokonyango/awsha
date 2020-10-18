@@ -31,7 +31,8 @@ router.post('/add_team_members', urlencodedParser,function(request,response){
 
 
 
-    TeamName:request.body.TeamName,
+    TeamId:request.body.TeamId,
+    UserId: request.body.UserId
 
 
 
@@ -122,7 +123,8 @@ router.post('/update_team_members',urlencodedParser,function(request,response){
 
 
 
-    TeamName:request.body.TeamName,
+    TeamId:request.body.TeamId,
+    UserId: request.body.UserId
 
   };
 
@@ -159,7 +161,8 @@ router.post('/update_individual_team_members',urlencodedParser,function(request,
 
 
 
-    TeamName:request.body.TeamName,
+    TeamId:request.body.TeamId,
+    UserId: request.body.UserId
 
 
   };
