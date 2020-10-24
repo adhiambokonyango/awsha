@@ -15,7 +15,8 @@ const TeamController = require('../../controllers/menu/TeamController.js');
 
 
 
-//Middle ware that is specific to this router
+//Middle ware that is specific
+// to this router
 router.use(function timeLog(req, res, next) {
 
   next();
@@ -30,9 +31,9 @@ router.post('/add_team', urlencodedParser,function(request,response){
   var	jsonObject_ = {
 
 
-    
-    TeamName:request.body.TeamName,
+
     ProjectId:request.body.ProjectId,
+    TeamName:request.body.TeamName,
 
 
 
@@ -123,8 +124,9 @@ router.post('/update_team',urlencodedParser,function(request,response){
 
 
 
-    TeamName:request.body.TeamName,
     ProjectId:request.body.ProjectId,
+    TeamName:request.body.TeamName,
+
 
   };
 
@@ -161,8 +163,8 @@ router.post('/update_individual_team',urlencodedParser,function(request,response
 
 
 
-    TeamName:request.body.TeamName,
     ProjectId:request.body.ProjectId,
+    TeamName:request.body.TeamName,
 
 
   };

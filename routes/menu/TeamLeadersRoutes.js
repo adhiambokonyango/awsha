@@ -16,13 +16,48 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+router.post(
+  "/update_individual_team_leaders_is_checkbox_checked",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+    var jsonObject_ = {
+      IsCheckBoxChecked: request.body.IsCheckBoxChecked
+    };
+
+    var myPromise = TeamLeadersController.individualUpdate(
+      column_name,
+      value_,
+      jsonObject_
+    );
+
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
+
+
 router.post("/add_team_leaders", urlencodedParser, function(
   request,
   response
 ) {
   var jsonObject_ = {
     TeamId: request.body.TeamId,
-    AdministratorId: request.body.AdministratorId
+    AdministratorId: request.body.AdministratorId,
+    IsCheckBoxChecked: 0
   };
 
   var myPromise = TeamLeadersController.insert(jsonObject_);
@@ -88,7 +123,8 @@ router.post("/update_team_leaders", urlencodedParser, function(
 ) {
   var jsonObject_ = {
     TeamId: request.body.TeamId,
-    AdministratorId: request.body.AdministratorId
+    AdministratorId: request.body.AdministratorId,
+    IsCheckBoxChecked: 0
   };
 
   var myPromise = TeamLeadersController.batchUpdate(jsonObject_);
@@ -114,7 +150,8 @@ router.post("/update_individual_team_leaders", urlencodedParser, function(
 
   var jsonObject_ = {
     TeamId: request.body.TeamId,
-    AdministratorId: request.body.AdministratorId
+    AdministratorId: request.body.AdministratorId,
+    IsCheckBoxChecked: 0
   };
 
   var myPromise = TeamLeadersController.individualUpdate(

@@ -32,7 +32,8 @@ router.post('/add_team_members', urlencodedParser,function(request,response){
 
 
     TeamId:request.body.TeamId,
-    UserId: request.body.UserId
+    UserId: request.body.UserId,
+    IsCheckBoxChecked: 0
 
 
 
@@ -124,7 +125,8 @@ router.post('/update_team_members',urlencodedParser,function(request,response){
 
 
     TeamId:request.body.TeamId,
-    UserId: request.body.UserId
+    UserId: request.body.UserId,
+    IsCheckBoxChecked: 0
 
   };
 
@@ -162,7 +164,8 @@ router.post('/update_individual_team_members',urlencodedParser,function(request,
 
 
     TeamId:request.body.TeamId,
-    UserId: request.body.UserId
+    UserId: request.body.UserId,
+    IsCheckBoxChecked: 0
 
 
   };

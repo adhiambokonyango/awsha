@@ -17,6 +17,8 @@ const upload = multer({ dest: __dirname + "/uploads/" });
 var dbcredentials;
 var cors = require("cors");
 var con;
+const pdf = require('html-pdf');
+const pdfTemplate = require('./documents');
 
 var port = 80;
 const session = require('express-session');
@@ -104,6 +106,20 @@ app.post("/upload_images", upload.single("file"), function(req, res) {
     }
   });
 });
+
+app.post('/create-pdf', (req, res) => {
+  pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
+    if(err) {
+      res.send(Promise.reject());
+    }
+
+    res.send(Promise.resolve());
+  });
+});
+
+app.get('/fetch-pdf', (req, res) => {
+  res.sendFile(`${__dirname}/result.pdf`)
+})
 
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : Start Common Utilities*/
