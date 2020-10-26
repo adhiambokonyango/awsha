@@ -178,24 +178,5 @@ module.exports = class ObjectivesController{
     })
   }
 
-  static sumAllObjectivess(){
-    return new Promise(function(resolve, reject) {
-
-
-      var myPromise = ObjectivesModel.sumAllObjectivess();
-
-
-      myPromise.then(function(result) {
-
-        resolve(result);
-      }, function(err) {
-        reject(err);
-      })
-
-    })
-  }
-
-
-
 
 }

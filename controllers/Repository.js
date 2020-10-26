@@ -421,22 +421,5 @@ delete() deletes a specific record(s).
     });
   }
 
- // project branch details
-//   static projectBranchDetails() {
-//     return new Promise(function(resolve, reject) {
-//       con.query("SELECT * FROM projects INNER JOIN branches ON branches.BranchId = projects.BranchId GROUP BY projects.ProjectTitle;", function(
-//       err,
-//         result,
-//         fields
-//     ) {
-//         if (err) {
-//           reject(err);
-//         } else {
-//           var returned_value_ = result;
-//           resolve(returned_value_);
-//         }
-//       });
-//   });
-// }
 
 };
