@@ -92,6 +92,25 @@ router.post("/get_all_team_leaders", urlencodedParser, function(
   );
 });
 
+
+router.post('/team_lead_select_query',urlencodedParser,function(request,response){
+
+  //var mValue=parseInt(request.body.search_value, 10);
+  var value_=request.body.TeamId;
+
+  var myPromise = TeamLeadersController.project_specific_select_query_for_team_lead( value_);
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
+
 router.post("/get_specific_team_leaders", urlencodedParser, function(
   request,
   response

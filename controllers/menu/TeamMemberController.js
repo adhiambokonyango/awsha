@@ -55,7 +55,21 @@ module.exports = class TeamMemberController{
   }
 
 
+  static project_specific_select_query_for_team_members(value_){
+    return new Promise(function(resolve, reject) {
 
+      var myPromise = TeamMemberModel.project_specific_select_query_for_team_members(value_);
+
+
+      myPromise.then(function(result) {
+
+        resolve(result);
+      }, function(err) {
+        reject(err);
+      })
+
+    })
+  }
 
 
   static get_specific_records(ColumnName,value_){

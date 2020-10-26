@@ -78,6 +78,23 @@ router.post('/get_all_team_members',urlencodedParser,function(request,response){
 
 
 
+router.post('/team_member_select_query',urlencodedParser,function(request,response){
+
+  //var mValue=parseInt(request.body.search_value, 10);
+  var value_=request.body.TeamId;
+
+  var myPromise = TeamMemberController.project_specific_select_query_for_team_members( value_);
+
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+
+});
 
 
 

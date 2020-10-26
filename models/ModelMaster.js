@@ -312,7 +312,7 @@ batch_program() is a special function that handles batch jobs.
   }
 
 
-  // project Id specific query
+  // project Id specific query for objectives
   static project_specific_select_query(
 
     value_,
@@ -336,9 +336,7 @@ batch_program() is a special function that handles batch jobs.
 
   // project Id specific query for team
   static project_specific_select_query_for_teams(
-
     value_,
-
   ) {
     return new Promise(function(resolve, reject) {
       var sql =
@@ -355,6 +353,45 @@ batch_program() is a special function that handles batch jobs.
     });
   }
 
+
+  // project Id specific query for teamMember
+  static project_specific_select_query_for_team_members(
+    value_,
+  ) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT * FROM team_members WHERE TeamId = " +
+        mysql.escape(value_)
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+
+  // project Id specific query for teamMember
+  static project_specific_select_query_for_team_lead(
+    value_,
+  ) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT * FROM team_leaders WHERE TeamId = " +
+        mysql.escape(value_)
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
 
 
   /*This function implements a select query based on the session Id/User making this request*/
