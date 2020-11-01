@@ -21,7 +21,7 @@ module.exports = class ProjectsController{
 
 
 
-// record project
+// record project where title is unique to a project
   static async insert(recordObject){
     let userValidationColumn = "ProjectTitle";
     let responseObject = {};

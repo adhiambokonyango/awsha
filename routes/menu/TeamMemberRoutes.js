@@ -22,6 +22,39 @@ router.use(function timeLog(req, res, next) {
 });
 
 
+router.post(
+  "/update_individual_team_member_is_checkbox_checked",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+    var jsonObject_ = {
+      IsCheckBoxChecked: request.body.IsCheckBoxChecked
+    };
+
+    var myPromise = TeamMemberController.individual_record_update(
+      column_name,
+      value_,
+      jsonObject_
+    );
+
+    myPromise.then(
+      function(result) {
+        var response_object = { results: result };
+        response.send(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
+
 
 router.post('/add_team_members', urlencodedParser,function(request,response){
 
@@ -33,7 +66,7 @@ router.post('/add_team_members', urlencodedParser,function(request,response){
 
     TeamId:request.body.TeamId,
     UserId: request.body.UserId,
-    IsCheckBoxChecked: 0
+    IsCheckBoxChecked: 1
 
 
 
@@ -143,7 +176,7 @@ router.post('/update_team_members',urlencodedParser,function(request,response){
 
     TeamId:request.body.TeamId,
     UserId: request.body.UserId,
-    IsCheckBoxChecked: 0
+    IsCheckBoxChecked: 1
 
   };
 
@@ -182,7 +215,7 @@ router.post('/update_individual_team_members',urlencodedParser,function(request,
 
     TeamId:request.body.TeamId,
     UserId: request.body.UserId,
-    IsCheckBoxChecked: 0
+    IsCheckBoxChecked: 1
 
 
   };

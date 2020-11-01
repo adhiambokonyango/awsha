@@ -57,7 +57,7 @@ router.post("/add_team_leaders", urlencodedParser, function(
   var jsonObject_ = {
     TeamId: request.body.TeamId,
     AdministratorId: request.body.AdministratorId,
-    IsCheckBoxChecked: 0
+    IsCheckBoxChecked: 1
   };
 
   var myPromise = TeamLeadersController.insert(jsonObject_);
@@ -143,7 +143,7 @@ router.post("/update_team_leaders", urlencodedParser, function(
   var jsonObject_ = {
     TeamId: request.body.TeamId,
     AdministratorId: request.body.AdministratorId,
-    IsCheckBoxChecked: 0
+    IsCheckBoxChecked: 1
   };
 
   var myPromise = TeamLeadersController.batchUpdate(jsonObject_);
@@ -170,7 +170,7 @@ router.post("/update_individual_team_leaders", urlencodedParser, function(
   var jsonObject_ = {
     TeamId: request.body.TeamId,
     AdministratorId: request.body.AdministratorId,
-    IsCheckBoxChecked: 0
+    IsCheckBoxChecked: 1
   };
 
   var myPromise = TeamLeadersController.individualUpdate(

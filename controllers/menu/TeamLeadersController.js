@@ -4,6 +4,34 @@ const ModelMaster=require('../../models/ModelMaster');
 
 module.exports = class TeamLeadersController{
 
+  // record project where title is unique to a project
+  static async insert_unique(recordObject){
+    let userValidationColumn = "AdministratorId";
+    let responseObject = {};
+
+    let projectRequestArray = await TeamLeadersController.selectSpecific(userValidationColumn,recordObject.AdministratorId);
+
+    if(projectRequestArray.length === 0) {
+
+      let insertResponse = await Repository.insert(tableName,recordObject);
+
+      responseObject = {
+        registrationSuccess: true,
+        registrationErrorMessage: "project registration successful" ,
+        projectDetails: insertResponse,
+
+      }
+
+
+    } else {
+      responseObject = {registrationSuccess: false, registrationErrorMessage: "A project already exists by this title"}
+
+    }
+
+    return responseObject;
+  }
+
+
   static async insert(recordObject){
     let response = await Repository.insert(tableName,recordObject);
     return response;
