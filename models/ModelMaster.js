@@ -2,7 +2,7 @@
 
 This class carries all of the system's CRUD operations.
 All create,read,update and delete operations go through
-this class.The methods have been tested and proven to 
+this class.The methods have been tested and proven to
 be working.Create an instance of the class and call any
 of its methods
 
@@ -17,20 +17,20 @@ const roles = require("user-groups-roles")
 
 module.exports = class ModelMaster {
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The class constructor.Does not take any arguments
 
 */
   constructor() {}
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The insert function is for insertion of all tables
 regardless of their number of columns.Pass it the
 table name and a key-value pair of data to insert
 with the key being the actual column name on the
 database.
-	
+
 */
 
 
@@ -57,7 +57,7 @@ database.
   }
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectAll() is to select all data on the
 table.Pass it the table name and a callback
 function to retrieve back your result
@@ -81,10 +81,10 @@ function to retrieve back your result
   }
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectSpecific() is to select specific a
-record(s) on the table depending on the 
-arguments you pass to it.Pass it the table 
+record(s) on the table depending on the
+arguments you pass to it.Pass it the table
 name and a callback function to retrieve back
 your result
 
@@ -316,7 +316,7 @@ batch_program() is a special function that handles batch jobs.
   static project_specific_select_query(
 
     value_,
-   
+
   ) {
     return new Promise(function(resolve, reject) {
       var sql =
@@ -450,6 +450,7 @@ batch_program() is a special function that handles batch jobs.
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
 
+
 The two_table_inner_join() is used to conduct
 an inner join query between two tables but
 with no WHERE clause(No condition)
@@ -457,86 +458,12 @@ with no WHERE clause(No condition)
 */
 
 
-  static getAUserRoles(userId) {
+  static get_number_of_administrator_records(tableName) {
     return new Promise(function(resolve, reject) {
-      con.query(
-        "SELECT * FROM user_roles INNER JOIN roles ON user_roles.RoleId = roles.RoleId WHERE user_roles.UserId = " +
-        mysql.escape(userId),
-        function(err, result) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(result);
-          }
-        }
-      );
-    });
-  }
-
-  static getAUserAccessPrivileges(userRoleId) {
-    return new Promise(function(resolve, reject) {
-      con.query(
-        "SELECT * FROM user_access_privileges INNER JOIN access_privileges ON user_access_privileges.AccessPrivilegeId = access_privileges.AccessPrivilegeId WHERE user_access_privileges.UserRoleId = " +
-        mysql.escape(userRoleId),
-        function(err, result) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(result);
-          }
-        }
-      );
-    });
-  }
-
-  static checkWhetherAUserHasACertainRole(userId, roleCode) {
-    return new Promise(function(resolve, reject) {
-      con.query(
-        "SELECT * FROM roles INNER JOIN user_roles ON roles.RoleId = user_roles.RoleId WHERE roles.RoleCode = " +
-        roleCode +
-        " AND user_roles.UserId = " +
-        userId +
-        " AND user_roles.ConfirmationStatus = 1;",
-        function(err, result) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(result);
-          }
-        }
-      );
-    });
-  }
-
-  static checkUserAllowedLoginWithCertainRole(userRoleId) {
-    return new Promise(function(resolve, reject) {
-      con.query(
-        "SELECT * FROM user_roles INNER JOIN user_access_privileges ON user_roles.UserRoleId = user_access_privileges.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_roles.UserRoleId = " +
-        userRoleId +
-        " AND access_privileges.AccessPrivilegeCode = 1 AND user_access_privileges.PermisionStatus = 1;",
-        function(err, result) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(result);
-          }
-        }
-      );
-    });
-  }
-
-
-  // SELECT ProjectId, ObjectiveId FROM project_objective
-  // WHERE ProjectId=1;
-
-
-  static adminPageDisplay() {
-    return new Promise(function(resolve, reject) {
-      con.query("SELECT COUNT(ProjectId), ObjectiveId FROM project_objective GROUP BY ProjectId;", function(
-        err,
-        result,
-        fields
-      ) {
+      var sql =
+        "SELECT COUNT(*) AS NumberOfRecords FROM " +
+        tableName + ";"
+      con.query(sql, function(err, result) {
         if (err) {
           reject(err);
         } else {
@@ -546,28 +473,7 @@ with no WHERE clause(No condition)
       });
     });
   }
-  // static adminPageDisplay(tableName, ColumnName, value_) {
-  //   return new Promise(function(resolve, reject) {
-  //     var sql =
-  //       "SELECT " +
-  //       ColumnName +
-  //       ColumnName +
-  //       "FROM" +
-  //       tableName +
-  //       " WHERE " +
-  //       ColumnName +
-  //       " = " +
-  //       mysql.escape(value_);
-  //     con.query(sql, function(err, result) {
-  //       if (err) {
-  //         reject(err);
-  //       } else {
-  //         var returned_value_ = result;
-  //         resolve(returned_value_);
-  //       }
-  //     });
-  //   });
-  // }
+
 
 
   static getAllTeamMembersByFullDescription() {

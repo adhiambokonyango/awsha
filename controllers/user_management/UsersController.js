@@ -141,10 +141,12 @@ module.exports = class UsersController{
 
 
     static async selectAll(){
+
         let response = await Repository.selectAll(tableName);
+
         return response;
     }
-    
+
 
      static async selectSpecific(columnName,columnValue){
          let response = await Repository.selectSpecific(tableName,columnName,columnValue);
@@ -163,7 +165,7 @@ module.exports = class UsersController{
         return response;
     }
 
-    
+
     static async individualUpdate(columnName,columnValue,recordObject){
         let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
         return response;

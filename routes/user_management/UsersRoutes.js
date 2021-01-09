@@ -5,9 +5,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const UsersController = require('../../controllers/user_management/UsersController');
-const ModelMaster = require("../../models/ModelMaster");
-const UssdTest = require('./UssdTest');
-const axios = require('axios');
+
 
 
 //Middle ware that is specific to this router
@@ -79,22 +77,76 @@ router.post("/login", urlencodedParser, function(
     );
 });
 
+//
+// function paginatedResults(result){
+//     return function(req, res, next){
+//         const page = req.query.page;
+//         const limit = req.query.limit;
+//         const startIndex = (page - 1) * limit;
+//         const endIndex = page * limit;
+//
+//         const results = {};
+//
+//         if (endIndex < result.length){
+//             results.next = {
+//                 page: page + 1,
+//                 limit: limit
+//             }
+//         }
+//         if (startIndex > 0){
+//             results.previous = {
+//                 page: page - 1,
+//                 limit: limit
+//             }
+//         }
+//
+//         results.results =  result.slice(startIndex, endIndex);
+//         res.paginatedResults = results;
+//         next();
+//     }
+// }
 
-router.post('/get_all_users',urlencodedParser,function(request,response){
+
+
+router.post("/get_all_users",urlencodedParser, function(request,response, next){
+    const page = request.query.page;
+    const limit = request.query.limit;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const results = {};
 
     var myUsersControllerObjectPromise = UsersController.selectAll();
 
-
     myUsersControllerObjectPromise.then(function(result) {
 
-        var response_object={results:result}
-        response.send(response_object);
+        if (endIndex < result.length){
+            results.next = {
+                page: page + 1,
+                limit: limit
+            }
+        }
+        if (startIndex > 0){
+            results.previous = {
+                page: page - 1,
+                limit: limit
+            }
+        }
+
+        results.results =  result.slice(startIndex, endIndex);
+        request.paginatedResults = results;
+        response.send(results);
+        console.log(results);
+        next();
+
+
+        // var response_object={results:result}
+        // response.send(response_object);
+        // console.log(response_object);
     }, function(err) {
         console.log(err);
         response.send("An error occurred");
     })
-
-});
+ });
 
 
 

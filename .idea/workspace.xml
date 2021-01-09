@@ -21,10 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/menu/TeamLeadersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/TeamLeadersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/TeamLeadersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/TeamLeadersRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/TeamMemberRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/TeamMemberRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/AdministratorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/AdministratorRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +268,19 @@
       <workItem from="1604062631465" duration="9000" />
       <workItem from="1604082152912" duration="2186000" />
       <workItem from="1604129235827" duration="2890000" />
+      <workItem from="1604229643044" duration="79000" />
+      <workItem from="1607020478967" duration="2325000" />
+      <workItem from="1607265292844" duration="38000" />
+      <workItem from="1607271633783" duration="17000" />
+      <workItem from="1608101747125" duration="56000" />
+      <workItem from="1608141783112" duration="857000" />
+      <workItem from="1610176737802" duration="7412000" />
+      <workItem from="1610188006417" duration="635000" />
+      <workItem from="1610189090078" duration="512000" />
+      <workItem from="1610190415316" duration="27000" />
+      <workItem from="1610190659389" duration="3261000" />
+      <workItem from="1610194356867" duration="779000" />
+      <workItem from="1610198851725" duration="3271000" />
     </task>
     <servers />
   </component>

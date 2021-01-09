@@ -9,6 +9,8 @@ const AdministratorUserAccessPrivilegesController=require('./AdministratorUserAc
 const AdministratorSessionLogsController=require('../session_management/AdministratorSessionLogsController');
 const AdministratorUserSessionActivitiesController=require('../session_management/AdministratorUserSessionActivitiesController')
 
+
+const ModelMaster=require('../../models/ModelMaster');
 module.exports = class AdministratorController{
 
   static async insert(recordObject){
@@ -131,11 +133,15 @@ module.exports = class AdministratorController{
   }
 
 
-
-
-
   static async selectAll(){
     let response = await Repository.selectAll(tableName);
+    return response;
+  }
+
+
+
+  static async selectAllAdministrator(getTotalNumberOfRecords, offset, noOfRecordsPerPage){
+    let response = await Repository.selectAllAdministrator(getTotalNumberOfRecords, offset, noOfRecordsPerPage);
     return response;
   }
 

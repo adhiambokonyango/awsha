@@ -2,7 +2,7 @@
 
 This class carries all of the system's CRUD operations.
 All create,read,update and delete operations go through
-this class.The methods have been tested and proven to 
+this class.The methods have been tested and proven to
 be working.Create an instance of the class and call any
 of its methods
 
@@ -16,7 +16,7 @@ var con = require("../common/dbConnect.js");
 
 module.exports = class Repository {
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The class constructor.Does not take any arguments
 
 */
@@ -28,7 +28,7 @@ regardless of their number of columns.Pass it the
 table name and a key-value pair of data to insert
 with the key being the actual column name on the
 database.
-	
+
 */
 
   static insert(tableName, jsonObject_) {
@@ -52,7 +52,7 @@ database.
   }
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectAll() is to select all data on the
 table.Pass it the table name and a callback
 function to retrieve back your result
@@ -131,10 +131,10 @@ individual_update() updates a specific record(s).
 
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectSpecific() is to select specific a
-record(s) on the table depending on the 
-arguments you pass to it.Pass it the table 
+record(s) on the table depending on the
+arguments you pass to it.Pass it the table
 name and a callback function to retrieve back
 your result
 
@@ -178,10 +178,10 @@ your result
   }
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectSpecific() is to select specific a
-record(s) on the table depending on the 
-arguments you pass to it.Pass it the table 
+record(s) on the table depending on the
+arguments you pass to it.Pass it the table
 name and a callback function to retrieve back
 your result
 
@@ -189,10 +189,10 @@ your result
 
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectSpecific() is to select specific a
-record(s) on the table depending on the 
-arguments you pass to it.Pass it the table 
+record(s) on the table depending on the
+arguments you pass to it.Pass it the table
 name and a callback function to retrieve back
 your result
 
@@ -200,19 +200,19 @@ your result
 
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The selectSpecific() is to select specific a
-record(s) on the table depending on the 
-arguments you pass to it.Pass it the table 
+record(s) on the table depending on the
+arguments you pass to it.Pass it the table
 name and a callback function to retrieve back
 your result
 
 */
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 The batch_update() makes a similar update on all
-records of the table you pass to it.Pass it the 
+records of the table you pass to it.Pass it the
 table name and the key-value pair of the updates
 to make.
 
@@ -239,7 +239,7 @@ to make.
   }
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 individual_update() updates a specific record(s).
 
 */
@@ -248,21 +248,21 @@ individual_update() updates a specific record(s).
 
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 individual_update() updates a specific record(s).
 
 */
 
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 individual_update() updates a specific record(s).
 
 */
 
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-	
+
 delete() deletes a specific record(s).
 
 */
@@ -407,6 +407,48 @@ delete() deletes a specific record(s).
   static getAllProjectsAndObjectivesByFullDescription() {
     return new Promise(function(resolve, reject) {
       con.query("SELECT * FROM objectives INNER JOIN projects ON projects.ProjectId = objectives.ProjectId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+  //pagination
+  //SELECT *
+  // FROM administrator
+  // WHERE AdministratorId > 0
+  // ORDER BY AdministratorId
+  // LIMIT 5
+
+  static get_number_of_administrator_records(tableName) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT COUNT(*) AS NumberOfRecords FROM " +
+        tableName + ";"
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+  static selectAllAdministrator( offset, noOfRecordsPerPage) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+        //SELECT * FROM tbl LIMIT 5,10;
+        "SELECT * FROM administrator LIMIT" + offset, noOfRecordsPerPage + ";", function(
         err,
         result,
         fields

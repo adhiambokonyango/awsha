@@ -94,10 +94,6 @@ router.post('/get_all_office_admin',urlencodedParser,function(request,response){
 });
 
 
-
-
-
-
 router.post('/update_office_admin',urlencodedParser,function(request,response){
 
   var date = new Date();
