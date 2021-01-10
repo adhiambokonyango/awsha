@@ -139,14 +139,15 @@ module.exports = class UsersController{
         });
     }
 
-
     static async selectAll(){
-
         let response = await Repository.selectAll(tableName);
-
         return response;
     }
 
+    static async getNumberOfAdministratorRecords(){
+        let response = await Repository.get_number_of_administrator_records(tableName);
+        return response;
+    }
 
      static async selectSpecific(columnName,columnValue){
          let response = await Repository.selectSpecific(tableName,columnName,columnValue);

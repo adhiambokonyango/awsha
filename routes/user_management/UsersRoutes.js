@@ -108,9 +108,9 @@ router.post("/login", urlencodedParser, function(
 
 
 
-router.post("/get_all_users",urlencodedParser, function(request,response, next){
-    const page = request.query.page;
-    const limit = request.query.limit;
+router.post("/get_all_users/:page/:limit",urlencodedParser, function(request,response, next){
+    const page = request.params.page;
+    const limit = request.params.limit;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const results = {};
@@ -138,7 +138,6 @@ router.post("/get_all_users",urlencodedParser, function(request,response, next){
         console.log(results);
         next();
 
-
         // var response_object={results:result}
         // response.send(response_object);
         // console.log(response_object);
@@ -149,6 +148,24 @@ router.post("/get_all_users",urlencodedParser, function(request,response, next){
  });
 
 
+router.post("/get_number_of_administrator_records", urlencodedParser, function(
+  request,
+  response
+) {
+    var myPromise = UsersController.getNumberOfAdministratorRecords();
+
+    myPromise.then(
+      function(result) {
+          var response_object = { results: result };
+          console.log(response_object);
+          response.send(response_object);
+      },
+      function(err) {
+          console.log(err);
+          response.send("An error occurred");
+      }
+    );
+});
 
 router.post('/update_users',urlencodedParser,function(request,response){
 

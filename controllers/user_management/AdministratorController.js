@@ -138,14 +138,6 @@ module.exports = class AdministratorController{
     return response;
   }
 
-
-
-  static async selectAllAdministrator(getTotalNumberOfRecords, offset, noOfRecordsPerPage){
-    let response = await Repository.selectAllAdministrator(getTotalNumberOfRecords, offset, noOfRecordsPerPage);
-    return response;
-  }
-
-
   static async selectSpecific(columnName,columnValue){
     let response = await Repository.selectSpecific(tableName,columnName,columnValue);
     return response;
