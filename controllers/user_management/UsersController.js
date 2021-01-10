@@ -144,8 +144,8 @@ module.exports = class UsersController{
         return response;
     }
 
-    static async getNumberOfAdministratorRecords(){
-        let response = await Repository.get_number_of_administrator_records(tableName);
+    static async getNumberOfUserRecords(){
+        let response = await Repository.get_number_of_records(tableName);
         return response;
     }
 

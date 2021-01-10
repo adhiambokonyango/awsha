@@ -148,11 +148,11 @@ router.post("/get_all_users/:page/:limit",urlencodedParser, function(request,res
  });
 
 
-router.post("/get_number_of_administrator_records", urlencodedParser, function(
+router.post("/get_number_of_user_records", urlencodedParser, function(
   request,
   response
 ) {
-    var myPromise = UsersController.getNumberOfAdministratorRecords();
+    var myPromise = UsersController.getNumberOfUserRecords();
 
     myPromise.then(
       function(result) {

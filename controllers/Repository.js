@@ -428,7 +428,7 @@ delete() deletes a specific record(s).
   // ORDER BY AdministratorId
   // LIMIT 5
 
-  static get_number_of_administrator_records(tableName) {
+  static get_number_of_records(tableName) {
     return new Promise(function(resolve, reject) {
       var sql =
         "SELECT COUNT(*) AS NumberOfRecords FROM " +
