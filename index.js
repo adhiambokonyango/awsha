@@ -130,11 +130,8 @@ app.use(require("./routes/session_management/AdministratorSessionActivitiesRoute
 app.use(require("./routes/session_management/AdministratorSessionLogsRoutes.js"));
 app.use(require("./routes/session_management/AdministratorUserSessionActivitiesRoutes.js"));
 
-
-
-
-
-
+app.use(require("./routes/products/ProductRoutes.js"));
+app.use(require("./routes/products/CatalogueItemsRoutes.js"));
 
 
 
