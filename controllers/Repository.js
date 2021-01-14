@@ -451,12 +451,31 @@ delete() deletes a specific record(s).
         "SELECT * FROM administrator LIMIT" + offset, noOfRecordsPerPage + ";", function(
         err,
         result,
-        fields
       ) {
         if (err) {
           reject(err);
         } else {
           var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+  static insert_mobile_user(tableName, jsonObject) {
+    return new Promise(function(resolve, reject) {
+      con.query("INSERT INTO " + tableName + " SET ?", jsonObject, function(
+        err,
+        result
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = {
+            success: true,
+            message: "Record inserted succesfully.",
+            recordId: result.insertId
+          };
           resolve(returned_value_);
         }
       });

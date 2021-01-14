@@ -5,6 +5,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const UsersController = require('../../controllers/user_management/UsersController');
+const Repository = require("../../controllers/Repository");
 
 
 
@@ -121,7 +122,7 @@ router.post("/get_all_users/:page/:limit",urlencodedParser, function(request,res
 
         if (endIndex < result.length){
             results.next = {
-                page: page + 1,
+                page: page ,
                 limit: limit
             }
         }
@@ -133,7 +134,7 @@ router.post("/get_all_users/:page/:limit",urlencodedParser, function(request,res
         }
 
         results.results =  result.slice(startIndex, endIndex);
-        request.paginatedResults = results;
+        // request.paginatedResults = results;
         response.send(results);
         console.log(results);
         next();
@@ -147,6 +148,25 @@ router.post("/get_all_users/:page/:limit",urlencodedParser, function(request,res
     })
  });
 
+router.post('/insert_users',urlencodedParser, async (request,response) => {
+    let jsonObject = {
+        FirstName: request.body.firstName,
+        MiddleName: request.body.middleName,
+        Surname: request.body.surname,
+        Email: request.body.email
+    };
+    let result = await Repository.insert_mobile_user("mobile_users",jsonObject);
+    response.send(result);
+});
+
+//scanner
+router.post('/insert_code',urlencodedParser, async (request,response) => {
+    let jsonObject = {
+        code: request.body.code,
+    };
+    let result = await Repository.insert_mobile_user("scan",jsonObject);
+    response.send(result);
+});
 
 router.post("/get_number_of_user_records", urlencodedParser, function(
   request,
