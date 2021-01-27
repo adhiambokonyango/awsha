@@ -12,7 +12,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const CatalogueItemsController = require('../../controllers/products/CatalogueItemsController.js');
-
+const Repository = require("../../controllers/Repository");
 
 
 //Middle ware that is specific to this router
@@ -21,38 +21,18 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-
-
-router.post('/add_catalogue_items', urlencodedParser,function(request,response){
-  var date = new Date();
-  date.setHours(date.getHours() + 3);
-
+//insert unique code
+router.post('/add_unique_code', urlencodedParser,function(request,response){
 
   var	jsonObject_ = {
-
-
-
-
-    ProductId:request.body.ProductId,
-    Code:request.body.Code,
-    Status:request.body.Status,
+    ProductId: request.body.ProductId,
+    Code: request.body.Code,
+    Status:0,
     RegisteredDate:date
-
-
-
-
-
-
-
-
   };
-
-
-  var myPromise = CatalogueItemsController.insert(jsonObject_);
-
-
+  //console.log(jsonObject_);
+    var myPromise = CatalogueItemsController.insert_unique_code(jsonObject_);
   myPromise.then(function(result) {
-
     var response_object={results:result}
     response.send(response_object);
   }, function(err) {
@@ -62,10 +42,42 @@ router.post('/add_catalogue_items', urlencodedParser,function(request,response){
 
 });
 
+//scanner
+router.post('/add_catalogue_items',urlencodedParser, async (request,response) => {
+  var date = new Date();
+  date.setHours(date.getHours()+0);
+  let jsonObject = {
+    ProductId: request.body.ProductId,
+    Code: request.body.Code,
+    Status:0,
+    RegisteredDate:date
+  };
+  let result = await Repository.insert_mobile_user("catalogue_items",jsonObject);
+  response.send(result);
+});
 
 
+router.post('/insert_catalogue_items', urlencodedParser,function(request,response){
+  var date = new Date();
+  date.setHours(date.getHours() + 3);
+  var	jsonObject_ = {
 
+    ProductId:request.body.ProductId,
+    Code:request.body.Code,
+    Status:0,
+    RegisteredDate:date
 
+  };
+  var myPromise = CatalogueItemsController.insert(jsonObject_);
+  myPromise.then(function(result) {
+    var response_object={results:result}
+    response.send(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
 
 router.post('/get_all_catalogue_items',urlencodedParser,function(request,response){
 
@@ -83,13 +95,39 @@ router.post('/get_all_catalogue_items',urlencodedParser,function(request,respons
 
 });
 
+router.post('/get_checked_out_stock_records',urlencodedParser,function(request,response){
+
+  var myPromise = CatalogueItemsController.get_checked_out_stock_records();
 
 
+  myPromise.then(function(result) {
+
+    var response_object={results:result}
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
+
+router.post('/get_in_stock_records',urlencodedParser,function(request,response){
+
+  var myPromise = CatalogueItemsController.get_in_stock_records();
 
 
+  myPromise.then(function(result) {
 
+    var response_object={results:result}
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
 
-
+});
 
 router.post('/get_specific_catalogue_items',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
@@ -138,7 +176,7 @@ router.post('/update_catalogue_items',urlencodedParser,function(request,response
 
     ProductId:request.body.ProductId,
     Code:request.body.Code,
-    Status:request.body.Status,
+    Status:0,
 
 
 
@@ -185,7 +223,7 @@ router.post('/update_individual_catalogue_items',urlencodedParser,function(reque
 
     ProductId:request.body.ProductId,
     Code:request.body.Code,
-    Status:request.body.Status,
+    Status:0,
 
 
 

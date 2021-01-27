@@ -78,37 +78,6 @@ router.post("/login", urlencodedParser, function(
     );
 });
 
-//
-// function paginatedResults(result){
-//     return function(req, res, next){
-//         const page = req.query.page;
-//         const limit = req.query.limit;
-//         const startIndex = (page - 1) * limit;
-//         const endIndex = page * limit;
-//
-//         const results = {};
-//
-//         if (endIndex < result.length){
-//             results.next = {
-//                 page: page + 1,
-//                 limit: limit
-//             }
-//         }
-//         if (startIndex > 0){
-//             results.previous = {
-//                 page: page - 1,
-//                 limit: limit
-//             }
-//         }
-//
-//         results.results =  result.slice(startIndex, endIndex);
-//         res.paginatedResults = results;
-//         next();
-//     }
-// }
-
-
-
 router.post("/get_all_users/:page/:limit",urlencodedParser, function(request,response, next){
     const page = request.params.page;
     const limit = request.params.limit;

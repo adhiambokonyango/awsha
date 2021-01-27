@@ -37,11 +37,6 @@ router.post('/add_products', urlencodedParser,function(request,response){
 
 
 
-
-
-
-
-
   };
 
 
@@ -60,10 +55,6 @@ router.post('/add_products', urlencodedParser,function(request,response){
 });
 
 
-
-
-
-
 router.post('/get_all_products',urlencodedParser,function(request,response){
 
   var myPromise = ProductController.selectAll();
@@ -71,8 +62,10 @@ router.post('/get_all_products',urlencodedParser,function(request,response){
 
   myPromise.then(function(result) {
 
-    var response_object={results:result}
+    // var response_object={ results: result }
+    var response_object = result;
     response.send(response_object);
+
   }, function(err) {
     console.log(err);
     response.send("An error occurred");

@@ -57,39 +57,21 @@ router.post(
 
 router.post('/add_projects', urlencodedParser,function(request,response){
 
-
-
   var	jsonObject_ = {
-
-
     ProjectTitle:request.body.ProjectTitle,
     ProjectDescription:request.body.ProjectDescription,
     ProjectProgress: request.body.ProjectProgress
-
-
   };
-  
   //console.log(jsonObject_);
-
-
   var myPromise = ProjectsController.insert(jsonObject_);
-
-
   myPromise.then(function(result) {
-
     var response_object={results:result}
     response.send(response_object);
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
   })
-
 });
-
-
-
-
-
 
 router.post('/get_all_projects',urlencodedParser,function(request,response){
 

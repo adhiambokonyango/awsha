@@ -240,29 +240,6 @@ to make.
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
 
-individual_update() updates a specific record(s).
-
-*/
-
-
-
-
-  /*SON/2018-11-06 00:29 - DEVELOPMENT
-
-individual_update() updates a specific record(s).
-
-*/
-
-
-  /*SON/2018-11-06 00:29 - DEVELOPMENT
-
-individual_update() updates a specific record(s).
-
-*/
-
-
-  /*SON/2018-11-06 00:29 - DEVELOPMENT
-
 delete() deletes a specific record(s).
 
 */
@@ -444,14 +421,13 @@ delete() deletes a specific record(s).
     });
   }
 
-  static selectAllAdministrator( offset, noOfRecordsPerPage) {
+
+  // get number of products checked_out
+  static get_checked_out_stock_records(tableName) {
     return new Promise(function(resolve, reject) {
-      con.query(
-        //SELECT * FROM tbl LIMIT 5,10;
-        "SELECT * FROM administrator LIMIT" + offset, noOfRecordsPerPage + ";", function(
-        err,
-        result,
-      ) {
+      var sql =
+        " SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items WHERE Status = 1;"
+      con.query(sql, function(err, result) {
         if (err) {
           reject(err);
         } else {
@@ -461,6 +437,24 @@ delete() deletes a specific record(s).
       });
     });
   }
+  // end //
+
+  // get number of products in stock
+  static get_in_stock_records(tableName) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+       " SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items WHERE Status = 0;"
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // end //
 
   static insert_mobile_user(tableName, jsonObject) {
     return new Promise(function(resolve, reject) {
