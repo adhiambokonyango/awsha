@@ -126,6 +126,7 @@ router.post('/insert_users',urlencodedParser, async (request,response) => {
     };
     let result = await Repository.insert_mobile_user("mobile_users",jsonObject);
     response.send(result);
+    console.log(result)
 });
 
 //scanner

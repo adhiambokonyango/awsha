@@ -1,5 +1,6 @@
 const Repository=require('../Repository');
 const tableName="products";
+const ModelMaster=require('../../models/ModelMaster');
 
 
 module.exports = class ProductController{
@@ -28,8 +29,16 @@ module.exports = class ProductController{
   }
 
 
-  static async individualUpdate(columnName,columnValue,recordObject){
-    let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
+  static async individualUpdate(columnValue,recordObject, product_id){
+    let columnName = "InStock";
+    let response = await ModelMaster.stocks_update(tableName,recordObject,columnName,columnValue, product_id);
     return response;
   }
+
+  static async update_checked_out_stock(columnValue,recordObject, product_id){
+    let columnName = "CheckedOut";
+    let response = await ModelMaster.update_checked_out_stock(tableName,recordObject,columnName,columnValue, product_id);
+    return response;
+  }
+
 }

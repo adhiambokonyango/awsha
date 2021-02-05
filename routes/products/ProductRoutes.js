@@ -21,25 +21,91 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
+router.post(
+  "/update_individual_stock",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+    var jsonObject_ = {
+      InStock: request.body.InStock,
+    };
+
+    var myPromise = ProductController.individualUpdate(
+      value_,
+      jsonObject_,
+      column_name
+    );
+
+    myPromise.then(
+      function(result) {
+      //  var response_object = { results: result };
+       var response_object =  result ;
+        response.send(response_object);
+        console.log(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
 
 
-router.post('/add_products', urlencodedParser,function(request,response){
+router.post(
+  "/update_checked_out_stock",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
+
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+    var jsonObject_ = {
+      CheckedOut: request.body.CheckedOut,
+    };
+
+    var myPromise = ProductController.update_checked_out_stock(
+      value_,
+      jsonObject_,
+      column_name
+    );
+
+    myPromise.then(
+      function(result) {
+        //  var response_object = { results: result };
+        var response_object =  result ;
+        response.send(response_object);
+        console.log(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
 
 
+router.post('/add_products', urlencodedParser,async (request,response) =>{
 
   var	jsonObject_ = {
 
 
-
-
     ProductName:request.body.ProductName,
-    Price:request.body.Price
-
+    Price:request.body.Price,
+    InStock: 0,
+    CheckedOut: 0
 
 
   };
-
-
+  console.log("ProductId" + jsonObject_.InStock);
   var myPromise = ProductController.insert(jsonObject_);
 
 
@@ -65,7 +131,7 @@ router.post('/get_all_products',urlencodedParser,function(request,response){
     // var response_object={ results: result }
     var response_object = result;
     response.send(response_object);
-
+      console.log(response_object);
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
@@ -127,7 +193,9 @@ router.post('/update_products',urlencodedParser,function(request,response){
 
 
     ProductName:request.body.ProductName,
-    Price:request.body.Price
+    Price:request.body.Price,
+    InStock: 0,
+    CheckedOut: 0
 
 
 
@@ -172,7 +240,9 @@ router.post('/update_individual_products',urlencodedParser,function(request,resp
 
 
     ProductName:request.body.ProductName,
-    Price:request.body.Price
+    Price:request.body.Price,
+    InStock: 0,
+    CheckedOut: 0
 
 
 

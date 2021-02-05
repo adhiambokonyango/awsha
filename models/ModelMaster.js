@@ -428,15 +428,16 @@ batch_program() is a special function that handles batch jobs.
 
   /*This function gets the number of records in a table.*/
 
-  static get_number_of_records(tableName, ColumnName, value_) {
+  static get_number_of_records(tableName, ColumnName, value_, StateColumn, status_) {
     return new Promise(function(resolve, reject) {
       var sql =
         "SELECT COUNT(*) AS NumberOfRecords FROM " +
         tableName +
         " WHERE " +
         ColumnName +
+        " = " + mysql.escape(value_) + " and " + StateColumn +
         " = " +
-        mysql.escape(value_);
+        mysql.escape(status_);
       con.query(sql, function(err, result) {
         if (err) {
           reject(err);
@@ -457,25 +458,6 @@ with no WHERE clause(No condition)
 
 */
 
-
-  static get_number_of_administrator_records(tableName) {
-    return new Promise(function(resolve, reject) {
-      var sql =
-        "SELECT COUNT(*) AS NumberOfRecords FROM " +
-        tableName + ";"
-      con.query(sql, function(err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          var returned_value_ = result;
-          resolve(returned_value_);
-        }
-      });
-    });
-  }
-
-
-
   static getAllTeamMembersByFullDescription() {
     return new Promise(function(resolve, reject) {
       con.query("SELECT * FROM team_members INNER JOIN team ON team.TeamId = team_members.TeamId INNER JOIN gender ON gender.GenderId = team_members.GenderId INNER JOIN company ON company.CompanyId = team_members.CompanyId;", function(
@@ -493,9 +475,6 @@ with no WHERE clause(No condition)
     });
   }
 
-
-
-
   static sumAllObjectivePercentages() {
     return new Promise(function(resolve, reject) {
       con.query("SELECT ProjectId, SUM(ObjectivePercentage) FROM objective_percentage GROUP BY ProjectId;",
@@ -510,42 +489,176 @@ with no WHERE clause(No condition)
     });
   }
 
-
-  static getAllProjectsByFullDescription() {
+  // update_stocks
+  static stocks_update(tableName, jsonObject_, ColumnName, value_, product_id) {
     return new Promise(function(resolve, reject) {
-      con.query("SELECT * FROM project_objectives INNER JOIN projects ON projects.ProjectId = project_objectives.ProjectId;", function(
-        err,
-        result,
-        fields
-      ) {
-        if (err) {
-          reject(err);
-        } else {
+      var selectSpecificPromise = ModelMaster.selectSpecific(
+        tableName,
+        ColumnName,
+        value_,
+        product_id
+      );
+
+      selectSpecificPromise.then(
+        function(result) {
           var returned_value_ = result;
-          resolve(returned_value_);
+
+          if (returned_value_.length === 0) {
+            returned_value_ = {
+              success: false,
+              message: "No such record exists",
+              recordId: null
+
+            };
+            resolve(returned_value_);
+          } else {
+            con.query(
+              "UPDATE " +
+              tableName +
+              " SET ? WHERE " +
+              ColumnName +
+              " = " +
+              mysql.escape(value_) +
+              " AND ProductId = " + mysql.escape(product_id),
+              jsonObject_,
+              function(err, result) {
+                if (err) {
+                  reject(err);
+                }
+
+                var returned_value_ = {
+                  success: true,
+                  message: "Record updated succesfully.",
+                   recordId: null
+                };
+                resolve(returned_value_);
+              }
+            );
+          }
+        },
+        function(err) {
+          console.log(err);
         }
-      });
+      );
     });
   }
+  // end
 
 
-  static getPrivilegesForParticularUserForParticularRole(userId,roleCode,accessPrivilegeCode) {
+  // update_checked_out_stock
+  static update_checked_out_stock(tableName, jsonObject_, ColumnName, value_, product_id) {
     return new Promise(function(resolve, reject) {
-      con.query("SELECT * FROM roles INNER JOIN user_roles ON roles.RoleId = user_roles.RoleId INNER JOIN user_access_privileges ON user_access_privileges.UserRoleId = user_roles.UserRoleId INNER JOIN access_privileges ON access_privileges.AccessPrivilegeId = user_access_privileges.AccessPrivilegeId WHERE user_access_privileges.UserId = "+userId+" AND roles.RoleCode = "+roleCode+" AND access_privileges.AccessPrivilegeCode = "+accessPrivilegeCode+";", function(
-        err,
-        result,
-        fields
-      ) {
-        if (err) {
-          reject(err);
-        } else {
+      var selectSpecificPromise = ModelMaster.selectSpecific(
+        tableName,
+        ColumnName,
+        value_,
+        product_id
+      );
+
+      selectSpecificPromise.then(
+        function(result) {
           var returned_value_ = result;
-          resolve(returned_value_);
+
+          if (returned_value_.length === 0) {
+            returned_value_ = {
+              success: false,
+              message: "No such record exists",
+              recordId: null
+
+            };
+            resolve(returned_value_);
+          } else {
+            con.query(
+              "UPDATE " +
+              tableName +
+              " SET ? WHERE " +
+              ColumnName +
+              " = " +
+              mysql.escape(value_) +
+              " AND ProductId = " + mysql.escape(product_id),
+              jsonObject_,
+              function(err, result) {
+                if (err) {
+                  reject(err);
+                }
+
+                var returned_value_ = {
+                  success: true,
+                  message: "Record updated successfully.",
+                  recordId: null
+                };
+                resolve(returned_value_);
+              }
+            );
+          }
+        },
+        function(err) {
+          console.log(err);
         }
-      });
+      );
     });
   }
+  // end
 
 
+
+  // update_checked_out_stock
+  static update_status_for_checked_out_catalogue_item(
+    tableName, ColumnName, value_, catalogue_item_id) {
+    let jsonObject_ = {
+        Status: 1,
+    };
+    return new Promise(function(resolve, reject) {
+      // var selectSpecificPromise = ModelMaster.selectSpecific(
+      //   tableName,
+      //   ColumnName,
+      //   value_,
+      //   product_id
+      // );
+      //
+      // selectSpecificPromise.then(
+      //   function(result) {
+      //     var returned_value_ = result;
+      //
+      //     if (returned_value_.length === 0) {
+      //       returned_value_ = {
+      //         success: false,
+      //         message: "No such record exists",
+      //         recordId: null
+      //
+      //       };
+      //       resolve(returned_value_);
+      //     } else {
+            con.query(
+              "UPDATE " +
+              tableName +
+              " SET ? WHERE " +
+              ColumnName +
+              " = " +
+              mysql.escape(value_) +
+              " AND CatalogueItemId = " + mysql.escape(catalogue_item_id),
+              jsonObject_,
+              function(err, result) {
+                if (err) {
+                  reject(err);
+                }
+
+                var returned_value_ = {
+                  success: true,
+                  message: "Record updated successfully.",
+                  recordId: null,
+                };
+                resolve(returned_value_);
+              }
+            );
+    //       }
+    //     },
+    //     function(err) {
+    //       console.log(err);
+    //     }
+    //   );
+     });
+  }
+  // end
 
 };

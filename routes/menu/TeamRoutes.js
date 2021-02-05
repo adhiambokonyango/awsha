@@ -257,12 +257,6 @@ router.post('/get_number_of_team_records',urlencodedParser,function(request,resp
 
 });
 
-
-
-
-
-
-
 router.post('/team_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;

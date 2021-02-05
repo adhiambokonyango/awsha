@@ -240,11 +240,6 @@ module.exports = class ProjectsController{
     })
   }
 
-
-
-
-
-
   static user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId){
     return new Promise(function(resolve, reject) {
 

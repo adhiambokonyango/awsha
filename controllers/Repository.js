@@ -107,7 +107,8 @@ function to retrieve back your result
 
                 var returned_value_ = {
                   success: true,
-                  message: "Record updated succesfully."
+                  message: "Record updated successfully.",
+                  recordId: null
                 };
                 resolve(returned_value_);
               }
@@ -398,13 +399,6 @@ delete() deletes a specific record(s).
     });
   }
 
-  //pagination
-  //SELECT *
-  // FROM administrator
-  // WHERE AdministratorId > 0
-  // ORDER BY AdministratorId
-  // LIMIT 5
-
   static get_number_of_records(tableName) {
     return new Promise(function(resolve, reject) {
       var sql =
@@ -422,39 +416,7 @@ delete() deletes a specific record(s).
   }
 
 
-  // get number of products checked_out
-  static get_checked_out_stock_records(tableName) {
-    return new Promise(function(resolve, reject) {
-      var sql =
-        " SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items WHERE Status = 1;"
-      con.query(sql, function(err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          var returned_value_ = result;
-          resolve(returned_value_);
-        }
-      });
-    });
-  }
-  // end //
 
-  // get number of products in stock
-  static get_in_stock_records(tableName) {
-    return new Promise(function(resolve, reject) {
-      var sql =
-       " SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items WHERE Status = 0;"
-      con.query(sql, function(err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          var returned_value_ = result;
-          resolve(returned_value_);
-        }
-      });
-    });
-  }
-  // end //
 
   static insert_mobile_user(tableName, jsonObject) {
     return new Promise(function(resolve, reject) {
@@ -470,6 +432,98 @@ delete() deletes a specific record(s).
             message: "Record inserted succesfully.",
             recordId: result.insertId
           };
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+  // get number of products checked_out by checking two columns
+    static get_stock_records_by_checking_productId_and_status(ColumnName,
+                             ProductId,
+                             StatusColumnName,
+                             Status) {
+      return new Promise(function(resolve, reject) {
+        var sql =
+          "SELECT * FROM catalogue_items" +
+          " WHERE " +
+          ColumnName +
+          " = " +
+          mysql.escape(ProductId) +
+          " AND " +
+          StatusColumnName +
+          " = " +
+          mysql.escape(Status);
+        con.query(sql, function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            var returned_value_ = result;
+            resolve(returned_value_);
+          }
+        });
+      });
+    }
+  // end //
+
+  // get stock by checking status
+  static get_stock_records(ColumnName,
+                           ProductId) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items" +
+        " WHERE " +
+        ColumnName +
+        " = " +
+        mysql.escape(ProductId) +
+        " AND Status = 0 ;"
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // end
+
+
+  // get checked_out by checking status
+  static get_checked_out_records(ColumnName,
+                           ProductId) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items" +
+        " WHERE " +
+        ColumnName +
+        " = " +
+        mysql.escape(ProductId) +
+        " AND Status = 1 ;"
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // end
+
+  static productsAndCatalogueItems() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM catalogue_items INNER JOIN products ON products.ProductId = catalogue_items.ProductId;", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
           resolve(returned_value_);
         }
       });

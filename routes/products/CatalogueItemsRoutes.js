@@ -21,26 +21,83 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-//insert unique code
-router.post('/add_unique_code', urlencodedParser,function(request,response){
+// update_status_for_checked_out_catalogue_item
+router.post(
+  "/update_status_for_checked_out_catalogue_item",
+  urlencodedParser,
+  function(request, response) {
+    var column_name = request.body.ColumnName;
+    var value_ = request.body.ColumnValue;
 
+    var date = new Date();
+    date.setHours(date.getHours() + 0);
+
+
+    var myPromise = CatalogueItemsController.update_status_for_checked_out_catalogue_item(
+      value_,
+      column_name
+    );
+
+    myPromise.then(
+      function(result) {
+        //  var response_object = { results: result };
+        var response_object =  result ;
+        response.send(response_object);
+        console.log(response_object);
+      },
+      function(err) {
+        response.send("An error occurred");
+        console.log(err);
+      }
+    );
+  }
+);
+// end
+
+//insert unique code
+router.post('/add_unique_code',urlencodedParser, async (request,response) => {
+  var date = new Date();
+  date.setHours(date.getHours()+0);
   var	jsonObject_ = {
     ProductId: request.body.ProductId,
     Code: request.body.Code,
     Status:0,
     RegisteredDate:date
   };
-  //console.log(jsonObject_);
-    var myPromise = CatalogueItemsController.insert_unique_code(jsonObject_);
-  myPromise.then(function(result) {
-    var response_object={results:result}
-    response.send(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
+    var myPromise = await CatalogueItemsController.insert_unique_code(jsonObject_);
+  // myPromise.then(function(
+  //   result) {
+  //   var response_object={results:result}
+  //   response.send(response_object);
+  //   console.log(response_object);
+  // }, function(err) {
+  //   console.log(err);
+  //   response.send("An error occurred");
+  // })
+  console.log(myPromise);
 });
+
+// insert existing code
+router.post('/insert_existing_code',urlencodedParser, async (request,response) => {
+  var date = new Date();
+  date.setHours(date.getHours()+0);
+  var	jsonObject_ = {
+    Code: request.body.Code,
+  };
+  var myPromise = await CatalogueItemsController.insert_existing_code(jsonObject_);
+  // myPromise.then(function(
+  //   result) {
+  //   var response_object={results:result}
+  //   response.send(response_object);
+  //   console.log(response_object);
+  // }, function(err) {
+  //   console.log(err);
+  //   response.send("An error occurred");
+  // })
+  response.send(myPromise);
+  console.log(myPromise);
+});
+// end
 
 //scanner
 router.post('/add_catalogue_items',urlencodedParser, async (request,response) => {
@@ -81,13 +138,15 @@ router.post('/insert_catalogue_items', urlencodedParser,function(request,respons
 
 router.post('/get_all_catalogue_items',urlencodedParser,function(request,response){
 
-  var myPromise = CatalogueItemsController.selectAll();
+  var myPromise = CatalogueItemsController.detail_fetch();
 
 
   myPromise.then(function(result) {
 
-    var response_object={results:result}
+  //  var response_object={results:result}
+   var response_object=result
     response.send(response_object);
+    console.log(response_object)
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
@@ -95,39 +154,62 @@ router.post('/get_all_catalogue_items',urlencodedParser,function(request,respons
 
 });
 
-router.post('/get_checked_out_stock_records',urlencodedParser,function(request,response){
+// router.post('/get_stock_records',urlencodedParser,function(request,response){
+//
+//   //var mValue=parseInt(request.body.search_value, 10);
+//   var value_=request.body.ProductId;
+//   var Status=request.body.Status;
+//   var myPromise = CatalogueItemsController.get_stock_records( value_, Status);
+//   myPromise.then(function(result) {
+//     var response_object={results:result}
+//     response.send(response_object);
+//     console.log(response_object);
+//   }, function(err) {
+//     response.send("An error occurred");
+//     console.log(err);
+//   })
+// });
 
-  var myPromise = CatalogueItemsController.get_checked_out_stock_records();
 
-
-  myPromise.then(function(result) {
-
-    var response_object={results:result}
-    response.send(response_object);
-    console.log(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
+// fetch code in_stock
+router.post('/fetch_stock_records',urlencodedParser,async (request,response)=>{
+  //var mValue=parseInt(request.body.search_value, 10);
+  var value_=request.body.ProductId;
+  var myPromise = await CatalogueItemsController.get_stock_records(value_);
+  // myPromise.then(function(result) {
+  //  // var response_object={results:result}
+  // var response_object= result
+  //   response.send(response_object);
+  //   console.log(response_object);
+  // }, function(err) {
+  //   response.send("An error occurred");
+  //   console.log(err);
+  // })
+  response.send(myPromise);
+  console.log(myPromise)
 });
-
-router.post('/get_in_stock_records',urlencodedParser,function(request,response){
-
-  var myPromise = CatalogueItemsController.get_in_stock_records();
+// end
 
 
-  myPromise.then(function(result) {
-
-    var response_object={results:result}
-    response.send(response_object);
-    console.log(response_object);
-  }, function(err) {
-    console.log(err);
-    response.send("An error occurred");
-  })
-
+// fetch code get_checked_out_records
+router.post('/get_checked_out_records',urlencodedParser,async (request,response)=>{
+  //var mValue=parseInt(request.body.search_value, 10);
+  var value_=request.body.ProductId;
+  var myPromise = await CatalogueItemsController.get_checked_out_records(value_);
+  // myPromise.then(function(result) {
+  //  // var response_object={results:result}
+  // var response_object= result
+  //   response.send(response_object);
+  //   console.log(response_object);
+  // }, function(err) {
+  //   response.send("An error occurred");
+  //   console.log(err);
+  // })
+  response.send(myPromise);
+  console.log(myPromise)
 });
+// end
+
 
 router.post('/get_specific_catalogue_items',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
@@ -150,18 +232,6 @@ router.post('/get_specific_catalogue_items',urlencodedParser,function(request,re
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 router.post('/update_catalogue_items',urlencodedParser,function(request,response){
 

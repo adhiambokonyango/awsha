@@ -22,8 +22,12 @@
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/menu/ProjectsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/ProjectsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/ProjectsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/products/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/ProductController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/menu/ProjectsModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/menu/ProjectsModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/menu/TeamRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/TeamRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products/CatalogueItemsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/CatalogueItemsRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products/ProductRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/ProductRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
@@ -42,6 +46,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1a8MQoTNf7pa2L7Dqy2rCnWz9dP" />
   <component name="ProjectLevelVcsManager">
@@ -75,8 +87,11 @@
       <recent name="$PROJECT_DIR$/routes/menu" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.ObjectivesRoutes.js">
+  <component name="RunManager" selected="Node.js.ProductController.js">
     <configuration name="ObjectivesRoutes.js" type="NodeJSConfigurationType" path-to-js-file="ObjectivesRoutes.js" working-dir="$PROJECT_DIR$/routes/menu">
+      <method v="2" />
+    </configuration>
+    <configuration name="ProductController.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controllers/products/ProductController.js" working-dir="$PROJECT_DIR$/controllers/products">
       <method v="2" />
     </configuration>
     <configuration name="UsersController.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controllers/user_management/UsersController.js" working-dir="$PROJECT_DIR$/controllers/user_management">
@@ -92,10 +107,12 @@
     <list>
       <item itemvalue="Node.js.ObjectivesRoutes.js" />
       <item itemvalue="Node.js.UsersController.js" />
+      <item itemvalue="Node.js.ProductController.js" />
       <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.ProductController.js" />
         <item itemvalue="Node.js.UsersController.js" />
       </list>
     </recent_temporary>
@@ -294,7 +311,28 @@
       <workItem from="1611323163939" duration="188000" />
       <workItem from="1611324842627" duration="134000" />
       <workItem from="1611733325018" duration="1169000" />
-      <workItem from="1611746793631" duration="2754000" />
+      <workItem from="1611746793631" duration="3233000" />
+      <workItem from="1611751258484" duration="1594000" />
+      <workItem from="1611755531965" duration="599000" />
+      <workItem from="1611821408304" duration="883000" />
+      <workItem from="1611823327225" duration="489000" />
+      <workItem from="1611824809997" duration="1191000" />
+      <workItem from="1611843949617" duration="9020000" />
+      <workItem from="1612022788165" duration="2485000" />
+      <workItem from="1612084649349" duration="390000" />
+      <workItem from="1612253381812" duration="589000" />
+      <workItem from="1612255735721" duration="580000" />
+      <workItem from="1612269716057" duration="2261000" />
+      <workItem from="1612274001977" duration="7424000" />
+      <workItem from="1612288813573" duration="6803000" />
+      <workItem from="1612341357820" duration="2581000" />
+      <workItem from="1612355536017" duration="249000" />
+      <workItem from="1612422912128" duration="3378000" />
+      <workItem from="1612426922270" duration="3194000" />
+      <workItem from="1612436423620" duration="178000" />
+      <workItem from="1612450037468" duration="78000" />
+      <workItem from="1612513217341" duration="280000" />
+      <workItem from="1612524016845" duration="2271000" />
     </task>
     <servers />
   </component>
@@ -312,109 +350,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="367" y="51" width="694" height="699" key="#AdministratorRolesController.js" timestamp="1596458268943">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="367" y="51" width="694" height="699" key="#AdministratorRolesController.js/72.27.1294.741@72.27.1294.741" timestamp="1596458268943" />
-    <state x="322" y="36" width="694" height="699" key="#RolesController.js" timestamp="1599244524716">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="322" y="36" width="694" height="699" key="#RolesController.js/72.27.1294.741@72.27.1294.741" timestamp="1599244524716" />
-    <state x="367" y="51" width="694" height="699" key="#SessionLogsRoutes.js" timestamp="1599244547828">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="367" y="51" width="694" height="699" key="#SessionLogsRoutes.js/72.27.1294.741@72.27.1294.741" timestamp="1599244547828" />
-    <state x="177" y="55" width="1084" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602499804125">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="177" y="55" width="1084" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1294.741@72.27.1294.741" timestamp="1602499804125" />
-    <state x="452" y="146" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596898791177">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="452" y="146" width="524" height="510" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1294.741@72.27.1294.741" timestamp="1596898791177" />
-    <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl" timestamp="1597154481727">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="397" y="138" width="424" height="482" key="FileChooserDialogImpl/65.24.1301.744@65.24.1301.744" timestamp="1594911152591" />
-    <state x="402" y="141" width="424" height="491" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1597154481727" />
-    <state width="1271" height="422" key="GridCell.Tab.0.bottom" timestamp="1602499860745">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1278" height="337" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
-    <state width="1271" height="422" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860745" />
-    <state width="1271" height="422" key="GridCell.Tab.0.center" timestamp="1602499860744">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1278" height="337" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
-    <state width="1271" height="422" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860744" />
-    <state width="1271" height="422" key="GridCell.Tab.0.left" timestamp="1602499860741">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1278" height="337" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1594064690798" />
-    <state width="1271" height="422" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860741" />
-    <state width="1271" height="422" key="GridCell.Tab.0.right" timestamp="1602499860745">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1278" height="337" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1594064690799" />
-    <state width="1271" height="422" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860745" />
-    <state width="1271" height="422" key="GridCell.Tab.1.bottom" timestamp="1602499860747">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.1.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
-    <state width="1271" height="422" key="GridCell.Tab.1.center" timestamp="1602499860746">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.1.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860746" />
-    <state width="1271" height="422" key="GridCell.Tab.1.left" timestamp="1602499860746">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.1.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860746" />
-    <state width="1271" height="422" key="GridCell.Tab.1.right" timestamp="1602499860746">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.1.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860746" />
-    <state width="1271" height="422" key="GridCell.Tab.2.bottom" timestamp="1602499860748">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.2.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860748" />
-    <state width="1271" height="422" key="GridCell.Tab.2.center" timestamp="1602499860747">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.2.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
-    <state width="1271" height="422" key="GridCell.Tab.2.left" timestamp="1602499860747">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.2.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
-    <state width="1271" height="422" key="GridCell.Tab.2.right" timestamp="1602499860747">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.2.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860747" />
-    <state width="1271" height="422" key="GridCell.Tab.3.bottom" timestamp="1602499860749">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.3.bottom/72.27.1294.741@72.27.1294.741" timestamp="1602499860749" />
-    <state width="1271" height="422" key="GridCell.Tab.3.center" timestamp="1602499860748">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.3.center/72.27.1294.741@72.27.1294.741" timestamp="1602499860748" />
-    <state width="1271" height="422" key="GridCell.Tab.3.left" timestamp="1602499860748">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.3.left/72.27.1294.741@72.27.1294.741" timestamp="1602499860748" />
-    <state width="1271" height="422" key="GridCell.Tab.3.right" timestamp="1602499860749">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state width="1271" height="422" key="GridCell.Tab.3.right/72.27.1294.741@72.27.1294.741" timestamp="1602499860749" />
-    <state x="209" y="27" width="1022" height="737" key="SettingsEditor" timestamp="1596450785194">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="209" y="27" width="1022" height="737" key="SettingsEditor/72.27.1294.741@72.27.1294.741" timestamp="1596450785194" />
-    <state x="242" y="99" width="943" height="603" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1602499574891">
-      <screen x="72" y="27" width="1294" height="741" />
-    </state>
-    <state x="242" y="99" width="943" height="603" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/72.27.1294.741@72.27.1294.741" timestamp="1602499574891" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
