@@ -609,26 +609,7 @@ with no WHERE clause(No condition)
         Status: 1,
     };
     return new Promise(function(resolve, reject) {
-      // var selectSpecificPromise = ModelMaster.selectSpecific(
-      //   tableName,
-      //   ColumnName,
-      //   value_,
-      //   product_id
-      // );
-      //
-      // selectSpecificPromise.then(
-      //   function(result) {
-      //     var returned_value_ = result;
-      //
-      //     if (returned_value_.length === 0) {
-      //       returned_value_ = {
-      //         success: false,
-      //         message: "No such record exists",
-      //         recordId: null
-      //
-      //       };
-      //       resolve(returned_value_);
-      //     } else {
+
             con.query(
               "UPDATE " +
               tableName +
@@ -651,14 +632,7 @@ with no WHERE clause(No condition)
                 resolve(returned_value_);
               }
             );
-    //       }
-    //     },
-    //     function(err) {
-    //       console.log(err);
-    //     }
-    //   );
      });
   }
   // end
-
 };

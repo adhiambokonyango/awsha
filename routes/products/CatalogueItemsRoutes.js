@@ -195,18 +195,18 @@ router.post('/fetch_stock_records',urlencodedParser,async (request,response)=>{
 router.post('/get_checked_out_records',urlencodedParser,async (request,response)=>{
   //var mValue=parseInt(request.body.search_value, 10);
   var value_=request.body.ProductId;
-  var myPromise = await CatalogueItemsController.get_checked_out_records(value_);
-  // myPromise.then(function(result) {
-  //  // var response_object={results:result}
-  // var response_object= result
-  //   response.send(response_object);
-  //   console.log(response_object);
-  // }, function(err) {
-  //   response.send("An error occurred");
-  //   console.log(err);
-  // })
-  response.send(myPromise);
-  console.log(myPromise)
+  var myPromise = CatalogueItemsController.get_checked_out_records(value_);
+  myPromise.then(function(result) {
+   // var response_object={results:result}
+  var response_object= result
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+  // response.send(myPromise);
+  // console.log(myPromise)
 });
 // end
 

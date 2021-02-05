@@ -56,7 +56,7 @@ module.exports = class CatalogueItemsController{
     return new Promise(function(resolve, reject) {
       var myPromise = Repository.get_checked_out_records( ColumnName, value_);
       myPromise.then( function(result) {
-        var response_object = { NumberOfRecords: result[0].NumberOfRecords }
+        var response_object = result
         resolve(response_object);
       }, function(err) {
         reject(err);
@@ -135,6 +135,7 @@ module.exports = class CatalogueItemsController{
     let userValidationColumn = "Code";
     let responseObject = {};
     let projectRequestArray = await ModelMaster.selectSpecific(tableName,userValidationColumn,recordObject.Code);
+    let oldStock = await CatalogueItemsController.getOldCheckedOutRecords(projectRequestArray[0].ProductId);
     if(projectRequestArray.length > 0) {
         let columnName = "Status";
         let  columnValue = projectRequestArray[0].Status;
@@ -143,22 +144,63 @@ module.exports = class CatalogueItemsController{
         let updateResponse = await ModelMaster.update_status_for_checked_out_catalogue_item(tableName,columnName,columnValue, catalogue_item_id);
 
       if (updateResponse.success === true){
-        let checked_out_stock = CatalogueItemsController.get_checked_out_records(product_id);
-        responseObject = checked_out_stock;
+        let checked_out_stock = await CatalogueItemsController.get_checked_out_records(product_id);
+          var newStock = {
+            CheckedOut: checked_out_stock[0].NumberOfRecords,
+          };
+          let product_checked_out_stock =
+            await ProductController.update_checked_out_stock(oldStock[0].NumberOfRecords, newStock, product_id);
+        responseObject = product_checked_out_stock;
+      } else {
+        responseObject = {
+          success: false,
+          message: "updateResponse.success === false.",
+          recordId:null,
+        }
       }
     } else {
       responseObject = {
         success: false,
         message: "code does not exists.",
-        recordId:0,
+        recordId:null,
       }
     }
     return responseObject;
   }
   // end
 
-  // insert unique catalogue item
+  // get old checked out records
+  static async getOldCheckedOutRecords(product_id){
+    let obj = {};
+    let stock = await CatalogueItemsController.get_checked_out_records(product_id);
+    obj = stock;
+    return obj;
+  }
 
+
+  // insert unique catalogue item
+  static async insert_unique_catalogue_item(recordObject){
+    let userValidationColumn = "Code";
+    let responseObject = {};
+    let projectRequestArray = await CatalogueItemsController.get_code_specific_records(userValidationColumn,recordObject.Code);
+    if(projectRequestArray.length === 0) {
+      let insertResponse = await Repository.insert(tableName,recordObject);
+      if (insertResponse.success === true){
+        let stock = CatalogueItemsController.get_stock_records(projectRequestArray[0].ProductId);
+        if (stock > 0){
+          let new_stock = ProductController.individualUpdate();
+        }
+      }
+
+    } else {
+      responseObject = {
+        success: false,
+        message: "code already exists.",
+        recordId:0,
+      }
+    }
+    return responseObject;
+  }
   // end
 
 }
