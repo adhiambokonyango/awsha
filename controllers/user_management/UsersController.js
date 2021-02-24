@@ -37,8 +37,8 @@ module.exports = class UsersController{
 
             let insertResponse = await Repository.insert(tableName,recordObject);
 
-            UsersController.assignAUserRoles(insertResponse.recordId);
-            UsersController.assignAUserBranch(insertResponse.recordId);
+            await UsersController.assignAUserRoles(insertResponse.recordId);
+            await UsersController.assignAUserBranch(insertResponse.recordId);
             responseObject = {registrationSuccess: true, registrationErrorMessage: "User registration successful" , userDetails: insertResponse }
 
         } else {

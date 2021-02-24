@@ -13,7 +13,8 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var con = require("../common/dbConnect.js");
-const roles = require("user-groups-roles")
+const roles = require("user-groups-roles");
+const Repository=require("../controllers/Repository");
 
 module.exports = class ModelMaster {
   /*SON/2018-11-06 00:29 - DEVELOPMENT
@@ -196,7 +197,7 @@ individual_update() updates a specific record(s).
 
                 var returned_value_ = {
                   success: true,
-                  message: "Record updated succesfully."
+                  message: "Record updated succesfully.",
                 };
                 resolve(returned_value_);
               }
@@ -507,7 +508,7 @@ with no WHERE clause(No condition)
             returned_value_ = {
               success: false,
               message: "No such record exists",
-              recordId: null
+              recordId: 0
 
             };
             resolve(returned_value_);
@@ -529,7 +530,7 @@ with no WHERE clause(No condition)
                 var returned_value_ = {
                   success: true,
                   message: "Record updated succesfully.",
-                   recordId: null
+                   recordId: 0
                 };
                 resolve(returned_value_);
               }
@@ -563,7 +564,7 @@ with no WHERE clause(No condition)
             returned_value_ = {
               success: false,
               message: "No such record exists",
-              recordId: null
+              recordId: 0
 
             };
             resolve(returned_value_);
@@ -581,11 +582,20 @@ with no WHERE clause(No condition)
                 if (err) {
                   reject(err);
                 }
-
+                if (result.changedRows > 0){
+                  var sql = "UPDATE products set InStock = InStock - 1 WHERE ProductId = " + mysql.escape(product_id);
+                  con.query(sql, function(err, result) {
+                    if (err) {
+                      reject(err);
+                    } else {
+                      resolve(result);
+                    }
+                  });
+                }
                 var returned_value_ = {
                   success: true,
                   message: "Record updated successfully.",
-                  recordId: null
+                  recordId: 0
                 };
                 resolve(returned_value_);
               }
@@ -604,7 +614,7 @@ with no WHERE clause(No condition)
 
   // update_checked_out_stock
   static update_status_for_checked_out_catalogue_item(
-    tableName, ColumnName, value_, catalogue_item_id) {
+    tableName, ColumnName, value_, catalogue_item_id, product_id) {
     let jsonObject_ = {
         Status: 1,
     };
@@ -617,13 +627,14 @@ with no WHERE clause(No condition)
               ColumnName +
               " = " +
               mysql.escape(value_) +
-              " AND CatalogueItemId = " + mysql.escape(catalogue_item_id),
+              " AND CatalogueItemId = " + mysql.escape(catalogue_item_id) +
+              " AND ProductId = " + mysql.escape(product_id),
               jsonObject_,
               function(err, result) {
                 if (err) {
                   reject(err);
                 }
-
+                //   *  changedRows: 0
                 var returned_value_ = {
                   success: true,
                   message: "Record updated successfully.",
@@ -634,5 +645,82 @@ with no WHERE clause(No condition)
             );
      });
   }
+  // end
+
+  // expiry date
+  static expired(ColumnName, lotId) {
+    let obj  = {};
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT DATEDIFF(ExpiryDate, RegisteredDate) AS ExpiryPeriod FROM lots WHERE " +
+        ColumnName + " = " +
+        mysql.escape(lotId);
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // end
+
+
+  // expiry status
+  static expiry_status(tableName, jsonObject_, ColumnName, value_, lot_id) {
+    return new Promise(function(resolve, reject) {
+      var selectSpecificPromise = ModelMaster.selectSpecific(
+        tableName,
+        ColumnName,
+        value_,
+        lot_id
+      );
+
+      selectSpecificPromise.then(
+        function(result) {
+          var returned_value_ = result;
+
+          if (returned_value_.length === 0) {
+            returned_value_ = {
+              success: false,
+              message: "No such record exists",
+              recordId: 0
+
+            };
+            resolve(returned_value_);
+          } else {
+            con.query(
+              "UPDATE " +
+              tableName +
+              " SET ? WHERE " +
+              ColumnName +
+              " = " +
+              mysql.escape(value_) +
+              " AND LotId = " + mysql.escape(lot_id),
+              jsonObject_,
+              function(err, result) {
+                if (err) {
+                  reject(err);
+                }
+
+                var returned_value_ = {
+                  success: true,
+                  message: "Record updated succesfully.",
+                  recordId: 0
+                };
+                resolve(returned_value_);
+              }
+            );
+          }
+        },
+        function(err) {
+          console.log(err);
+        }
+      );
+    });
+  }
+  // end
   // end
 };

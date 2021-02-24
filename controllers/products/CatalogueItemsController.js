@@ -43,7 +43,7 @@ module.exports = class CatalogueItemsController{
     return new Promise(function(resolve, reject) {
       var myPromise = Repository.get_stock_records( ColumnName, value_);
       myPromise.then( function(result) {
-        var response_object = { NumberOfRecords: result[0].NumberOfRecords }
+        var response_object = result
         resolve(response_object);
       }, function(err) {
         reject(err);
@@ -135,40 +135,50 @@ module.exports = class CatalogueItemsController{
     let userValidationColumn = "Code";
     let responseObject = {};
     let projectRequestArray = await ModelMaster.selectSpecific(tableName,userValidationColumn,recordObject.Code);
-    let oldStock = await CatalogueItemsController.getOldCheckedOutRecords(projectRequestArray[0].ProductId);
-    if(projectRequestArray.length > 0) {
+   if(projectRequestArray.length > 0) {
+        let oldStock = await CatalogueItemsController.getOldCheckedOutRecords(projectRequestArray[0].ProductId);
+
         let columnName = "Status";
         let  columnValue = projectRequestArray[0].Status;
         let catalogue_item_id = projectRequestArray[0].CatalogueItemId;
         let product_id = projectRequestArray[0].ProductId;
-        let updateResponse = await ModelMaster.update_status_for_checked_out_catalogue_item(tableName,columnName,columnValue, catalogue_item_id);
+        let updateResponse = await ModelMaster.update_status_for_checked_out_catalogue_item(tableName,columnName,columnValue, catalogue_item_id, product_id);
 
       if (updateResponse.success === true){
         let checked_out_stock = await CatalogueItemsController.get_checked_out_records(product_id);
+        if (checked_out_stock[0].NumberOfRecords > 0){
           var newStock = {
             CheckedOut: checked_out_stock[0].NumberOfRecords,
           };
           let product_checked_out_stock =
             await ProductController.update_checked_out_stock(oldStock[0].NumberOfRecords, newStock, product_id);
-        responseObject = product_checked_out_stock;
+          responseObject = product_checked_out_stock;
+        } else {
+          responseObject = {
+            success: false,
+            message: "checked_out_stock === 0.",
+            recordId:0,
+          }
+        }
       } else {
         responseObject = {
           success: false,
           message: "updateResponse.success === false.",
-          recordId:null,
+          recordId:0,
         }
       }
+     await CatalogueItemsController.get_stock_records(projectRequestArray[0].ProductId);
     } else {
       responseObject = {
         success: false,
         message: "code does not exists.",
-        recordId:null,
+        recordId:0,
       }
     }
+
     return responseObject;
   }
   // end
-
   // get old checked out records
   static async getOldCheckedOutRecords(product_id){
     let obj = {};
@@ -183,15 +193,32 @@ module.exports = class CatalogueItemsController{
     let userValidationColumn = "Code";
     let responseObject = {};
     let projectRequestArray = await CatalogueItemsController.get_code_specific_records(userValidationColumn,recordObject.Code);
+    let oldStock = await CatalogueItemsController.getOldStockRecords(recordObject.ProductId);
     if(projectRequestArray.length === 0) {
       let insertResponse = await Repository.insert(tableName,recordObject);
       if (insertResponse.success === true){
-        let stock = CatalogueItemsController.get_stock_records(projectRequestArray[0].ProductId);
-        if (stock > 0){
-          let new_stock = ProductController.individualUpdate();
+        let stock = await CatalogueItemsController.get_stock_records(recordObject.ProductId);
+        if (stock[0].NumberOfRecords > 0){
+          let product_id = recordObject.ProductId;
+          var newStock = {
+            InStock: stock[0].NumberOfRecords,
+          };
+          let new_stock = await ProductController.individualUpdate(oldStock[0].NumberOfRecords, newStock, product_id);
+          responseObject = new_stock;
+        } else {
+          responseObject = {
+            success: false,
+            message: "stock[0].NumberOfRecords === 0.",
+            recordId:0,
+          }
+        }
+      } else {
+        responseObject = {
+          success: false,
+          message: "insertResponse.success === false.",
+          recordId:0,
         }
       }
-
     } else {
       responseObject = {
         success: false,
@@ -202,5 +229,14 @@ module.exports = class CatalogueItemsController{
     return responseObject;
   }
   // end
+
+  // get old stock records
+  static async getOldStockRecords(product_id){
+    let obj = {};
+    let stock = await CatalogueItemsController.get_stock_records(product_id);
+    obj = stock;
+    return obj;
+  }
+
 
 }

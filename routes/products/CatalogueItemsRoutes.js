@@ -60,21 +60,24 @@ router.post('/add_unique_code',urlencodedParser, async (request,response) => {
   date.setHours(date.getHours()+0);
   var	jsonObject_ = {
     ProductId: request.body.ProductId,
+    LotId: request.body.LotId,
     Code: request.body.Code,
     Status:0,
+    ExpiryStatus:0,
     RegisteredDate:date
   };
-    var myPromise = await CatalogueItemsController.insert_unique_code(jsonObject_);
-  // myPromise.then(function(
-  //   result) {
-  //   var response_object={results:result}
-  //   response.send(response_object);
-  //   console.log(response_object);
-  // }, function(err) {
-  //   console.log(err);
-  //   response.send("An error occurred");
-  // })
-  console.log(myPromise);
+    var myPromise =  CatalogueItemsController.insert_unique_catalogue_item(jsonObject_);
+  myPromise.then(function(
+    result) {
+   // var response_object={results:result}
+    var response_object=result;
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+ // console.log(myPromise);
 });
 
 // insert existing code
@@ -83,19 +86,21 @@ router.post('/insert_existing_code',urlencodedParser, async (request,response) =
   date.setHours(date.getHours()+0);
   var	jsonObject_ = {
     Code: request.body.Code,
+    ProductId: request.body.ProductId
   };
-  var myPromise = await CatalogueItemsController.insert_existing_code(jsonObject_);
-  // myPromise.then(function(
-  //   result) {
-  //   var response_object={results:result}
-  //   response.send(response_object);
-  //   console.log(response_object);
-  // }, function(err) {
-  //   console.log(err);
-  //   response.send("An error occurred");
-  // })
-  response.send(myPromise);
-  console.log(myPromise);
+  var myPromise =  CatalogueItemsController.insert_existing_code(jsonObject_);
+  myPromise.then(function(
+    result) {
+    // var response_object={results:result}
+    var response_object=result;
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+  // response.send(myPromise);
+  // console.log(myPromise);
 });
 // end
 
@@ -105,8 +110,10 @@ router.post('/add_catalogue_items',urlencodedParser, async (request,response) =>
   date.setHours(date.getHours()+0);
   let jsonObject = {
     ProductId: request.body.ProductId,
+    LotId: request.body.LotId,
     Code: request.body.Code,
     Status:0,
+    ExpiryStatus:0,
     RegisteredDate:date
   };
   let result = await Repository.insert_mobile_user("catalogue_items",jsonObject);
@@ -120,8 +127,10 @@ router.post('/insert_catalogue_items', urlencodedParser,function(request,respons
   var	jsonObject_ = {
 
     ProductId:request.body.ProductId,
+    LotId: request.body.LotId,
     Code:request.body.Code,
     Status:0,
+    ExpiryStatus:0,
     RegisteredDate:date
 
   };
@@ -175,18 +184,18 @@ router.post('/get_all_catalogue_items',urlencodedParser,function(request,respons
 router.post('/fetch_stock_records',urlencodedParser,async (request,response)=>{
   //var mValue=parseInt(request.body.search_value, 10);
   var value_=request.body.ProductId;
-  var myPromise = await CatalogueItemsController.get_stock_records(value_);
-  // myPromise.then(function(result) {
-  //  // var response_object={results:result}
-  // var response_object= result
-  //   response.send(response_object);
-  //   console.log(response_object);
-  // }, function(err) {
-  //   response.send("An error occurred");
-  //   console.log(err);
-  // })
-  response.send(myPromise);
-  console.log(myPromise)
+  var myPromise =  CatalogueItemsController.get_stock_records(value_);
+  myPromise.then(function(result) {
+   // var response_object={results:result}
+  var response_object= result
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    response.send("An error occurred");
+    console.log(err);
+  })
+  // response.send(myPromise);
+  // console.log(myPromise)
 });
 // end
 
@@ -245,8 +254,10 @@ router.post('/update_catalogue_items',urlencodedParser,function(request,response
 
 
     ProductId:request.body.ProductId,
+    LotId: request.body.LotId,
     Code:request.body.Code,
     Status:0,
+    ExpiryStatus:0,
 
 
 
@@ -292,8 +303,10 @@ router.post('/update_individual_catalogue_items',urlencodedParser,function(reque
 
 
     ProductId:request.body.ProductId,
+    LotId: request.body.LotId,
     Code:request.body.Code,
     Status:0,
+    ExpiryStatus:0,
 
 
 

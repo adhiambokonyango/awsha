@@ -12,6 +12,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const ProductController = require('../../controllers/products/ProductController.js');
+const LotsController = require('../../controllers/lots/LotsController');
 
 
 
@@ -101,7 +102,8 @@ router.post('/add_products', urlencodedParser,async (request,response) =>{
     ProductName:request.body.ProductName,
     Price:request.body.Price,
     InStock: 0,
-    CheckedOut: 0
+    CheckedOut: 0,
+    BuyingPrice: request.body.BuyingPrice,
 
 
   };
@@ -131,20 +133,13 @@ router.post('/get_all_products',urlencodedParser,function(request,response){
     // var response_object={ results: result }
     var response_object = result;
     response.send(response_object);
-      console.log(response_object);
+     // console.log(response_object);
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
   })
 
 });
-
-
-
-
-
-
-
 
 
 router.post('/get_specific_products',urlencodedParser,function(request,response){
@@ -195,7 +190,9 @@ router.post('/update_products',urlencodedParser,function(request,response){
     ProductName:request.body.ProductName,
     Price:request.body.Price,
     InStock: 0,
-    CheckedOut: 0
+    CheckedOut: 0,
+    BuyingPrice: request.body.BuyingPrice,
+    
 
 
 
@@ -242,7 +239,9 @@ router.post('/update_individual_products',urlencodedParser,function(request,resp
     ProductName:request.body.ProductName,
     Price:request.body.Price,
     InStock: 0,
-    CheckedOut: 0
+    CheckedOut: 0,
+    BuyingPrice: request.body.BuyingPrice,
+   
 
 
 
