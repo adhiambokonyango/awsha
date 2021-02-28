@@ -134,7 +134,7 @@ app.use(require("./routes/products/ProductRoutes.js"));
 app.use(require("./routes/products/CatalogueItemsRoutes.js"));
 
 app.use(require("./routes/lots/LotsRoutes.js"));
-app.use(require("./routes/lots/LotItemRoutes.js"));
+app.use(require("./routes/terms_conditions/TermsAndConditionsRoutes.js"));
 
 
 

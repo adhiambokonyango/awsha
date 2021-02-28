@@ -1,8 +1,8 @@
 /*SON/2018-11-06 00:29 - DEVELOPMENT
-This class is the Company table's route class.
+This class is the terms_and_conditions table's route class.
 It is initialized at the "Index.js" and is able to recieve
 calls from the client and passes the calls down to the
-"GenderController" class
+"TermsAndConditionsController" class
 */
 
 
@@ -11,7 +11,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-const GenderController = require('../../controllers/menu/GenderController.js');
+const TermsAndConditionsController = require('../../controllers/terms_conditions/TermsAndConditionsController.js');
 
 
 
@@ -23,7 +23,7 @@ router.use(function timeLog(req, res, next) {
 
 
 
-router.post('/add_gender', urlencodedParser,function(request,response){
+router.post('/add_terms_and_conditions', urlencodedParser,function(request,response){
 
 
 
@@ -31,7 +31,11 @@ router.post('/add_gender', urlencodedParser,function(request,response){
 
 
 
-    GenderTitle:request.body.GenderTitle,
+
+    UserId:request.body.UserId,
+
+
+
 
 
 
@@ -40,7 +44,7 @@ router.post('/add_gender', urlencodedParser,function(request,response){
   };
 
 
-  var myPromise = GenderController.insert(jsonObject_);
+  var myPromise = TermsAndConditionsController.insert(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -59,17 +63,15 @@ router.post('/add_gender', urlencodedParser,function(request,response){
 
 
 
-router.post('/get_all_gender',urlencodedParser,function(request,response){
+router.post('/get_all_terms_and_conditions',urlencodedParser,function(request,response){
 
-  var myPromise = GenderController.get_all_records();
+  var myPromise = TermsAndConditionsController.get_all_records();
 
 
   myPromise.then(function(result) {
 
-   // var response_object={results:result}
-    var response_object=result;
+    var response_object={results:result}
     response.send(response_object);
-    console.log(response_object);
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
@@ -85,7 +87,7 @@ router.post('/get_all_gender',urlencodedParser,function(request,response){
 
 
 
-router.post('/get_specific_gender',urlencodedParser,function(request,response){
+router.post('/get_specific_terms_and_conditions',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
@@ -93,7 +95,7 @@ router.post('/get_specific_gender',urlencodedParser,function(request,response){
 
 
 
-  var myPromise = GenderController.get_specific_records(mKey,mValue);
+  var myPromise = TermsAndConditionsController.get_specific_records(mKey,mValue);
 
 
   myPromise.then(function(result) {
@@ -119,22 +121,28 @@ router.post('/get_specific_gender',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_gender',urlencodedParser,function(request,response){
+router.post('/update_terms_and_conditions',urlencodedParser,function(request,response){
 
+
+  var date = new Date();
+  date.setHours(date.getHours()+0);
 
   var	jsonObject_ = {
 
 
 
-    GenderTitle:request.body.GenderTitle,
+
+    UserId:request.body.UserId,
+
+
+
 
 
 
   };
 
 
-
-  var myPromise = GenderController.batch_update(jsonObject_);
+  var myPromise = TermsAndConditionsController.batch_update(jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -155,24 +163,28 @@ router.post('/update_gender',urlencodedParser,function(request,response){
 
 
 
-router.post('/update_individual_gender',urlencodedParser,function(request,response){
+router.post('/update_individual_terms_and_conditions',urlencodedParser,function(request,response){
 
   var column_name=request.body.ColumnName;
   var value_=request.body.ColumnValue;
 
+  var date = new Date();
+  date.setHours(date.getHours()+0);
 
   var	jsonObject_ = {
 
 
 
-    GenderTitle:request.body.GenderTitle,
+
+    UserId:request.body.UserId,
+
 
 
 
   };
 
 
-  var myPromise = GenderController.individual_record_update(column_name,value_,jsonObject_);
+  var myPromise = TermsAndConditionsController.individual_record_update(column_name,value_,jsonObject_);
 
 
   myPromise.then(function(result) {
@@ -191,7 +203,7 @@ router.post('/update_individual_gender',urlencodedParser,function(request,respon
 
 
 
-router.post('/delete_individual_gender',urlencodedParser,function(request,response){
+router.post('/delete_individual_terms_and_conditions',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -202,7 +214,7 @@ router.post('/delete_individual_gender',urlencodedParser,function(request,respon
   var UserId=request.body.UserId;
 
 
-  var myPromise = GenderController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
+  var myPromise = TermsAndConditionsController.delete_user_specic_record(column_name,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
@@ -221,7 +233,7 @@ router.post('/delete_individual_gender',urlencodedParser,function(request,respon
 
 
 
-router.post('/get_number_of_gender_records',urlencodedParser,function(request,response){
+router.post('/get_number_of_terms_and_conditions_records',urlencodedParser,function(request,response){
 
   var column_name=request.body.column_name;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -229,7 +241,7 @@ router.post('/get_number_of_gender_records',urlencodedParser,function(request,re
 
 
 
-  var myPromise = GenderController.get_number_of_records(column_name,value_);
+  var myPromise = TermsAndConditionsController.get_number_of_records(column_name,value_);
 
 
   myPromise.then(function(result) {
@@ -249,7 +261,7 @@ router.post('/get_number_of_gender_records',urlencodedParser,function(request,re
 
 
 
-router.post('/gender_user_specific_query',urlencodedParser,function(request,response){
+router.post('/terms_and_conditions_user_specific_query',urlencodedParser,function(request,response){
 
   var ColumnName=request.body.ColumnName;
   //var mValue=parseInt(request.body.search_value, 10);
@@ -261,7 +273,7 @@ router.post('/gender_user_specific_query',urlencodedParser,function(request,resp
 
 
 
-  var myPromise = GenderController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
+  var myPromise = TermsAndConditionsController.user_specific_select_query(ColumnName,value_,UserIdColumnName,UserId);
 
 
   myPromise.then(function(result) {
