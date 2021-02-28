@@ -41,4 +41,10 @@ module.exports = class ProductController{
     return response;
   }
 
+  static async update_checked_out_stock_after_depletion(columnValue,recordObject, product_id){
+    let columnName = "CheckedOut";
+    let response = await ModelMaster.update_checked_out_stock_after_depletion(tableName,recordObject,columnName,columnValue, product_id);
+    return response;
+  }
+
 }

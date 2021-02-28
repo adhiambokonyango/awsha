@@ -107,7 +107,6 @@ router.post('/add_products', urlencodedParser,async (request,response) =>{
 
 
   };
-  console.log("ProductId" + jsonObject_.InStock);
   var myPromise = ProductController.insert(jsonObject_);
 
 
@@ -192,7 +191,7 @@ router.post('/update_products',urlencodedParser,function(request,response){
     InStock: 0,
     CheckedOut: 0,
     BuyingPrice: request.body.BuyingPrice,
-    
+
 
 
 
@@ -241,7 +240,7 @@ router.post('/update_individual_products',urlencodedParser,function(request,resp
     InStock: 0,
     CheckedOut: 0,
     BuyingPrice: request.body.BuyingPrice,
-   
+
 
 
 

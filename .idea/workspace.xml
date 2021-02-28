@@ -20,19 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/awsha (4).sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/lots/LotItemController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/lots/LotsController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/lots/LotItemRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/awsha (5).sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/lots/LotsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/lots/LotsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/products/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/ProductController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products/CatalogueItemsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/CatalogueItemsRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products/ProductRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/ProductRoutes.js" afterDir="false" />
     </list>
@@ -362,6 +358,15 @@
       <workItem from="1614020310682" duration="710000" />
       <workItem from="1614081018089" duration="398000" />
       <workItem from="1614082065463" duration="171000" />
+      <workItem from="1614148689183" duration="8162000" />
+      <workItem from="1614182763919" duration="2382000" />
+      <workItem from="1614193125593" duration="3963000" />
+      <workItem from="1614198622974" duration="874000" />
+      <workItem from="1614241069527" duration="9316000" />
+      <workItem from="1614266882723" duration="4608000" />
+      <workItem from="1614329896004" duration="2283000" />
+      <workItem from="1614337885218" duration="5160000" />
+      <workItem from="1614438455767" duration="4591000" />
     </task>
     <servers />
   </component>
@@ -480,12 +485,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>324</line>
+          <line>325</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>330</line>
+          <line>331</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>

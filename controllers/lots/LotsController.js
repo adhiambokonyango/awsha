@@ -1,6 +1,9 @@
 const Repository=require('../Repository');
 const tableName="lots";
 const ModelMaster=require('../../models/ModelMaster');
+const cron = require('node-cron');
+const CatalogueItemsController = require('../products/CatalogueItemsController')
+const ProductController = require('../products/ProductController')
 
 
 module.exports = class LotsController{
@@ -16,7 +19,7 @@ module.exports = class LotsController{
       response.then(function(fetch){
         for (let i=0;i<fetch.length;i++){
           console.log(fetch[i].LotId)
-          let expired = LotsController.expired(fetch[i].LotId);
+          let expired = ModelMaster.expired(fetch[i].LotId);
           expired.then(function(result){
               resolve(result);
           });
@@ -27,6 +30,11 @@ module.exports = class LotsController{
 
   static async select_all(){
     let response = await Repository.selectAllLots();
+    return response;
+  }
+
+  static async depletedStock(){
+    let response = await Repository.depletedStock();
     return response;
   }
 
@@ -62,88 +70,6 @@ module.exports = class LotsController{
     return response;
   }
 
-  static expired(lotId) {
-    let ColumnName = "LotId";
-    return new Promise(function(resolve, reject) {
-      var myPromise = ModelMaster.expired(ColumnName, lotId);
-      myPromise.then(
-        function(result) {
-          var response_object = {
-            ExpiryPeriod: result[0].ExpiryPeriod
-          };
-
-          setTimeout(function(){
-            // update lot expiry status
-            let jsonObject_ = {
-              Expired: 1,
-            };
-            let expired_lot = ModelMaster.individual_update(tableName, jsonObject_, ColumnName, lotId);
-            expired_lot.then(function(expiry){
-              if (expiry.success === true){
-                // update item expiry status
-                let jsonObject = {
-                  ExpiryStatus: 2,
-                };
-                let table_name = "catalogue_items";
-                let expiry_status = ModelMaster.individual_update(table_name, jsonObject, ColumnName, lotId);
-                expiry_status.then(function(status_){
-                  if (status_.success === true){
-                    let expired_lot = LotsController.expired_lot();
-                    expired_lot.then(function(exp){
-                        resolve(exp);
-                    })
-
-                  }
-                });
-              }
-            })
-            console.log("expired")
-          }, result[0].ExpiryPeriod * 86400000)
-        },
-        function(err) {
-          reject(err);
-        }
-      );
-    });
-  }
-
-  static async expired_lot(){
-    return new Promise(function(resolve, reject) {
-      var response_object = {};
-      let response = Repository.expired_lot();
-      response.then(function(result){
-        for (let i=0; i<result.length;i++){
-          let expired_items = LotsController.expired_item_count(result[i].LotId);
-          expired_items.then(function(expired){
-            resolve(result);
-          });
-        }
-      })
-    });
-  }
-
-
-  // expired_item_count
-  static expired_item_count( value_){
-    let  ColumnName = "LotId";
-    return new Promise(function(resolve, reject) {
-      var myPromise = Repository.expired_item_count( ColumnName, value_);
-      myPromise.then( function(result) {
-        var response_object =result[0].NumberOfRecords;
-        let jsonObj = {
-          ExpiredItemCount: result[0].NumberOfRecords
-        }
-        let update = ModelMaster.individual_update(tableName, jsonObj, ColumnName, value_);
-        update.then(function(updated){
-          resolve(response_object);
-        })
-      }, function(err) {
-        reject(err);
-      })
-    })
-  }
-  // end
-
 
   // item_count
   static item_count( value_){
@@ -168,4 +94,25 @@ module.exports = class LotsController{
   }
   // end
 
-}
+
+
+  // end  LotId, ProductId RegisteredDate ExpiryDate ItemCount ExpiredItemCount Expired
+
+
+  // specific_lot_fetch
+  static selectSpecificLots(lotId){
+    return new Promise(function(resolve, reject) {
+      var myPromise = Repository.selectSpecificLots(lotId);
+      myPromise.then( function(result) {
+        var response_object =result;
+        resolve(response_object);
+
+      }, function(err) {
+        reject(err);
+      })
+    })
+  }
+  // end
+
+
+}// end class

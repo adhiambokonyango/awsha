@@ -104,6 +104,58 @@ router.post('/insert_existing_code',urlencodedParser, async (request,response) =
 });
 // end
 
+
+// check_back_in
+router.post('/check_back_in',urlencodedParser, async (request,response) => {
+  var date = new Date();
+  date.setHours(date.getHours()+0);
+  var	jsonObject_ = {
+    Code: request.body.Code,
+    ProductId: request.body.ProductId
+  };
+  var myPromise =  CatalogueItemsController.check_back_in_existing_code(jsonObject_);
+  myPromise.then(function(
+    result) {
+    // var response_object={results:result}
+    var response_object=result;
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+  // response.send(myPromise);
+  // console.log(myPromise);
+});
+// end
+
+
+
+// check_out_old_stock
+router.post('/check_out_old_stock',urlencodedParser, async (request,response) => {
+  var date = new Date();
+  date.setHours(date.getHours()+0);
+  var	jsonObject_ = {
+    Code: request.body.Code
+  };
+  var myPromise =  CatalogueItemsController.check_out_old_stock(jsonObject_);
+  myPromise.then(function(
+    result) {
+    // var response_object={results:result}
+    var response_object=result;
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+  // response.send(myPromise);
+  // console.log(myPromise);
+});
+// end
+
+
+
 //scanner
 router.post('/add_catalogue_items',urlencodedParser, async (request,response) => {
   var date = new Date();

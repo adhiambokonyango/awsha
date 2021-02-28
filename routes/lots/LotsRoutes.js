@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const LotsController = require('../../controllers/lots/LotsController.js');
 
-
+const schedule = require('node-schedule');
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -38,7 +38,9 @@ router.post('/add_lots', urlencodedParser,function(request,response){
     ExpiryDate:request.body.ExpiryDate,
     ItemCount: 0,
     ExpiredItemCount: 0,
-    Expired: 0
+    Expired: 0,
+    CountOfCheckedOutItems: 0,
+    Depleted: 0
 
   };
 
@@ -77,9 +79,9 @@ router.post('/select_all',urlencodedParser,function(request,response){
 });
 
 
-router.post('/get_expired_lots',urlencodedParser,function(request,response){
+router.post('/depleted_stock',urlencodedParser,function(request,response){
 
-  var myPromise = LotsController.selectAll();
+  var myPromise = LotsController.depletedStock();
   myPromise.then(function(result) {
 
     //var response_object={results:result}
@@ -92,7 +94,6 @@ router.post('/get_expired_lots',urlencodedParser,function(request,response){
   })
 
 });
-
 
 
 router.post('/get_lot_expiry_period',urlencodedParser,function(request,response){
@@ -110,10 +111,6 @@ var lotId = request.body.LotId;
   })
 
 });
-
-
-
-
 
 
 
@@ -164,11 +161,13 @@ router.post('/update_lots',urlencodedParser,function(request,response){
 
 
     ProductId: request.body.ProductId,
-    RegisteredDate: date,
+    RegisteredDate:date,
     ExpiryDate:request.body.ExpiryDate,
-    ItemCount: request.body.ItemCount,
-    ExpiredItemCount: request.body.ExpiredItemCount,
-    Expired: 0
+    ItemCount: 0,
+    ExpiredItemCount: 0,
+    Expired: 0,
+    CountOfCheckedOutItems: 0,
+    Depleted: 0
 
 
 
@@ -214,9 +213,11 @@ router.post('/update_individual_lots',urlencodedParser,function(request,response
     ProductId: request.body.ProductId,
     RegisteredDate:date,
     ExpiryDate:request.body.ExpiryDate,
-    ItemCount: request.body.ItemCount,
-    ExpiredItemCount: request.body.ExpiredItemCount,
-    Expired: 0
+    ItemCount: 0,
+    ExpiredItemCount: 0,
+    Expired: 0,
+    CountOfCheckedOutItems: 0,
+    Depleted: 0
 
 
 
@@ -327,10 +328,6 @@ router.post('/lots_user_specific_query',urlencodedParser,function(request,respon
   })
 
 });
-
-
-
-
 
 
 module.exports = router;

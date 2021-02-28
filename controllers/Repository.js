@@ -548,48 +548,6 @@ delete() deletes a specific record(s).
     });
   }
 
-
-
-  // get lot_item_count
-  static expired_item_count(ColumnName,
-                           LotId) {
-    return new Promise(function(resolve, reject) {
-      var sql =
-        "SELECT COUNT(*) AS NumberOfRecords FROM catalogue_items" +
-        " WHERE " +
-        ColumnName +
-        " = " +
-        mysql.escape(LotId) + " AND ExpiryStatus = 2 AND Status = 0 ;"
-      con.query(sql, function(err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          var returned_value_ = result;
-          resolve(returned_value_);
-        }
-      });
-    });
-  }
-  // end
-
-
-  // fetch expired lot
-  static expired_lot() {
-    return new Promise(function(resolve, reject) {
-      var sql =
-        "SELECT * FROM lots INNER JOIN products ON products.ProductId = lots.ProductId WHERE Expired = 1;"
-      con.query(sql, function(err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          var returned_value_ = result;
-          resolve(returned_value_);
-        }
-      });
-    });
-  }
-  // end
-
   // get item_count
   static item_count(ColumnName,
                             LotId) {
@@ -611,4 +569,41 @@ delete() deletes a specific record(s).
     });
   }
   // end
+
+
+  static selectSpecificLots(lotId) {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM lots WHERE LotId = " + mysql.escape(lotId), function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+  static depletedStock() {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM lots INNER JOIN products ON products.ProductId = lots.ProductId " +
+     " WHERE Depleted = 4 ", function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
 };
