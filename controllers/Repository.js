@@ -51,6 +51,26 @@ database.
     });
   }
 
+
+  // user based select all
+  static selectAllCreatedByUser(table_name, userId) {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM " + table_name + " WHERE UserId = " + mysql.escape(userId), function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // end
+
   /*SON/2018-11-06 00:29 - DEVELOPMENT
 
 The selectAll() is to select all data on the

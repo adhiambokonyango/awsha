@@ -151,7 +151,7 @@ your result
         } else {
           var returned_value_ = {
             success: true,
-            message: "Record updated succesfully.",
+            message: "Record updated successfully.",
             recordId: result.insertId
           };
           resolve(returned_value_);
@@ -222,7 +222,7 @@ individual_update() updates a specific record(s).
 
   static delete(tableName, ColumnName, value_, UserIdColumnName, UserId) {
     return new Promise(function(resolve, reject) {
-      var selectSpecificPromise = ModelMaster.selectUserSpecific(
+      var selectSpecificPromise = ModelMaster.user_specific_select_query(
         tableName,
         ColumnName,
         value_,
@@ -254,7 +254,11 @@ individual_update() updates a specific record(s).
                   reject(err);
                 }
 
-                var returned_value_ = "Record Succesfully Deleted";
+                var returned_value_ = {
+                  success: true,
+                  message: "Record Successfully Deleted",
+                  recordId:0,
+                };
                 resolve(returned_value_);
               }
             );
@@ -268,51 +272,40 @@ individual_update() updates a specific record(s).
   }
 
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-
 batch_program() is a special function that handles batch jobs.
-
 */
 
+  /*This function implements a select query based on the session Id/User making this request*/
 
-
-  static two_table_inner_join(
-    TableOne,
-    TableTwo,
-    JoiningKey,
-    SearchColumn,
-    SearchValue
+  static user_specific_select_query(
+    tableName,
+    ColumnName,
+    value_,
+    UserIdColumnName,
+    UserId
   ) {
     return new Promise(function(resolve, reject) {
-      con.query(
+      var sql =
         "SELECT * FROM " +
-        TableOne +
-        " INNER JOIN " +
-        TableTwo +
-        " ON " +
-        TableOne +
-        "." +
-        JoiningKey +
-        " = " +
-        TableTwo +
-        "." +
-        JoiningKey +
+        tableName +
         " WHERE " +
-        TableTwo +
-        "." +
-        SearchColumn +
-        "= " +
-        mysql.escape(SearchValue),
-        function(err, result) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(result);
-          }
+        ColumnName +
+        " = " +
+        mysql.escape(value_) +
+        " AND " +
+        UserIdColumnName +
+        " = " +
+        mysql.escape(UserId);
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
         }
-      );
+      });
     });
   }
-
 
   // project Id specific query for objectives
   static project_specific_select_query(
@@ -352,6 +345,46 @@ batch_program() is a special function that handles batch jobs.
           resolve(returned_value_);
         }
       });
+    });
+  }
+
+
+
+  static two_table_inner_join(
+    TableOne,
+    TableTwo,
+    JoiningKey,
+    SearchColumn,
+    SearchValue
+  ) {
+    return new Promise(function(resolve, reject) {
+      con.query(
+        "SELECT * FROM " +
+        TableOne +
+        " INNER JOIN " +
+        TableTwo +
+        " ON " +
+        TableOne +
+        "." +
+        JoiningKey +
+        " = " +
+        TableTwo +
+        "." +
+        JoiningKey +
+        " WHERE " +
+        TableTwo +
+        "." +
+        SearchColumn +
+        "= " +
+        mysql.escape(SearchValue),
+        function(err, result) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
     });
   }
 
@@ -396,37 +429,6 @@ batch_program() is a special function that handles batch jobs.
   }
 
 
-  /*This function implements a select query based on the session Id/User making this request*/
-
-  static user_specific_select_query(
-    tableName,
-    ColumnName,
-    value_,
-    UserIdColumnName,
-    UserId
-  ) {
-    return new Promise(function(resolve, reject) {
-      var sql =
-        "SELECT * FROM " +
-        tableName +
-        " WHERE " +
-        ColumnName +
-        " = " +
-        mysql.escape(value_) +
-        " AND " +
-        UserIdColumnName +
-        " = " +
-        mysql.escape(UserId);
-      con.query(sql, function(err, result) {
-        if (err) {
-          reject(err);
-        } else {
-          var returned_value_ = result;
-          resolve(returned_value_);
-        }
-      });
-    });
-  }
 
   /*This function gets the number of records in a table.*/
 

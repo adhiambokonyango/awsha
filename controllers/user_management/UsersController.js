@@ -39,10 +39,10 @@ module.exports = class UsersController{
 
             await UsersController.assignAUserRoles(insertResponse.recordId);
             await UsersController.assignAUserBranch(insertResponse.recordId);
-            responseObject = {registrationSuccess: true, registrationErrorMessage: "User registration successful" , userDetails: insertResponse }
+            responseObject = insertResponse;
 
         } else {
-            responseObject = {registrationSuccess: false, registrationErrorMessage: "A user already exists by this email"}
+            responseObject = {  success: false, message: 'A user already exists by this email.', recordId: 0}
 
         }
 

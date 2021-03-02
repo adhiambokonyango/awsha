@@ -39,8 +39,10 @@ router.post('/user_registration', urlencodedParser,function(request,response){
 
     myPromise.then(function(result) {
 
-        var response_object={results:result}
+       // var response_object={results:result}
+       var response_object=result;
         response.send(response_object);
+        console.log(response_object);
     }, function(err) {
         console.log(err);
         response.send("An error occurred");

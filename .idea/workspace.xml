@@ -20,11 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/terms_conditions/TermsAndConditionsController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/terms_conditions/TermsAndConditionsRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/menu/GenderRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/menu/GenderRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/products/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/ProductController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/products/ProductRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/ProductRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +363,8 @@
       <workItem from="1614329896004" duration="2283000" />
       <workItem from="1614337885218" duration="5160000" />
       <workItem from="1614438455767" duration="4591000" />
-      <workItem from="1614514443573" duration="1148000" />
+      <workItem from="1614514443573" duration="1331000" />
+      <workItem from="1614667863795" duration="7800000" />
     </task>
     <servers />
   </component>
@@ -480,12 +483,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>325</line>
+          <line>318</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>331</line>
+          <line>324</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
