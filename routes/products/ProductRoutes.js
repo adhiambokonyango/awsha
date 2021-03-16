@@ -122,9 +122,9 @@ router.post('/add_products', urlencodedParser,async (request,response) =>{
 });
 
 
-router.post('/get_all_products/:UserId',urlencodedParser,function(request,response){
+router.post('/get_all_products',urlencodedParser,function(request,response){
 
-  const user_id = request.params.UserId;
+  const user_id = request.body.UserId;
 
   var myPromise = ProductController.selectAllCreatedByUser(user_id);
   myPromise.then(function(result) {
@@ -132,7 +132,7 @@ router.post('/get_all_products/:UserId',urlencodedParser,function(request,respon
     // var response_object={ results: result }
     var response_object = result;
     response.send(response_object);
-      console.log(response_object);
+
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
@@ -170,11 +170,11 @@ router.post("/delete_individual_user_products", urlencodedParser, function(
 });
 
 
-router.post('/edit_products/:ProductId',urlencodedParser,function(request,response){
+router.post('/edit_products',urlencodedParser,function(request,response){
 
   var date = new Date();
   date.setHours(date.getHours()+0);
-  let product_id = request.params.ProductId;
+  let product_id = request.body.ProductId;
   var	jsonObject_ = {
 
     ProductName:request.body.ProductName,
@@ -184,7 +184,8 @@ router.post('/edit_products/:ProductId',urlencodedParser,function(request,respon
   };
   var myPromise = ProductController.edit(jsonObject_, product_id);
   myPromise.then(function(result) {
-    var response_object={results:result}
+    //var response_object={results:result}
+    var response_object=result;
     response.send(response_object);
     console.log(response_object)
   }, function(err) {

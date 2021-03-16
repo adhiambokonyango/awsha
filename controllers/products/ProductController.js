@@ -24,9 +24,9 @@ module.exports = class ProductController{
     return response;
   }
 
-  static async edit(updates, product_id_){
-    let  column_name_ = "ProductId" ;
-    let response = await ModelMaster.individual_update(tableName, updates, column_name_, product_id_);
+  static async edit(jsonObject_, product_id){
+    // tableName, jsonObject_, product_id
+    let response = await ModelMaster.batch_update_product_properties(tableName, jsonObject_, product_id);
     return response;
   }
 
@@ -62,6 +62,13 @@ module.exports = class ProductController{
     return response;
   }
 
+  static async updateCheckedOutAndCountOfCheckedOut(columnValue,recordObject, product_id, lot_id){
+    let columnName = "CheckedOut";
+    let response = await ModelMaster.updateCheckedOutAndCountOfCheckedOut(tableName,recordObject,columnName,columnValue, product_id, lot_id);
+    return response;
+  }
+
+  // ensures values dont fall below zero
   static async update_checked_out_stock_after_depletion(columnValue,recordObject, product_id){
     let columnName = "CheckedOut";
     let response = await ModelMaster.update_checked_out_stock_after_depletion(tableName,recordObject,columnName,columnValue, product_id);

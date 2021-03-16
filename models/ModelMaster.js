@@ -160,10 +160,31 @@ your result
     });
   }
 
+
+  // batch_update_product_properties
+  static batch_update_product_properties(tableName, jsonObject_, product_id) {
+    return new Promise(function(resolve, reject) {
+      con.query("UPDATE " + tableName + " SET ? WHERE ProductId = " +  mysql.escape(product_id), jsonObject_, function(
+        err,
+        result
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = {
+            success: true,
+            message: "Record updated successfully.",
+            recordId: result.insertId
+          };
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+  // end
+
   /*SON/2018-11-06 00:29 - DEVELOPMENT
-
 individual_update() updates a specific record(s).
-
 */
 
   static individual_update(tableName, jsonObject_, ColumnName, value_) {
@@ -235,7 +256,12 @@ individual_update() updates a specific record(s).
           var returned_value_ = result;
 
           if (returned_value_.length === 0) {
-            returned_value_ = "No such record exists";
+            returned_value_ = {
+              success: false,
+              message: "No such record exists",
+              recordId:0,
+            };
+
             resolve(returned_value_);
           } else {
             con.query(
@@ -533,7 +559,7 @@ with no WHERE clause(No condition)
 
                 var returned_value_ = {
                   success: true,
-                  message: "Record updated succesfully.",
+                  message: "Record updated successfully.",
                    recordId: 0
                 };
                 resolve(returned_value_);
@@ -552,6 +578,7 @@ with no WHERE clause(No condition)
 
   // update_checked_out_stock
   // increase count of leaving items
+  // with every leaving item, decreases stock by 1
   static update_checked_out_stock(tableName, jsonObject_, ColumnName, value_, product_id) {
     return new Promise(function(resolve, reject) {
       var selectSpecificPromise = ModelMaster.selectSpecific(
@@ -651,11 +678,8 @@ with no WHERE clause(No condition)
                     }
                   });
                 }
-                var returned_value_ = {
-                  success: true,
-                  message: "Record updated successfully.",
-                  recordId: 0,
-                };
+                var returned_value_ = result;
+                console.log(result)
                 resolve(returned_value_);
               }
             );
@@ -761,6 +785,7 @@ with no WHERE clause(No condition)
 
   // update_checked_out_stock_after_depletion
   // make changes on column checked out once lot has all items checked out
+  // ensures values dont fall below zero
   static update_checked_out_stock_after_depletion(tableName, jsonObject_, ColumnName, value_, product_id) {
     return new Promise(function(resolve, reject) {
       var selectSpecificPromise = ModelMaster.selectSpecific(
@@ -817,7 +842,8 @@ with no WHERE clause(No condition)
 
   // individually updates checked and returns result as opposed to json object.
   // result used in controller
-  static individual_update_checked_out(tableName, jsonObject_, ColumnName, value_) {
+  // informs user on number of changed records
+  static update_deplete(tableName, jsonObject_, ColumnName, value_) {
     return new Promise(function(resolve, reject) {
       var selectSpecificPromise = ModelMaster.selectSpecific(
         tableName,
@@ -858,6 +884,80 @@ with no WHERE clause(No condition)
       );
     });
   }
+
+
+
+  // update products.CheckedOut, products.Instock along side with lots.CountOfCheckedOutItems
+  static updateCheckedOutAndCountOfCheckedOut(tableName, jsonObject_, ColumnName, value_, product_id, lot_id) {
+    return new Promise(function(resolve, reject) {
+      var selectSpecificPromise = ModelMaster.selectSpecific(
+        tableName,
+        ColumnName,
+        value_,
+        product_id
+      );
+
+      selectSpecificPromise.then(
+        function(result) {
+          var returned_value_ = result;
+
+          if (returned_value_.length === 0) {
+            returned_value_ = {
+              success: false,
+              message: "No such record exists",
+              recordId: 0
+
+            };
+            resolve(returned_value_);
+          } else {
+            con.query(
+              "UPDATE " +
+              tableName +
+              " SET ? WHERE " +
+              ColumnName +
+              " = " +
+              mysql.escape(value_) +
+              " AND ProductId = " + mysql.escape(product_id),
+              jsonObject_,
+              function(err, result) {
+                if (err) {
+                  reject(err);
+                }
+                if (result.changedRows > 0){
+                  var sql = "UPDATE products set InStock = InStock - 1 WHERE ProductId = " + mysql.escape(product_id);
+                  con.query(sql, function(err, result) {
+                    if (err) {
+                      reject(err);
+                    }
+                    if (result.changedRows > 0){
+                      var sql = "UPDATE lots set CountOfCheckedOutItems = CountOfCheckedOutItems + 1 WHERE LotId = " + mysql.escape(lot_id);
+                      con.query(sql, function(err, result) {
+                        if (err) {
+                          reject(err);
+                        } else {
+                          resolve(result);
+                        }
+                      })
+                      }
+                  });
+                }
+                var returned_value_ = {
+                  success: true,
+                  message: "Record updated successfully.",
+                  recordId: 0
+                };
+                resolve(returned_value_);
+              }
+            );
+          }
+        },
+        function(err) {
+          console.log(err);
+        }
+      );
+    });
+  }
+  // end
 
 
 };

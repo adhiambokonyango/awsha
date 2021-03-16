@@ -64,7 +64,8 @@ router.post('/add_unique_code',urlencodedParser, async (request,response) => {
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
-    RegisteredDate:date
+    RegisteredDate:date,
+    Counter: 1
   };
     var myPromise =  CatalogueItemsController.insert_unique_catalogue_item(jsonObject_);
   myPromise.then(function(
@@ -166,7 +167,8 @@ router.post('/add_catalogue_items',urlencodedParser, async (request,response) =>
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
-    RegisteredDate:date
+    RegisteredDate:date,
+    Counter: 1
   };
   let result = await Repository.insert_mobile_user("catalogue_items",jsonObject);
   response.send(result);
@@ -178,12 +180,13 @@ router.post('/insert_catalogue_items', urlencodedParser,function(request,respons
   date.setHours(date.getHours() + 3);
   var	jsonObject_ = {
 
-    ProductId:request.body.ProductId,
+    ProductId: request.body.ProductId,
     LotId: request.body.LotId,
-    Code:request.body.Code,
+    Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
-    RegisteredDate:date
+    RegisteredDate:date,
+    Counter: 1
 
   };
   var myPromise = CatalogueItemsController.insert(jsonObject_);
@@ -305,11 +308,13 @@ router.post('/update_catalogue_items',urlencodedParser,function(request,response
 
 
 
-    ProductId:request.body.ProductId,
+    ProductId: request.body.ProductId,
     LotId: request.body.LotId,
-    Code:request.body.Code,
+    Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
+    RegisteredDate:date,
+    Counter: 1
 
 
 
@@ -354,11 +359,13 @@ router.post('/update_individual_catalogue_items',urlencodedParser,function(reque
 
 
 
-    ProductId:request.body.ProductId,
+    ProductId: request.body.ProductId,
     LotId: request.body.LotId,
-    Code:request.body.Code,
+    Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
+    RegisteredDate:date,
+    Counter: 1
 
 
 

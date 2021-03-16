@@ -22,9 +22,13 @@
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/lots/LotsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/lots/LotsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/products/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/ProductController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_management/UsersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_management/UsersController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/ModelMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/products/CatalogueItemsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/CatalogueItemsRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/products/ProductRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/products/ProductRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/UsersRoutes.js" afterDir="false" />
     </list>
@@ -364,7 +368,28 @@
       <workItem from="1614337885218" duration="5160000" />
       <workItem from="1614438455767" duration="4591000" />
       <workItem from="1614514443573" duration="1331000" />
-      <workItem from="1614667863795" duration="7800000" />
+      <workItem from="1614667863795" duration="7904000" />
+      <workItem from="1614785910230" duration="309000" />
+      <workItem from="1614786259975" duration="11000" />
+      <workItem from="1614798492104" duration="506000" />
+      <workItem from="1614801642720" duration="370000" />
+      <workItem from="1614860338362" duration="1593000" />
+      <workItem from="1614881043525" duration="1403000" />
+      <workItem from="1614884865619" duration="5825000" />
+      <workItem from="1615042065556" duration="751000" />
+      <workItem from="1615046223806" duration="2323000" />
+      <workItem from="1615128253244" duration="1316000" />
+      <workItem from="1615130662927" duration="1743000" />
+      <workItem from="1615400224372" duration="465000" />
+      <workItem from="1615473767340" duration="1340000" />
+      <workItem from="1615475649111" duration="18379000" />
+      <workItem from="1615699819090" duration="1135000" />
+      <workItem from="1615701892327" duration="1703000" />
+      <workItem from="1615714622571" duration="4663000" />
+      <workItem from="1615816696478" duration="9000" />
+      <workItem from="1615818619704" duration="2166000" />
+      <workItem from="1615880238440" duration="3201000" />
+      <workItem from="1615887302129" duration="1815000" />
     </task>
     <servers />
   </component>
@@ -483,12 +508,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>318</line>
+          <line>344</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/ModelMaster.js</url>
-          <line>324</line>
+          <line>350</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>

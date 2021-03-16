@@ -34,6 +34,7 @@ router.post('/add_lots', urlencodedParser,function(request,response){
   var	jsonObject_ = {
 
     ProductId: request.body.ProductId,
+    UserId: request.body.UserId,
     RegisteredDate:date,
     ExpiryDate:request.body.ExpiryDate,
     ItemCount: 0,
@@ -63,8 +64,25 @@ router.post('/add_lots', urlencodedParser,function(request,response){
 
 
 router.post('/select_all',urlencodedParser,function(request,response){
+  const user_id = request.body.UserId;
+  var myPromise = LotsController.stocks_report(user_id);
+  myPromise.then(function(result) {
 
-  var myPromise = LotsController.stocks_report();
+    //var response_object={results:result}
+    var response_object=result;
+    response.send(response_object);
+    console.log(response_object);
+  }, function(err) {
+    console.log(err);
+    response.send("An error occurred");
+  })
+
+});
+
+
+router.post('/select_all_by_user',urlencodedParser,function(request,response){
+  const user_id = request.body.UserId;
+  var myPromise = LotsController.filter(user_id);
   myPromise.then(function(result) {
 
     //var response_object={results:result}
@@ -80,8 +98,8 @@ router.post('/select_all',urlencodedParser,function(request,response){
 
 
 router.post('/depleted_stock',urlencodedParser,function(request,response){
-
-  var myPromise = LotsController.depletedStock();
+  const user_id = request.body.UserId;
+  var myPromise = LotsController.depletedStock(user_id);
   myPromise.then(function(result) {
 
     //var response_object={results:result}
@@ -93,6 +111,34 @@ router.post('/depleted_stock',urlencodedParser,function(request,response){
     response.send("An error occurred");
   })
 
+});
+
+router.post("/delete_individual_user_lots", urlencodedParser, function(
+  request,
+  response
+) {
+  //var mValue=parseInt(request.body.search_value, 10);
+  var value_ = request.body.LotId;
+
+  var UserId = request.body.UserId;
+
+  var myPromise = LotsController.delete(
+    value_,
+    UserId
+  );
+
+  myPromise.then(
+    function(result) {
+      //  var response_object = { results: result };
+      var response_object = result ;
+      response.send(response_object);
+      console.log(response_object);
+    },
+    function(err) {
+      response.send("An error occurred");
+      console.log(err);
+    }
+  );
 });
 
 
@@ -161,6 +207,7 @@ router.post('/update_lots',urlencodedParser,function(request,response){
 
 
     ProductId: request.body.ProductId,
+    UserId: request.body.UserId,
     RegisteredDate:date,
     ExpiryDate:request.body.ExpiryDate,
     ItemCount: 0,
@@ -211,6 +258,7 @@ router.post('/update_individual_lots',urlencodedParser,function(request,response
 
 
     ProductId: request.body.ProductId,
+    UserId: request.body.UserId,
     RegisteredDate:date,
     ExpiryDate:request.body.ExpiryDate,
     ItemCount: 0,
@@ -218,8 +266,6 @@ router.post('/update_individual_lots',urlencodedParser,function(request,response
     Expired: 0,
     CountOfCheckedOutItems: 0,
     Depleted: 0
-
-
 
 
 

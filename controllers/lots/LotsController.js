@@ -28,50 +28,47 @@ module.exports = class LotsController{
     });
   }
 
-  static async select_all(){
-    let response = await Repository.selectAllLots();
+  static async selectAllLots(user_id){
+    let response = await Repository.selectAllLots(user_id);
+    return response;
+
+  }
+
+  static async selectAllCreatedByUser(user_id){
+    let response = await Repository.selectAllCreatedByUser(tableName, user_id);
     return response;
   }
 
-  static async depletedStock(){
-    let response = await Repository.depletedStock();
-    return response;
-  }
-
-  static stocks_report() {
+  static filter(user_id) {
     return new Promise(function(resolve, reject) {
-    let fetch =  LotsController.select_all();
+      let user_fetch = LotsController.selectAllCreatedByUser(user_id);
+      user_fetch.then(function(result){
+        for (let i=0;i<result.length;i++){
+          let cross_fetch = LotsController.selectSpecificLots(result[i].LotId);
+          cross_fetch.then(function(fetch){
+            resolve(fetch);
+          })
+        }
+      })
+    })} // end
+
+    // lot that has gone through full circle: out of stock
+  static async depletedStock(userId){
+    let response = await Repository.depletedStock(userId);
+    return response;
+  } // end
+
+  // detail on how many items were checked in
+  static stocks_report(user_id) {
+    return new Promise(function(resolve, reject) {
+    let fetch =  LotsController.selectAllLots(user_id);
     fetch.then(function(result){
-      for (let i=0;i<result.length;i++){
-        let update = LotsController.item_count(result[i].LotId);
-        update.then(function(updated){
-          resolve(result);
-        })
-      }
+      resolve(result);
     })
   });
   }
 
-  static async selectSpecific(columnName,columnValue){
-    let response = await Repository.selectSpecific(tableName,columnName,columnValue);
-    return response;
-  }
-
-
-  static async batchUpdate(batchObject){
-    let response = await Repository.batch_update(tableName,batchObject);
-    return response;
-  }
-
-
-
-  static async individualUpdate(columnName,columnValue,recordObject){
-    let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
-    return response;
-  }
-
-
-  // item_count
+  // item_count column contains total count of items in each lot
   static item_count( value_){
     let  ColumnName = "LotId";
     return new Promise(function(resolve, reject) {
@@ -93,6 +90,36 @@ module.exports = class LotsController{
     })
   }
   // end
+
+
+  static async delete(value_, user_id){
+    // tableName, ColumnName, value_, UserIdColumnName, UserId
+    let ColumnName = "LotId";
+    let UserIdColumnName = "UserId";
+    let response = await ModelMaster.delete(tableName, ColumnName, value_, UserIdColumnName, user_id);
+    return response;
+  }
+
+
+  static async selectSpecific(columnName,columnValue){
+    let response = await Repository.selectSpecific(tableName,columnName,columnValue);
+    return response;
+  }
+
+
+  static async batchUpdate(batchObject){
+    let response = await Repository.batch_update(tableName,batchObject);
+    return response;
+  }
+
+
+
+  static async individualUpdate(columnName,columnValue,recordObject){
+    let response = await Repository.individual_update(tableName,recordObject,columnName,columnValue);
+    return response;
+  }
+
+
 
 
 

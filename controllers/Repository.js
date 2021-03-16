@@ -78,9 +78,10 @@ table.Pass it the table name and a callback
 function to retrieve back your result
 
 */
-  static selectAllLots() {
+  static selectAllLots(userId) {
     return new Promise(function(resolve, reject) {
-      con.query("SELECT * FROM lots INNER JOIN products ON products.ProductId = lots.ProductId;", function(
+      con.query("SELECT * FROM lots INNER JOIN products ON products.ProductId = lots.ProductId WHERE lots.UserId = "
+        + mysql.escape(userId), function(
         err,
         result,
         fields
@@ -146,7 +147,7 @@ function to retrieve back your result
                 var returned_value_ = {
                   success: true,
                   message: "Record updated successfully.",
-                  recordId: null
+                  recordId: 0
                 };
                 resolve(returned_value_);
               }
@@ -593,7 +594,7 @@ delete() deletes a specific record(s).
 
   static selectSpecificLots(lotId) {
     return new Promise(function(resolve, reject) {
-      con.query("SELECT * FROM lots WHERE LotId = " + mysql.escape(lotId), function(
+      con.query("SELECT * FROM lots INNER JOIN products ON products.ProductId = lots.ProductId WHERE LotId = " + mysql.escape(lotId), function(
         err,
         result,
         fields
@@ -608,10 +609,10 @@ delete() deletes a specific record(s).
     });
   }
 
-  static depletedStock() {
+  static depletedStock(userId) {
     return new Promise(function(resolve, reject) {
       con.query("SELECT * FROM lots INNER JOIN products ON products.ProductId = lots.ProductId " +
-     " WHERE Depleted = 4 ", function(
+     " WHERE Depleted = 4 AND lots.UserId = " + mysql.escape(userId), function(
         err,
         result,
         fields

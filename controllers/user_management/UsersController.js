@@ -66,7 +66,7 @@ module.exports = class UsersController{
             myModelMasterPromise.then(
               function(userExistsResult) {
                   if (userExistsResult.length === 0) {
-                      var error_msg = "There is no staff member by this email";
+                      var error_msg = "There is no member by this email";
                       var response_object = { error: true, error_msg: error_msg };
                       resolve(response_object);
                   } else {
@@ -92,6 +92,7 @@ module.exports = class UsersController{
                               Email: userExistsResult[0].Email,
                               GenderId: userExistsResult[0].GenderId,
                               NationalId: userExistsResult[0].NationalId,
+
 
                           };
                           // create session

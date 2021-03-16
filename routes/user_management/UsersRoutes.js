@@ -72,6 +72,7 @@ router.post("/login", urlencodedParser, function(
     myCompanySystemUsersControllerObjectPromise.then(
       function(result) {
           response.send(result);
+          console.log(result);
       },
       function(err) {
           console.log(err);
