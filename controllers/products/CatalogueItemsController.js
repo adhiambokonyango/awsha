@@ -75,7 +75,7 @@ module.exports = class CatalogueItemsController{
   static async getSpecificCode( first_value, second_value){
     let first_column = "Code";
     let second_column = "UserId";
-    let response = await CatalogueItemsController.selectSpecificWithTwoParameters(tableName, first_column, first_value, second_column, second_value)
+    let response = await CatalogueItemsController.selectSpecificWithTwoParameters( first_column, first_value, second_column, second_value)
     return response;
   }
 
