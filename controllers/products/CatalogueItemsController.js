@@ -66,8 +66,21 @@ module.exports = class CatalogueItemsController{
   }
 
 
-  static async selectSpecific(columnName,columnValue){
-    let response = await Repository.selectSpecific(tableName,columnName,columnValue);
+  static async selectSpecific(columnValue){
+    let ColumnName = "CatalogueItemId";
+    let response = await Repository.selectSpecific(tableName,ColumnName,columnValue);
+    return response;
+  }
+
+  static async getSpecificCode( first_value, second_value){
+    let first_column = "Code";
+    let second_column = "UserId";
+    let response = await CatalogueItemsController.selectSpecificWithTwoParameters(tableName, first_column, first_value, second_column, second_value)
+    return response;
+  }
+
+  static async selectSpecificWithTwoParameters(first_column, first_value, second_column, second_value){
+    let response = await ModelMaster.selectSpecificWithTwoParameters(tableName, first_column, first_value, second_column, second_value)
     return response;
   }
 
@@ -367,9 +380,10 @@ module.exports = class CatalogueItemsController{
   // insert unique catalogue item
   static async insert_unique_catalogue_item(recordObject){
     let userValidationColumn = "Code";
+    let second_column = "UserId"
     let responseObject = {};
     // try see if code already exists
-    let projectRequestArray = await CatalogueItemsController.get_code_specific_records(userValidationColumn,recordObject.Code);
+    let projectRequestArray = await CatalogueItemsController.selectSpecificWithTwoParameters(userValidationColumn,recordObject.Code, second_column, recordObject.UserId);
 
     // fetch in_stock value as is in the database
     let oldStock = await CatalogueItemsController.getOldStockRecords(recordObject.ProductId);
@@ -389,14 +403,13 @@ module.exports = class CatalogueItemsController{
             InStock: stock[0].NumberOfRecords,
           };
           let new_stock = await ProductController.individualUpdate(oldStock[0].NumberOfRecords, newStock, product_id);
-          responseObject = new_stock;
 
           if (new_stock.success === true){
+            responseObject = insertResponse;
             // set item count
             // where count === 1, item count = number of catalogue items
             let ColumnName = "LotId";
             let item_count_ = await Repository.item_count(ColumnName, recordObject.LotId);
-            console.log(item_count_);
             let jsonObj = {
               ItemCount: item_count_[0].NumberOfRecords
             }
@@ -464,14 +477,6 @@ module.exports = class CatalogueItemsController{
         let table_name = "lots";
         await ModelMaster.individual_update(table_name, jsonObj, column_name, recordObject.LotId);
         // end set item count
-
-        // // update lots.CheckedOutCatalogueItems to default value of 1
-        // // to enable it match up item count
-        // let count_of_checked_out = {
-        //   CountOfCheckedOutItems: 1
-        // }
-        // await ModelMaster.individual_update(table_name, count_of_checked_out, column_name, recordObject.LotId);
-        // // end
 
       } // end adding count to in_stock
       responseObject = {

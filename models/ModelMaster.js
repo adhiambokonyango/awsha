@@ -111,6 +111,31 @@ your result
   }
 
 
+  static selectSpecificWithTwoParameters(tableName, ColumnName, value_, SecondColumn, second_value) {
+    return new Promise(function(resolve, reject) {
+      var sql =
+        "SELECT * FROM " +
+        tableName +
+        " WHERE " +
+        ColumnName +
+        " = " +
+        mysql.escape(value_) +
+      " AND " +
+      SecondColumn +
+      " = " +
+      mysql.escape(second_value);
+      con.query(sql, function(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+
   static async promiselessSelectSpecific(tableName, ColumnName, value_) {
     var sql =
       "SELECT * FROM " +

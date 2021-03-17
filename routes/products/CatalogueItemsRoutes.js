@@ -61,6 +61,7 @@ router.post('/add_unique_code',urlencodedParser, async (request,response) => {
   var	jsonObject_ = {
     ProductId: request.body.ProductId,
     LotId: request.body.LotId,
+    UserId: request.body.UserId,
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
@@ -165,6 +166,7 @@ router.post('/add_catalogue_items',urlencodedParser, async (request,response) =>
   let jsonObject = {
     ProductId: request.body.ProductId,
     LotId: request.body.LotId,
+    UserId: request.body.UserId,
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
@@ -184,6 +186,7 @@ router.post('/insert_catalogue_items', urlencodedParser,function(request,respons
 
     ProductId: request.body.ProductId,
     LotId: request.body.LotId,
+    UserId: request.body.UserId,
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
@@ -278,26 +281,20 @@ router.post('/get_checked_out_records',urlencodedParser,async (request,response)
 // end
 
 
-router.post('/get_specific_catalogue_items',urlencodedParser,function(request,response){
-  var mKey=request.body.column_name;
+router.post('/get_specific_catalogue_item',urlencodedParser,function(request,response){
+  //var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
-  var mValue=request.body.search_value;
-
-
-
-
-  var myPromise = CatalogueItemsController.selectSpecific(mKey,mValue);
-
-
+  var fValue=request.body.Code;
+  var sValue=request.body.UserId;
+  var myPromise = CatalogueItemsController.getSpecificCode(fValue, sValue);
   myPromise.then(function(result) {
-    var response_object={results:result}
+   // var response_object={results:result}
+    var response_object=result;
     response.send(response_object);
   }, function(err) {
     response.send("An error occurred");
     console.log(err);
   })
-
-
 });
 
 router.post('/update_catalogue_items',urlencodedParser,function(request,response){
@@ -313,6 +310,7 @@ router.post('/update_catalogue_items',urlencodedParser,function(request,response
 
     ProductId: request.body.ProductId,
     LotId: request.body.LotId,
+    UserId: request.body.UserId,
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
@@ -361,6 +359,7 @@ router.post('/update_individual_catalogue_items',urlencodedParser,function(reque
 
     ProductId: request.body.ProductId,
     LotId: request.body.LotId,
+    UserId: request.body.UserId,
     Code: request.body.Code,
     Status:0,
     ExpiryStatus:0,
