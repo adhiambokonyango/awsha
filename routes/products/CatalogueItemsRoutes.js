@@ -65,7 +65,8 @@ router.post('/add_unique_code',urlencodedParser, async (request,response) => {
     Status:0,
     ExpiryStatus:0,
     RegisteredDate:date,
-    Counter: 1
+    Counter: 1,
+    HasManyItems: 0
   };
     var myPromise =  CatalogueItemsController.insert_unique_catalogue_item(jsonObject_);
   myPromise.then(function(
@@ -168,7 +169,8 @@ router.post('/add_catalogue_items',urlencodedParser, async (request,response) =>
     Status:0,
     ExpiryStatus:0,
     RegisteredDate:date,
-    Counter: 1
+    Counter: 1,
+    HasManyItems: 0
   };
   let result = await Repository.insert_mobile_user("catalogue_items",jsonObject);
   response.send(result);
@@ -186,7 +188,8 @@ router.post('/insert_catalogue_items', urlencodedParser,function(request,respons
     Status:0,
     ExpiryStatus:0,
     RegisteredDate:date,
-    Counter: 1
+    Counter: 1,
+    HasManyItems: 0
 
   };
   var myPromise = CatalogueItemsController.insert(jsonObject_);
@@ -314,11 +317,8 @@ router.post('/update_catalogue_items',urlencodedParser,function(request,response
     Status:0,
     ExpiryStatus:0,
     RegisteredDate:date,
-    Counter: 1
-
-
-
-
+    Counter: 1,
+    HasManyItems: 0
 
 
 
@@ -365,7 +365,8 @@ router.post('/update_individual_catalogue_items',urlencodedParser,function(reque
     Status:0,
     ExpiryStatus:0,
     RegisteredDate:date,
-    Counter: 1
+    Counter: 1,
+    HasManyItems: 0
 
 
 

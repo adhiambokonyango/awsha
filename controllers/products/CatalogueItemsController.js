@@ -141,15 +141,10 @@ module.exports = class CatalogueItemsController{
    if(projectRequestArray.length > 0) {
         let oldStock = await CatalogueItemsController.getOldCheckedOutRecords(projectRequestArray[0].ProductId);
 
-        // identify item_count
-     let  ColumnName_ = "LotId";
-     let lot_table_ = "lots"
-     let lot_identified = await ModelMaster.selectSpecific(lot_table_,ColumnName_,projectRequestArray[0].LotId);
-     // end
-
      // check if catalogue_items.Counter = 0, then update status of item
      let counter = projectRequestArray[0].Counter;
-     if (counter === 1){
+     let has_many = projectRequestArray[0].HasManyItems;
+     if (counter === 1 && has_many === 0){
        // if code exists, update status to 1 to check it out
        let columnName = "Status";
        let  columnValue = projectRequestArray[0].Status;
@@ -240,7 +235,7 @@ module.exports = class CatalogueItemsController{
          }
        }
      }//end of single code with catalogue_items.Counter === 1
-     else if (counter > 1 &&  lot_identified[0].ItemCount > 1) { // several items are sharing one code
+     else if (counter >= 1 && has_many === 1){ // several items are sharing one code
        let jsonObject = {
          Counter: projectRequestArray[0].Counter - 1
        };
@@ -271,8 +266,79 @@ module.exports = class CatalogueItemsController{
            CheckedOut: product_select[0].CheckedOut + 1
          }
 
+         // count of checked out items updated manually to ensure balance
+         let manualCountOfCheckedOut = {
+           CountOfCheckedOutItems: projectRequestArray[0].CountOfCheckedOutItems + 1
+         }
+         // end
+
        //  await ProductController.individualUpdate(in_stock, current_stock_value, projectRequestArray[0].ProductId);
-         await ProductController.updateCheckedOutAndCountOfCheckedOut(checked_out_stock, updated_checked_value, projectRequestArray[0].ProductId, projectRequestArray[0].LotId);
+        let stock_update =  await ProductController.updateCheckedOutAndCountOfCheckedOut(checked_out_stock, updated_checked_value, projectRequestArray[0].ProductId, projectRequestArray[0].LotId);
+         if (stock_update.success === true){
+           let  ColumnName = "LotId";
+           let lot_table = "lots"
+
+           let lot_identified = await ModelMaster.selectSpecific(lot_table,ColumnName,projectRequestArray[0].LotId);
+           if (lot_identified.length > 0){
+
+
+             // count of checked out items updated manually to ensure balance
+             let manualCountOfCheckedOut = {
+               CountOfCheckedOutItems: lot_identified[0].CountOfCheckedOutItems + 1
+             };
+             console.log(manualCountOfCheckedOut)
+             await Repository.individual_update(lot_table, manualCountOfCheckedOut,ColumnName,projectRequestArray[0].LotId);
+             // end
+
+             let lot_item_count = lot_identified[0].ItemCount;
+             let lot_count_of_checked_out = lot_identified[0].CountOfCheckedOutItems+1;
+
+             if (lot_item_count === lot_count_of_checked_out){
+               let deplete = {
+                 Depleted: 4
+               };
+               let table_name = "lots";
+               // updating depleted status
+               let depletionUpdate = await ModelMaster.update_deplete(table_name, deplete, ColumnName, projectRequestArray[0].LotId);
+               if (depletionUpdate.changedRows > 0){
+                 console.log("depletionUpdate")
+
+                 // update checked_out column by ensuring values do not fall below zero
+                 // only subtract item count from CheckedOut when its value is above zero
+                   if (updated_checked_value.CheckedOut > 0) {
+                   var newStockAfterDepletionHasMany = {
+                     CheckedOut: updated_checked_value.CheckedOut - lot_count_of_checked_out
+                   };
+
+                   // update products.CheckedOut after all items are finished,
+                   //ensuring in_stock or checked_out do not fall below zero
+                   let product_checked_out_stock_after_depletionHasMany =
+                     await ProductController.update_checked_out_stock_after_depletion(updated_checked_value.CheckedOut, newStockAfterDepletionHasMany, projectRequestArray[0].ProductId);
+                   responseObject = product_checked_out_stock_after_depletionHasMany;
+                 } else {
+                   responseObject = {
+                     success: false,
+                     message: "products.CheckedOut < 0.",
+                     recordId:0,
+                   }
+                 }
+                 // end
+
+               } else {
+                 responseObject = {
+                   success: false,
+                   message: "lots' Depleted update failed.",
+                   recordId:0,
+                 }
+               }
+             } else {
+               console.log("not equal");
+               console.log(lot_item_count +" "+ lot_count_of_checked_out)
+             }
+           }
+
+         }
+
        }
      }
 
@@ -366,6 +432,15 @@ module.exports = class CatalogueItemsController{
 
       let ColumnName = "CatalogueItemId";
       let catalogue_item_id = projectRequestArray[0].CatalogueItemId;
+      // update has many
+      let has_many_items={
+        HasManyItems: 1
+      }
+      let hasMany = await Repository.individual_update(tableName,has_many_items,ColumnName,catalogue_item_id);
+      // end
+
+
+
       // update counter on catalogue item
        let counter_update = await Repository.individual_update(tableName, jsonObject, ColumnName, catalogue_item_id);
        // after counter increases, add new value to InStock
@@ -387,9 +462,16 @@ module.exports = class CatalogueItemsController{
           ItemCount: (item_count_[0].NumberOfRecords + jsonObject.Counter)-1
         }
         let table_name = "lots";
-
         await ModelMaster.individual_update(table_name, jsonObj, column_name, recordObject.LotId);
         // end set item count
+
+        // // update lots.CheckedOutCatalogueItems to default value of 1
+        // // to enable it match up item count
+        // let count_of_checked_out = {
+        //   CountOfCheckedOutItems: 1
+        // }
+        // await ModelMaster.individual_update(table_name, count_of_checked_out, column_name, recordObject.LotId);
+        // // end
 
       } // end adding count to in_stock
       responseObject = {

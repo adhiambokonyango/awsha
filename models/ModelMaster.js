@@ -929,16 +929,19 @@ with no WHERE clause(No condition)
                     if (err) {
                       reject(err);
                     }
-                    if (result.changedRows > 0){
-                      var sql = "UPDATE lots set CountOfCheckedOutItems = CountOfCheckedOutItems + 1 WHERE LotId = " + mysql.escape(lot_id);
-                      con.query(sql, function(err, result) {
-                        if (err) {
-                          reject(err);
-                        } else {
-                          resolve(result);
-                        }
-                      })
-                      }
+                    // if (result.changedRows > 0){
+                    //   var sql = "UPDATE lots set CountOfCheckedOutItems = CountOfCheckedOutItems + 1 WHERE LotId = " + mysql.escape(lot_id);
+                    //   con.query(sql, function(err, result) {
+                    //     if (err) {
+                    //       reject(err);
+                    //     } else {
+                    //       resolve(result);
+                    //     }
+                    //   })
+                    //   }
+                    else {
+                      resolve(result);
+                    }
                   });
                 }
                 var returned_value_ = {
