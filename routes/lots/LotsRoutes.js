@@ -80,22 +80,21 @@ router.post('/select_all',urlencodedParser,function(request,response){
 });
 
 
-router.post('/select_all_by_user',urlencodedParser,function(request,response){
-  const user_id = request.body.UserId;
-  var myPromise = LotsController.filter(user_id);
+router.post('/get_specific_lot',urlencodedParser,function(request,response){
+  //var mKey=request.body.column_name;
+  //var mValue=parseInt(request.query.search_value, 10);
+  var fValue=request.body.LotId;
+  var sValue=request.body.UserId;
+  var myPromise = LotsController.getSpecificCode(fValue, sValue);
   myPromise.then(function(result) {
-
-    //var response_object={results:result}
+    // var response_object={results:result}
     var response_object=result;
     response.send(response_object);
-    console.log(response_object);
   }, function(err) {
-    console.log(err);
     response.send("An error occurred");
+    console.log(err);
   })
-
 });
-
 
 router.post('/depleted_stock',urlencodedParser,function(request,response){
   const user_id = request.body.UserId;
@@ -159,23 +158,18 @@ var lotId = request.body.LotId;
 });
 
 
-
-
-
-router.post('/get_specific_lots',urlencodedParser,function(request,response){
+router.post('/get_specific',urlencodedParser,function(request,response){
   var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
   var mValue=request.body.search_value;
 
-
-
-
-  var myPromise = LotsController.get_specific_records(mKey,mValue);
+  var myPromise = LotsController.selectSpecific(mKey,mValue);
 
 
   myPromise.then(function(result) {
     var response_object={results:result}
     response.send(response_object);
+    console.log(response_object);
   }, function(err) {
     response.send("An error occurred");
     console.log(err);

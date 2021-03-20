@@ -142,4 +142,17 @@ module.exports = class LotsController{
   // end
 
 
+  static async getSpecificCode( first_value, second_value){
+    let first_column = "LotId";
+    let second_column = "UserId";
+    let response = await LotsController.selectSpecificWithTwoParameters( first_column, first_value, second_column, second_value)
+    return response;
+  }
+
+  static async selectSpecificWithTwoParameters(first_column, first_value, second_column, second_value){
+    let response = await ModelMaster.selectSpecificWithTwoParameters(tableName, first_column, first_value, second_column, second_value)
+    return response;
+  }
+
+
 }// end class

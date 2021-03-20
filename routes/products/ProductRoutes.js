@@ -200,15 +200,17 @@ router.post('/edit_products',urlencodedParser,function(request,response){
 router.post('/get_specific_products',urlencodedParser,function(request,response){
  // var mKey=request.body.column_name;
   //var mValue=parseInt(request.query.search_value, 10);
-  var mValue=request.query.search_value;
+  var mValue=request.body.search_value;
 
 
   var myPromise = ProductController.selectSpecific(mValue);
 
 
   myPromise.then(function(result) {
-    var response_object={results:result}
+    //var response_object={results:result}
+    var response_object=result;
     response.send(response_object);
+    console.log(response_object);
   }, function(err) {
     response.send("An error occurred");
     console.log(err);

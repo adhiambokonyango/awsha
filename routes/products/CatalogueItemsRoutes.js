@@ -89,7 +89,8 @@ router.post('/insert_existing_code',urlencodedParser, async (request,response) =
   date.setHours(date.getHours()+0);
   var	jsonObject_ = {
     Code: request.body.Code,
-    ProductId: request.body.ProductId
+    ProductId: request.body.ProductId,
+    UserId: request.body.UserId
   };
   var myPromise =  CatalogueItemsController.insert_existing_code(jsonObject_);
   myPromise.then(function(
@@ -114,7 +115,8 @@ router.post('/check_back_in',urlencodedParser, async (request,response) => {
   date.setHours(date.getHours()+0);
   var	jsonObject_ = {
     Code: request.body.Code,
-    ProductId: request.body.ProductId
+    ProductId: request.body.ProductId,
+    UserId: request.body.UserId
   };
   var myPromise =  CatalogueItemsController.check_back_in_existing_code(jsonObject_);
   myPromise.then(function(
@@ -139,7 +141,8 @@ router.post('/check_out_old_stock',urlencodedParser, async (request,response) =>
   var date = new Date();
   date.setHours(date.getHours()+0);
   var	jsonObject_ = {
-    Code: request.body.Code
+    Code: request.body.Code,
+    UserId: request.body.UserId
   };
   var myPromise =  CatalogueItemsController.check_out_old_stock(jsonObject_);
   myPromise.then(function(

@@ -148,9 +148,10 @@ module.exports = class CatalogueItemsController{
   // insert existing catalogue item
   static async insert_existing_code(recordObject){
     let userValidationColumn = "Code";
+    let second_column = "UserId";
     let responseObject = {};
     // check if code is in the database
-    let projectRequestArray = await ModelMaster.selectSpecific(tableName,userValidationColumn,recordObject.Code);
+    let projectRequestArray = await CatalogueItemsController.selectSpecificWithTwoParameters(userValidationColumn,recordObject.Code, second_column, recordObject.UserId);
    if(projectRequestArray.length > 0) {
         let oldStock = await CatalogueItemsController.getOldCheckedOutRecords(projectRequestArray[0].ProductId);
 
@@ -380,7 +381,7 @@ module.exports = class CatalogueItemsController{
   // insert unique catalogue item
   static async insert_unique_catalogue_item(recordObject){
     let userValidationColumn = "Code";
-    let second_column = "UserId"
+    let second_column = "UserId";
     let responseObject = {};
     // try see if code already exists
     let projectRequestArray = await CatalogueItemsController.selectSpecificWithTwoParameters(userValidationColumn,recordObject.Code, second_column, recordObject.UserId);
@@ -501,9 +502,10 @@ module.exports = class CatalogueItemsController{
   // check back in
   static async check_back_in_existing_code(recordObject){
     let userValidationColumn = "Code";
+    let second_column = "UserId";
     let responseObject = {};
     let projectRequestArray =
-      await ModelMaster.selectSpecific(tableName,userValidationColumn,recordObject.Code);
+      await CatalogueItemsController.selectSpecificWithTwoParameters(userValidationColumn,recordObject.Code, second_column, recordObject.UserId);
     if(projectRequestArray.length > 0) {
       let columnName = "Status";
       let  columnValue = projectRequestArray[0].Status;
@@ -529,9 +531,10 @@ module.exports = class CatalogueItemsController{
   // check_out_old_stock
   static async check_out_old_stock(recordObject){
     let userValidationColumn = "Code";
+    let second_column = "UserId";
     let responseObject = {};
     let projectRequestArray =
-      await ModelMaster.selectSpecific(tableName,userValidationColumn,recordObject.Code);
+      await CatalogueItemsController.selectSpecificWithTwoParameters(userValidationColumn,recordObject.Code, second_column, recordObject.UserId);
     if(projectRequestArray.length > 0) {
       let columnName = "Status";
       let  columnValue = projectRequestArray[0].Status;
