@@ -346,8 +346,11 @@ module.exports = class CatalogueItemsController{
                  }
                }
              } else {
-               console.log("not equal");
-               console.log(lot_item_count +" "+ lot_count_of_checked_out)
+               responseObject = {
+                 success: false,
+                 message: "still more items on shelf.",
+                 recordId:0,
+               }
              }
            }
 
