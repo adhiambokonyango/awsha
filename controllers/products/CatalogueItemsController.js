@@ -347,7 +347,7 @@ module.exports = class CatalogueItemsController{
                }
              } else {
                responseObject = {
-                 success: false,
+                 success: true,
                  message: "still more items on shelf.",
                  recordId:0,
                }
