@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/EndPoint.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/api_connector/ApiConnector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/third_party_transaction/ThirdPartyController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/transactions_service_connector/TransactionsServiceConnector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user_management/RolesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/RolesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/EndPoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/EndPoint.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/api_connector/ApiConnector.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/api_connector/ApiConnector.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -412,7 +403,7 @@
       <workItem from="1617274141460" duration="870000" />
       <workItem from="1617275089246" duration="678000" />
       <workItem from="1617276124035" duration="4426000" />
-      <workItem from="1617337785710" duration="4469000" />
+      <workItem from="1617337785710" duration="4805000" />
     </task>
     <servers />
   </component>
