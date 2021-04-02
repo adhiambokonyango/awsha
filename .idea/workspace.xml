@@ -20,8 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/EndPoint.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/api_connector/ApiConnector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/third_party_transaction/ThirdPartyController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/transactions_service_connector/TransactionsServiceConnector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/products/CatalogueItemsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/lots/LotsRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/user_management/RolesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user_management/RolesRoutes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +66,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/common" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.22.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.56" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../covid" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -69,8 +81,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/common" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/extra_file" />
@@ -394,6 +406,13 @@
       <workItem from="1616228303115" duration="569000" />
       <workItem from="1616402849660" duration="687000" />
       <workItem from="1616849331009" duration="1257000" />
+      <workItem from="1617181035368" duration="99000" />
+      <workItem from="1617193586886" duration="635000" />
+      <workItem from="1617273963254" duration="36000" />
+      <workItem from="1617274141460" duration="870000" />
+      <workItem from="1617275089246" duration="678000" />
+      <workItem from="1617276124035" duration="4426000" />
+      <workItem from="1617337785710" duration="4469000" />
     </task>
     <servers />
   </component>

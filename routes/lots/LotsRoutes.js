@@ -71,7 +71,9 @@ router.post('/select_all',urlencodedParser,function(request,response){
     //var response_object={results:result}
     var response_object=result;
     response.send(response_object);
+
     console.log(response_object);
+    console.log(request.headers)
   }, function(err) {
     console.log(err);
     response.send("An error occurred");
@@ -170,6 +172,7 @@ router.post('/get_specific',urlencodedParser,function(request,response){
     var response_object={results:result}
     response.send(response_object);
     console.log(response_object);
+
   }, function(err) {
     response.send("An error occurred");
     console.log(err);

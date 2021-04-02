@@ -6,50 +6,21 @@ then initializes all the route files.
 
 */
 //require('dotenv').config()
-const mysql = require("mysql");
 const express = require("express");
 const app = express();
 
 var fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: __dirname + "/uploads/" });
-var dbcredentials;
-var cors = require("cors");
-var con;
+
 const pdf = require('html-pdf');
 const pdfTemplate = require('./documents');
 
-var port = 80;
+var jwt = require('express-jwt');
+var jwks = require('jwks-rsa');
 
-app.use(cors());
-dbcredentials = {
-  host: "localhost",
-  user: "mary",
-  port: 3306,
-  password: "31547207",
-  database: "awsha",
-  insecureAuth: true
-};
 
 app.use(express.static("uploads"));
-
-app.use((req, res, next) => {
-  con = mysql.createConnection(dbcredentials);
-
-  con.on("error", err => {
-    console.log("db error", err);
-    if (err.code === "PROTOCOL_CONNECTION_LOST") {
-      console.log(err);
-    } else {
-      //throw err;
-    }
-  });
-
-  console.log("Connection established");
-  next();
-});
-
-
 
 app.get("/display_image", (req, res) => {
   //res.sendFile(path.join(__dirname, "./uploads/df37ba09d301ed7e28a5ac7bdbd36a92"));
@@ -137,6 +108,48 @@ app.use(require("./routes/lots/LotsRoutes.js"));
 app.use(require("./routes/terms_conditions/TermsAndConditionsRoutes.js"));
 
 
+
+
+
+var jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: 'https://dev-9detlok0.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://127.0.0.1:5000',
+  issuer: 'https://dev-9detlok0.us.auth0.com/',
+  algorithms: ['RS256']
+});
+
+//app.use(jwtCheck);
+// {
+//   'user-agent': 'PostmanRuntime/7.26.8',
+//   accept: '*/*',
+//   'postman-token': '68758a76-fb0e-4d0e-880c-936512aa975b',
+//   host: 'localhost:5000',
+//   'accept-encoding': 'gzip, deflate, br',
+//   connection: 'keep-alive'
+// }
+app.get('/authorized', function (req, res) {
+  res.send('Secured Resource');
+});
+
+var request = require("request");
+
+var options = {
+  method: 'POST',
+  url: 'https://dev-9detlok0.us.auth0.com/oauth/token',
+  headers: { 'content-type': 'application/json' },
+  body: '{"client_id":"xe5P3HoPUiapkic2sUZerCwwZ5b1hAD1","client_secret":"61yhBs6QRsVaKKUsanqZaX05IpqeOr_3Ed9365FMPuWZlKihWpnaIXU5lQtCi9Hy","audience":"http://127.0.0.1:5000","grant_type":"client_credentials"}'
+};
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
 
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Common Utilities*/
