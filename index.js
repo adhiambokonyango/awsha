@@ -108,7 +108,7 @@ app.use(require("./routes/lots/LotsRoutes.js"));
 app.use(require("./routes/terms_conditions/TermsAndConditionsRoutes.js"));
 
 
-
+app.use(require("./routes/stock/StocksRoutes.js"));
 
 
 var jwtCheck = jwt({
@@ -136,20 +136,20 @@ app.get('/authorized', function (req, res) {
   res.send('Secured Resource');
 });
 
-var request = require("request");
 
-var options = {
-  method: 'POST',
-  url: 'https://dev-9detlok0.us.auth0.com/oauth/token',
-  headers: { 'content-type': 'application/json' },
-  body: '{"client_id":"xe5P3HoPUiapkic2sUZerCwwZ5b1hAD1","client_secret":"61yhBs6QRsVaKKUsanqZaX05IpqeOr_3Ed9365FMPuWZlKihWpnaIXU5lQtCi9Hy","audience":"http://127.0.0.1:5000","grant_type":"client_credentials"}'
-};
 
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  console.log(body);
-});
+// var options = {
+//   method: 'POST',
+//   url: 'https://dev-9detlok0.us.auth0.com/oauth/token',
+//   headers: { 'content-type': 'application/json' },
+//   body: '{"client_id":"xe5P3HoPUiapkic2sUZerCwwZ5b1hAD1","client_secret":"61yhBs6QRsVaKKUsanqZaX05IpqeOr_3Ed9365FMPuWZlKihWpnaIXU5lQtCi9Hy","audience":"http://127.0.0.1:5000","grant_type":"client_credentials"}'
+// };
+//
+// request(options, function (error, response, body) {
+//   if (error) throw new Error(error);
+//
+//   console.log(body);
+// });
 
 
 /*SON/2019-1-04 11:50 - DEVELOPMENT : End Common Utilities*/
@@ -160,9 +160,9 @@ app.use(function(err, req, res, next) {
   res.status(500).send("Something broke!");
 });
 
-
-
-const server = app.listen(5000, () => {
+// "192.168.0.169"
+// "192.168.137.240"
+const server = app.listen(5000, "192.168.0.169", () => {
   const host = server.address().address;
   const port = server.address().port;
 

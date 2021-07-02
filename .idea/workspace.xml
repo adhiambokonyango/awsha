@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338adf5a-5eaf-48c5-b691-d0fb6bc62bc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/EndPoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/EndPoint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api_connector/ApiConnector.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/api_connector/ApiConnector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/stock/StocksController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/stock/StocksRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dbConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/dbConnect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +64,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.22.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="10.17.56" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../covid" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.19.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.60" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -404,6 +408,9 @@
       <workItem from="1617275089246" duration="678000" />
       <workItem from="1617276124035" duration="4426000" />
       <workItem from="1617337785710" duration="4805000" />
+      <workItem from="1625137761753" duration="333000" />
+      <workItem from="1625150731372" duration="108000" />
+      <workItem from="1625231108897" duration="2444000" />
     </task>
     <servers />
   </component>

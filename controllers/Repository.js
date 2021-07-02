@@ -31,6 +31,26 @@ database.
 
 */
 
+
+  static innerJoinStockAndProducts(user_id) {
+    return new Promise(function(resolve, reject) {
+      con.query("SELECT * FROM stock INNER JOIN products ON products.ProductId = stock.ProductId WHERE stock.UserId = "+ mysql.escape(user_id)
+        , function(
+        err,
+        result,
+        fields
+      ) {
+        if (err) {
+          reject(err);
+        } else {
+          var returned_value_ = result;
+          resolve(returned_value_);
+        }
+      });
+    });
+  }
+
+
   static insert(tableName, jsonObject_) {
     return new Promise(function(resolve, reject) {
       con.query("INSERT INTO " + tableName + " SET ?", jsonObject_, function(
