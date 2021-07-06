@@ -20,6 +20,8 @@ var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
 
 
+
+
 app.use(express.static("uploads"));
 
 app.get("/display_image", (req, res) => {

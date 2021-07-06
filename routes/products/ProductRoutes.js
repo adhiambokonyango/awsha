@@ -7,6 +7,8 @@ calls from the client and passes the calls down to the
 
 
 
+//import moment from "moment";
+
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
@@ -131,7 +133,18 @@ router.post('/get_all_products',urlencodedParser,function(request,response){
 
     // var response_object={ results: result }
     var response_object = result;
-    response.send(response_object);
+
+    let products =  result.map((model, index, array) => {
+      array = result;
+      let  stock_object = {
+        ProductId: array[index].ProductId,
+        ProductName: array[index].ProductName,
+        Code: array[index].Code,
+      }
+      return   stock_object;
+
+    });
+    response.send(products);
 
   }, function(err) {
     console.log(err);
@@ -146,7 +159,7 @@ router.post("/delete_individual_user_products", urlencodedParser, function(
   response
 ) {
   //var mValue=parseInt(request.body.search_value, 10);
-  var value_ = request.body.ProductId;
+  var value_ = request.body.StockId;
 
   var UserId = request.body.UserId;
 
@@ -178,7 +191,7 @@ router.post('/edit_products',urlencodedParser,function(request,response){
   var	jsonObject_ = {
 
     ProductName:request.body.ProductName,
-    Price:request.body.Price,
+    SellingPrice:request.body.SellingPrice,
     BuyingPrice: request.body.BuyingPrice,
 
   };

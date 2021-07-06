@@ -23,7 +23,7 @@ router.post("/inner_join_product_stock", urlencodedParser,  async function(
   request,
   response
 ) {
-  let user_id = request.body.user_id;
+  let user_id = request.body.UserId;
   let fetch = await StocksController.fetch_stocks(user_id);
 
   response.send({

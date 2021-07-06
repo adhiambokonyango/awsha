@@ -16,11 +16,14 @@ module.exports = class ProductController{
     return response;
   }
 
+  // do deletion base on stock
+  // update made after correcting db and doing away with lots
   static async delete(value_, user_id){
     // tableName, ColumnName, value_, UserIdColumnName, UserId
-    let ColumnName = "ProductId";
+    let ColumnName = "StockId";
     let UserIdColumnName = "UserId";
-    let response = await ModelMaster.delete(tableName, ColumnName, value_, UserIdColumnName, user_id);
+    let tableNameColumnName = "stock";
+    let response = await ModelMaster.delete(tableNameColumnName, ColumnName, value_, UserIdColumnName, user_id);
     return response;
   }
 
