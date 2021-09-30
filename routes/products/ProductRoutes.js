@@ -140,6 +140,9 @@ router.post('/get_all_products',urlencodedParser,function(request,response){
         ProductId: array[index].ProductId,
         ProductName: array[index].ProductName,
         Code: array[index].Code,
+        
+        SellingPrice: array[index].SellingPrice,
+        BuyingPrice: array[index].BuyingPrice,
       }
       return   stock_object;
 
