@@ -2,34 +2,16 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: uat
-  name: kopa-backend
+  name: awsha-backend
   annotations:
     kubernetes.io/ingress.class: nginx
 #    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
 spec:
   rules:
-    - host: backend.kopa.kopa.xyz
+    - host: backend.35.194.34.9
       http:
         paths:
           - path: /
             backend:
-              serviceName: kopa-backend
+              serviceName: awsha-backend
               servicePort: 8080
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  namespace: uat
-  name: pma
-  annotations:
-    kubernetes.io/ingress.class: nginx
-#    certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
-spec:
-  rules:
-    - host: pma.kopa.kopa.xyz
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: pma
-              servicePort: 80

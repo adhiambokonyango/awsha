@@ -1,0 +1,16 @@
+gcloud init
+
+gcloud app deploy
+
+CREATE USER 'marykonyango'@'localhost' IDENTIFIED BY 'Mary@31547207';
+
+GRANT ALL PRIVILEGES ON * . * TO 'marykonyango'@'localhost';
+
+FLUSH PRIVILEGES;
+
+
+mysqldump --databases awsha -h localhost -u root -p Mary@31547207 --skip-triggers --single-transaction --default-character-set=utf8mb4 > awsha.sql
+
+
+/usr/bin/mysql -u marykonyango -p
+

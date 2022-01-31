@@ -1,32 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: uat
-  name: kopa-node-backend
+
+  name: app
   labels:
-    name: kopa-node-backend
-    app: kopa-node-backend
+    name: app
+    app: app
 spec:
   selector:
     matchLabels:
-      app: kopa-node-backend
+      app: app
   template:
     metadata:
-      name: kopa-node-backend
+      name: app
       labels:
-        name: kopa-node-backend
-        app: kopa-node-backend
+        name: app
+        app: app
     spec:
       containers:
-        - name: kopa-node-backend
+        - name: app
           imagePullPolicy: Always
-          image: silasonyango93/kopa-node-backend:latest
+          image: 31547207/app:latest
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - mountPath: /app/uploads
-              name: uploads-storage
-      volumes:
-        - name: uploads-storage
-          persistentVolumeClaim:
-            claimName: kopa-pvc
+

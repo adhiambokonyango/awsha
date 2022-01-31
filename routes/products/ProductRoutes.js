@@ -97,7 +97,7 @@ router.post(
 
 
 router.post('/add_products', urlencodedParser,async (request,response) =>{
-
+console.log(request);
   var	jsonObject_ = {
 
     UserId: request.body.UserId,

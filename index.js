@@ -49,7 +49,7 @@ app.post('/create-pdf', (req, res) => {
     if(err) {
       res.send(Promise.reject());
     }
-
+//192.168.137.240
     res.send(Promise.resolve());
   });
 });
@@ -111,6 +111,7 @@ app.use(require("./routes/terms_conditions/TermsAndConditionsRoutes.js"));
 
 
 app.use(require("./routes/stock/StocksRoutes.js"));
+app.use(require("./routes/audit/AuditRoutes.js"));
 
 
 var jwtCheck = jwt({
@@ -164,7 +165,7 @@ app.use(function(err, req, res, next) {
 
 // "192.168.0.169"
 // "192.168.137.240"
-const server = app.listen(5000, "192.168.137.240", () => {
+const server = app.listen(5000, () => {
   const host = server.address().address;
   const port = server.address().port;
 
