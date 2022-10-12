@@ -19,7 +19,9 @@ const pdfTemplate = require('./documents');
 var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
 
-
+app.get('/', (req, res) => {
+  res.send('Hello from App Engine!');
+});
 
 
 app.use(express.static("uploads"));
